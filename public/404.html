@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Ant Fund</title>
+    <script>
+      // SPA fallback for GitHub Pages: preserve the requested path and redirect
+      // to the root so the React Router can resolve it on load.
+      (function () {
+        var path = window.location.pathname + window.location.search + window.location.hash;
+        sessionStorage.setItem('redirectPath', path);
+        window.location.replace('/');
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

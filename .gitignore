@@ -1,0 +1,16 @@
+node_modules
+dist
+.DS_Store
+*.log
+.vite
+.env
+.env.local
+
+# Claude Code session metadata
+.claude/
+
+# Raw working assets — favicons already mirrored into /public,
+# ant_logo PNGs are large source files not yet used in the site.
+fav-icons/
+ant_logo.png
+ant_logo_plain_background.png
