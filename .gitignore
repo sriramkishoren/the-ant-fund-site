@@ -9,8 +9,7 @@ dist
 # Claude Code session metadata
 .claude/
 
-# Raw working assets — favicons already mirrored into /public,
-# ant_logo PNGs are large source files not yet used in the site.
+# Raw working assets at the project root. The processed/optimized copies
+# live in /public; these are the unmodified source files.
 fav-icons/
-ant_logo.png
-ant_logo_plain_background.png
+ant_logo*
