@@ -13,3 +13,8 @@ dist
 # live in /public; these are the unmodified source files.
 fav-icons/
 ant_logo*
+
+# Pre-publish research notes — local-only. Public repo, so verbatim quotes,
+# screenshots from paid tools, and copyrighted excerpts stay off GitHub.
+# Workflow documented in BLOGGING.md §13.
+research/

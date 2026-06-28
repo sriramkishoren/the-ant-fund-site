@@ -207,3 +207,30 @@ Then push to `main`. The site auto-deploys via `.github/workflows/deploy.yml`.
 - Content scraped, summarized, or generated wholesale from other sources without original analysis.
 
 Every post should pass one test: would the patient saver — the ant — find this useful, true, and free of hype? If yes, publish. If no, rewrite.
+
+---
+
+## 13. Research workflow
+
+Raw research lives in the gitignored `research/` folder at the repo root — one subfolder per article-in-progress, named after the eventual post slug:
+
+```
+research/
+├── why-monte-carlo-beats-averages/
+│   ├── notes.md       — free-form thinking
+│   ├── sources.md     — links, quotes, citations
+│   ├── outline.md     — optional structured outline
+│   ├── data/          — CSVs, JSON, screenshots
+│   └── images/        — chart drafts
+└── …
+```
+
+**Why gitignored:** the repo is public. Verbatim quotes from copyrighted sources, screenshots from paid research tools, and rough notes that you wouldn't want indexed by Google all belong in `research/` rather than in git history.
+
+**Workflow:**
+1. Dump research into `research/<slug>/` over time. Free-form. No required format.
+2. When you're ready to write, ask Claude to "write the post from `research/<slug>/`."
+3. Claude reads the whole subfolder, drafts the post, and creates the publish-ready Markdown at `src/content/blog/posts/<slug>.md` (which IS tracked in git).
+4. After publishing, keep or delete the research subfolder — it's local.
+
+`research/README.md` (also gitignored) is a self-reminder of these conventions.
