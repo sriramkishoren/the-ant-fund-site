@@ -6,7 +6,7 @@ export default function Products() {
     <>
       <Seo
         title="Tools"
-        description="Calculators for retirement planning, financial independence, and long-term investing — all fully client-side."
+        description="Free, fully client-side calculators for retirement planning, financial independence, and long-term investing — including a Monte Carlo retirement simulator."
         path="/products"
       />
       <Container className="py-20">

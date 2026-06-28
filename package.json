@@ -5,22 +5,28 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsx scripts/generate-sitemap.ts && vite-react-ssg build",
+    "prebuild": "tsx scripts/generate-sitemap.ts && tsx scripts/generate-rss.ts",
+    "build": "vite-react-ssg build",
     "build:spa": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "new-post": "tsx scripts/new-post.ts"
   },
   "dependencies": {
     "@fontsource/fraunces": "^5.0.20",
     "@fontsource/inter": "^5.0.18",
+    "github-slugger": "^2.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet-async": "^2.0.5",
     "react-markdown": "^9.0.1",
     "react-router-dom": "^6.26.2",
+    "reading-time": "^1.5.0",
     "recharts": "^2.12.7",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.0"
   },
   "devDependencies": {

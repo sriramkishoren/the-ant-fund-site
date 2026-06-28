@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Ant Fund</title>
+    <link>https://theantfund.com</link>
+    <description>Slow, steady wealth for everyday investors — calculators, education, and clear thinking on the road to financial independence.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Jun 2026 20:35:55 GMT</lastBuildDate>
+    <atom:link href="https://theantfund.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hello, world — a pipeline test post</title>
+      <link>https://theantfund.com/blog/hello-world-pipeline-test</link>
+      <guid isPermaLink="true">https://theantfund.com/blog/hello-world-pipeline-test</guid>
+      <pubDate>Sun, 28 Jun 2026 12:00:00 GMT</pubDate>
+      <category>Meta</category>
+      <description>A throwaway post used during initial setup to verify the blog pipeline end-to-end. Delete this once a real article ships.</description>
+    </item>
+    <item>
+      <title>How Monte Carlo simulation answers the question every retiree asks</title>
+      <link>https://theantfund.com/blog/monte-carlo-explained</link>
+      <guid isPermaLink="true">https://theantfund.com/blog/monte-carlo-explained</guid>
+      <pubDate>Tue, 12 May 2026 12:00:00 GMT</pubDate>
+      <category>Retirement</category>
+      <description>A single average return hides the question that actually matters: how often does the plan run out of money? Monte Carlo answers it ten thousand times over.</description>
+    </item>
+    <item>
+      <title>The 4% rule, explained for normal people</title>
+      <link>https://theantfund.com/blog/four-percent-rule</link>
+      <guid isPermaLink="true">https://theantfund.com/blog/four-percent-rule</guid>
+      <pubDate>Tue, 28 Apr 2026 12:00:00 GMT</pubDate>
+      <category>Retirement</category>
+      <description>It&apos;s a starting point, not a law of physics. Where the 4% rule came from, what it actually claims, and why it still holds up after forty years.</description>
+    </item>
+    <item>
+      <title>Index funds vs. picking stocks: what the math actually says</title>
+      <link>https://theantfund.com/blog/index-funds-vs-picking-stocks</link>
+      <guid isPermaLink="true">https://theantfund.com/blog/index-funds-vs-picking-stocks</guid>
+      <pubDate>Thu, 09 Apr 2026 12:00:00 GMT</pubDate>
+      <category>Investing Basics</category>
+      <description>The case for indexing isn&apos;t about cynicism — it&apos;s about humility, fees, and what twenty years of data tell us about beating the market.</description>
+    </item>
+    <item>
+      <title>What &quot;financial independence&quot; really means (and how to size your number)</title>
+      <link>https://theantfund.com/blog/your-fi-number</link>
+      <guid isPermaLink="true">https://theantfund.com/blog/your-fi-number</guid>
+      <pubDate>Sat, 21 Mar 2026 12:00:00 GMT</pubDate>
+      <category>FIRE</category>
+      <description>Financial independence is a spreadsheet idea before it&apos;s a lifestyle. Here&apos;s how to translate your annual spending into a target portfolio.</description>
+    </item>
+  </channel>
+</rss>

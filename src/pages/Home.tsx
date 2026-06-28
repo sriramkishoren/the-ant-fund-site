@@ -24,7 +24,7 @@ export default function Home() {
     <>
       <Seo
         title={SITE_NAME}
-        description="Slow, steady wealth for everyday investors — calculators, education, and clear thinking on the road to financial independence."
+        description="Slow, steady wealth for everyday investors. Free Monte Carlo retirement calculator, plain-language essays, and clear thinking on the road to financial independence."
         path="/"
         jsonLd={organizationJsonLd}
       />

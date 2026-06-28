@@ -3,7 +3,7 @@
 export const SITE_ORIGIN = 'https://theantfund.com';
 export const SITE_NAME = 'The Ant Fund';
 export const SITE_DEFAULT_DESCRIPTION =
-  'Slow, steady wealth for everyday investors — calculators, education, and clear thinking on the road to financial independence.';
+  'Slow, steady wealth for everyday investors. Free Monte Carlo retirement calculator, plain-language essays, and clear thinking on the road to financial independence.';
 export const SITE_DEFAULT_OG_IMAGE = '/og-default.png';
 
 export function absoluteUrl(path: string): string {
