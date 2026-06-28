@@ -20,6 +20,7 @@ import {
 } from '@/content/blog';
 import { extractToc } from '@/content/blog/toc';
 import { withBase } from '@/lib/basePath';
+import { parsePostDate } from '@/lib/date';
 import { SITE_NAME, SITE_ORIGIN, absoluteUrl } from '@/lib/seo';
 import NotFound from './NotFound';
 
@@ -135,7 +136,7 @@ export default function BlogPost() {
             <Badge tone="teal">{post.category}</Badge>
             <span>{post.author}</span>
             <span aria-hidden>·</span>
-            <time dateTime={post.date}>{dateFmt.format(new Date(post.date))}</time>
+            <time dateTime={post.date}>{dateFmt.format(parsePostDate(post.date))}</time>
             <span aria-hidden>·</span>
             <span>{post.readingTime} min read</span>
           </div>

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/Badge';
 import type { BlogPost } from '@/content/blog';
 import { withBase } from '@/lib/basePath';
+import { parsePostDate } from '@/lib/date';
 
 const dateFmt = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
@@ -31,7 +32,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
         <div className="mb-3 flex items-center gap-2 text-xs text-ink/60">
           <Badge tone="teal">{post.category}</Badge>
           <span aria-hidden>·</span>
-          <time dateTime={post.date}>{dateFmt.format(new Date(post.date))}</time>
+          <time dateTime={post.date}>{dateFmt.format(parsePostDate(post.date))}</time>
           <span aria-hidden>·</span>
           <span>{post.readingTime} min</span>
         </div>

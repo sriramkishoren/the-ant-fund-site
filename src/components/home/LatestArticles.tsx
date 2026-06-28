@@ -3,6 +3,7 @@ import { Container } from '@/components/layout/Container';
 import { Badge } from '@/components/ui/Badge';
 import { LinkButton } from '@/components/ui/Button';
 import { getRecentPosts } from '@/content/blog';
+import { parsePostDate } from '@/lib/date';
 
 const dateFmt = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
@@ -45,7 +46,7 @@ export function LatestArticles() {
                 <div className="mb-3 flex items-center gap-2 text-xs text-ink/60">
                   <Badge tone="teal">{post.category}</Badge>
                   <span>·</span>
-                  <time dateTime={post.date}>{dateFmt.format(new Date(post.date))}</time>
+                  <time dateTime={post.date}>{dateFmt.format(parsePostDate(post.date))}</time>
                 </div>
                 <h3 className="font-heading text-lg leading-snug text-teal-dark">
                   <Link

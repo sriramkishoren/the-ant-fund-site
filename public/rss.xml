@@ -5,8 +5,16 @@
     <link>https://theantfund.com</link>
     <description>Slow, steady wealth for everyday investors — calculators, education, and clear thinking on the road to financial independence.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Jun 2026 20:35:55 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jun 2026 21:16:28 GMT</lastBuildDate>
     <atom:link href="https://theantfund.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Wheel: a foundations guide to selling options for income</title>
+      <link>https://theantfund.com/blog/the-wheel-options-foundations</link>
+      <guid isPermaLink="true">https://theantfund.com/blog/the-wheel-options-foundations</guid>
+      <pubDate>Sun, 28 Jun 2026 12:00:00 GMT</pubDate>
+      <category>Options</category>
+      <description>What calls and puts actually are, how the Wheel strategy generates income, and where premium selling really earns — a careful look at the math behind options income.</description>
+    </item>
     <item>
       <title>Hello, world — a pipeline test post</title>
       <link>https://theantfund.com/blog/hello-world-pipeline-test</link>
