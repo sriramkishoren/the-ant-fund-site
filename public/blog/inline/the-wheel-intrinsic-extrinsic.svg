@@ -51,8 +51,8 @@
   <!-- Baseline -->
   <line x1="160" y1="480" x2="1060" y2="480" stroke="#1C2826" stroke-width="1.5"/>
 
-  <!-- Legend -->
-  <g transform="translate(820, 50)">
+  <!-- Legend, placed in the empty top-left to avoid colliding with the $11 label above the ITM bar -->
+  <g transform="translate(120, 110)">
     <rect x="0" y="0" width="20" height="14" fill="#15807D"/>
     <text x="28" y="12" font-family="Inter, sans-serif" font-size="13" fill="#1C2826">Extrinsic (harvestable)</text>
     <rect x="0" y="22" width="20" height="14" fill="#1C2826" opacity="0.55"/>

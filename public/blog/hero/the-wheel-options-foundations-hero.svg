@@ -1,86 +1,81 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title">
-  <title id="title">Premium flowing through the Wheel cycle</title>
+  <title id="title">The Wheel — premium collected at every turn</title>
   <rect width="1600" height="900" fill="#FBF6EE"/>
 
-  <!-- background grid hint -->
-  <g opacity="0.06" stroke="#0D5957" stroke-width="1">
-    <line x1="0" y1="225" x2="1600" y2="225"/>
-    <line x1="0" y1="450" x2="1600" y2="450"/>
-    <line x1="0" y1="675" x2="1600" y2="675"/>
-    <line x1="400" y1="0" x2="400" y2="900"/>
-    <line x1="800" y1="0" x2="800" y2="900"/>
-    <line x1="1200" y1="0" x2="1200" y2="900"/>
-  </g>
+  <!-- Title block, given clear vertical space above the diagram -->
+  <text x="800" y="92" text-anchor="middle"
+        font-family="Fraunces, Georgia, serif" font-size="64" font-weight="600"
+        fill="#0D5957" letter-spacing="-0.5">The Wheel</text>
+  <text x="800" y="138" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="400"
+        fill="#1C2826" opacity="0.7" letter-spacing="0.4">Premium collected at every turn</text>
 
-  <!-- Central circle (representing the Wheel) -->
-  <circle cx="800" cy="450" r="280" fill="none" stroke="#15807D" stroke-width="3" opacity="0.35"/>
-  <circle cx="800" cy="450" r="220" fill="none" stroke="#15807D" stroke-width="2" opacity="0.2"/>
+  <!-- Cycle area: center at (800, 540), radius 240. Top node clears the subtitle by ~60px. -->
 
-  <!-- Four "stations" on the circle, labeled by position relative to center -->
-  <!-- Top: Sell CSP (teal coin) -->
+  <!-- Guide circle: very subtle, just enough to read as a loop -->
+  <circle cx="800" cy="540" r="240"
+          fill="none" stroke="#15807D" stroke-width="1.5" opacity="0.18"/>
+
+  <!-- 4 station nodes on the cardinal points of the guide circle -->
+  <!-- Top: Sell CSP -->
   <g>
-    <circle cx="800" cy="170" r="62" fill="#15807D"/>
-    <text x="800" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#FBF6EE">SELL</text>
-    <text x="800" y="186" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#FBF6EE">CSP</text>
+    <circle cx="800" cy="300" r="74" fill="#15807D"/>
+    <text x="800" y="296" text-anchor="middle"
+          font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="600"
+          fill="#FBF6EE" letter-spacing="0.4">SELL</text>
+    <text x="800" y="322" text-anchor="middle"
+          font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="600"
+          fill="#FBF6EE" letter-spacing="0.4">CSP</text>
   </g>
 
-  <!-- Right: Assigned shares (amber coin) -->
+  <!-- Right: Own shares -->
   <g>
-    <circle cx="1080" cy="450" r="62" fill="#E09A33"/>
-    <text x="1080" y="440" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#1C2826">OWN</text>
-    <text x="1080" y="466" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#1C2826">SHARES</text>
+    <circle cx="1040" cy="540" r="74" fill="#E09A33"/>
+    <text x="1040" y="536" text-anchor="middle"
+          font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600"
+          fill="#1C2826" letter-spacing="0.4">OWN</text>
+    <text x="1040" y="562" text-anchor="middle"
+          font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600"
+          fill="#1C2826" letter-spacing="0.4">SHARES</text>
   </g>
 
-  <!-- Bottom: Sell CC (teal-dark coin) -->
+  <!-- Bottom: Sell CC -->
   <g>
-    <circle cx="800" cy="730" r="62" fill="#0D5957"/>
-    <text x="800" y="722" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#FBF6EE">SELL</text>
-    <text x="800" y="748" text-anchor="middle" font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#FBF6EE">CC</text>
+    <circle cx="800" cy="780" r="74" fill="#0D5957"/>
+    <text x="800" y="776" text-anchor="middle"
+          font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="600"
+          fill="#FBF6EE" letter-spacing="0.4">SELL</text>
+    <text x="800" y="802" text-anchor="middle"
+          font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="600"
+          fill="#FBF6EE" letter-spacing="0.4">CC</text>
   </g>
 
-  <!-- Left: Cash (gold coin) -->
+  <!-- Left: Cash -->
   <g>
-    <circle cx="520" cy="450" r="62" fill="#F2C44E"/>
-    <text x="520" y="458" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#1C2826">CASH</text>
+    <circle cx="560" cy="540" r="74" fill="#F2C44E"/>
+    <text x="560" y="548" text-anchor="middle"
+          font-family="Inter, system-ui, sans-serif" font-size="22" font-weight="600"
+          fill="#1C2826" letter-spacing="0.4">CASH</text>
   </g>
 
-  <!-- Arrows along the circle: clockwise flow -->
-  <defs>
-    <marker id="arrowTeal" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
-      <path d="M0,0 L12,6 L0,12 z" fill="#15807D"/>
-    </marker>
-    <marker id="arrowAmber" viewBox="0 0 12 12" refX="6" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
-      <path d="M0,0 L12,6 L0,12 z" fill="#E09A33"/>
-    </marker>
-  </defs>
-
-  <!-- CSP -> shares (top to right) -->
-  <path d="M 860 200 A 280 280 0 0 1 1050 390" fill="none" stroke="#15807D" stroke-width="6" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
-  <!-- shares -> CC (right to bottom) -->
-  <path d="M 1050 510 A 280 280 0 0 1 860 700" fill="none" stroke="#0D5957" stroke-width="6" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
-  <!-- CC -> cash (bottom to left) -->
-  <path d="M 740 700 A 280 280 0 0 1 550 510" fill="none" stroke="#0D5957" stroke-width="6" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
-  <!-- cash -> CSP (left to top) -->
-  <path d="M 550 390 A 280 280 0 0 1 740 200" fill="none" stroke="#15807D" stroke-width="6" stroke-linecap="round" marker-end="url(#arrowTeal)"/>
-
-  <!-- Premium "ticks" — small amber bursts along each arc to suggest premium collected at every step -->
-  <g fill="#E09A33">
-    <circle cx="942" cy="240" r="9"/>
-    <circle cx="1010" cy="308" r="9"/>
-    <circle cx="1010" cy="592" r="9"/>
-    <circle cx="942" cy="660" r="9"/>
-    <circle cx="658" cy="660" r="9"/>
-    <circle cx="590" cy="592" r="9"/>
-    <circle cx="590" cy="308" r="9"/>
-    <circle cx="658" cy="240" r="9"/>
+  <!-- Four small directional chevrons on the cycle, pointing clockwise.
+       Positioned at 45° offsets (NE/SE/SW/NW), tangent to the guide circle.
+       Chevron template: small triangle pointing right (+x), then rotated. -->
+  <g fill="#0D5957">
+    <!-- NE (between top and right): position (800 + 240*cos45, 540 - 240*sin45) = (970, 370), rotate 45° -->
+    <polygon points="-9,-7 6,0 -9,7" transform="translate(970 370) rotate(45)"/>
+    <!-- SE (between right and bottom): (970, 710), rotate 135° -->
+    <polygon points="-9,-7 6,0 -9,7" transform="translate(970 710) rotate(135)"/>
+    <!-- SW (between bottom and left): (630, 710), rotate 225° -->
+    <polygon points="-9,-7 6,0 -9,7" transform="translate(630 710) rotate(225)"/>
+    <!-- NW (between left and top): (630, 370), rotate 315° -->
+    <polygon points="-9,-7 6,0 -9,7" transform="translate(630 370) rotate(315)"/>
   </g>
 
-  <!-- Title and subtitle -->
-  <text x="800" y="80" text-anchor="middle" font-family="Fraunces, serif" font-size="56" font-weight="600" fill="#0D5957">The Wheel</text>
-  <text x="800" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="22" font-weight="400" fill="#1C2826" opacity="0.75">Premium collected at every turn</text>
-
-  <!-- Caption strip — what each station is -->
-  <g font-family="Inter, sans-serif" font-size="16" fill="#1C2826">
-    <text x="800" y="843" text-anchor="middle" font-size="18" opacity="0.85">Sell cash-secured put &#8594; (maybe) buy shares &#8594; sell covered call &#8594; (maybe) sell shares &#8594; repeat</text>
-  </g>
+  <!-- Caption strip at the bottom, well clear of the bottom node -->
+  <text x="800" y="870" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="400"
+        fill="#1C2826" opacity="0.55" letter-spacing="0.2">
+    Cash-secured put &#8594; assignment &#8594; covered call &#8594; called away &#8594; repeat
+  </text>
 </svg>

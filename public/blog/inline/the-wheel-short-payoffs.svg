@@ -27,12 +27,12 @@
     <!-- Payoff curve: flat at +premium up to strike, then drops linearly -->
     <polyline points="80,290 320,290 540,510" fill="none" stroke="#15807D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 
-    <!-- Annotate regions -->
-    <text x="200" y="270" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#15807D">Keep premium</text>
-    <text x="200" y="286" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">(price &#8804; strike)</text>
+    <!-- Annotate regions, well clear of the payoff line -->
+    <text x="200" y="240" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#15807D">Keep premium</text>
+    <text x="200" y="258" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">(price &#8804; strike)</text>
 
-    <text x="430" y="430" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#E09A33">Lose as price rises</text>
-    <text x="430" y="446" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">(called away at strike)</text>
+    <text x="480" y="510" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#E09A33">Lose as price rises</text>
+    <text x="480" y="528" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">(called away at strike)</text>
 
     <!-- Y axis label -->
     <text x="40" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">P/L</text>
@@ -56,12 +56,12 @@
     <!-- Payoff curve: drops linearly from low strike, flattens at +premium at and above strike -->
     <polyline points="680,510 920,290 1140,290" fill="none" stroke="#15807D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 
-    <!-- Annotate regions -->
-    <text x="1030" y="270" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#15807D">Keep premium</text>
-    <text x="1030" y="286" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">(price &#8805; strike)</text>
+    <!-- Annotate regions, well clear of the payoff line -->
+    <text x="1030" y="240" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#15807D">Keep premium</text>
+    <text x="1030" y="258" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">(price &#8805; strike)</text>
 
-    <text x="780" y="430" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#E09A33">Lose as price falls</text>
-    <text x="780" y="446" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">(assigned at strike)</text>
+    <text x="740" y="510" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#E09A33">Lose as price falls</text>
+    <text x="740" y="528" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">(assigned at strike)</text>
 
     <!-- Y axis label -->
     <text x="640" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">P/L</text>
