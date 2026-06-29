@@ -1,4 +1,8 @@
-import readingTime from 'reading-time';
+// Deep-import the function file directly. The package's top-level entry pulls
+// in `reading-time/lib/stream`, which calls `util.inherits` at module-init —
+// fine in Node, but in the browser bundle it throws `inherits is not a
+// function` and breaks hydration site-wide. We only ever need the function.
+import readingTime from 'reading-time/lib/reading-time.js';
 import type { BlogPost } from './types';
 import { parseFrontmatter } from './parseFrontmatter';
 
