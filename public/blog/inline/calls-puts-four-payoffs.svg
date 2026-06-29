@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title">
+  <title id="title">Profit and loss at expiration for all four basic options positions</title>
+  <rect width="1200" height="900" fill="#FBF6EE"/>
+
+  <!-- ============ TOP-LEFT: BUY CALL ============ -->
+  <g>
+    <text x="300" y="50" text-anchor="middle"
+          font-family="Fraunces, serif" font-size="24" font-weight="600" fill="#0D5957">Buy call (long call)</text>
+    <text x="300" y="76" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">Pay premium · profits when stock rises above strike</text>
+
+    <!-- Axes -->
+    <line x1="80" y1="280" x2="540" y2="280" stroke="#1C2826" stroke-width="1.5"/>
+    <line x1="80" y1="110" x2="80" y2="430" stroke="#1C2826" stroke-width="1.5"/>
+    <text x="70" y="285" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">0</text>
+
+    <!-- −prem marker -->
+    <line x1="76" y1="335" x2="84" y2="335" stroke="#1C2826" stroke-width="1.5"/>
+    <text x="70" y="339" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">−prem</text>
+
+    <!-- Strike marker -->
+    <line x1="280" y1="110" x2="280" y2="430" stroke="#0D5957" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.6"/>
+    <text x="280" y="450" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#0D5957">Strike</text>
+
+    <!-- Payoff: flat at -prem until strike, then rising linearly -->
+    <polyline points="80,335 280,335 540,150" fill="none" stroke="#15807D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Annotations -->
+    <text x="180" y="380" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#E09A33">Lose premium</text>
+    <text x="180" y="397" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">(stock ≤ strike)</text>
+
+    <text x="480" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#15807D">Profit climbs</text>
+    <text x="480" y="178" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">(unlimited in theory)</text>
+
+    <!-- X axis label -->
+    <text x="540" y="302" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">Stock price at expiry →</text>
+    <text x="40" y="115" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">P/L</text>
+  </g>
+
+  <!-- ============ TOP-RIGHT: BUY PUT ============ -->
+  <g>
+    <text x="900" y="50" text-anchor="middle"
+          font-family="Fraunces, serif" font-size="24" font-weight="600" fill="#0D5957">Buy put (long put)</text>
+    <text x="900" y="76" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">Pay premium · profits when stock falls below strike</text>
+
+    <!-- Axes -->
+    <line x1="680" y1="280" x2="1140" y2="280" stroke="#1C2826" stroke-width="1.5"/>
+    <line x1="680" y1="110" x2="680" y2="430" stroke="#1C2826" stroke-width="1.5"/>
+    <text x="670" y="285" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">0</text>
+
+    <!-- −prem marker -->
+    <line x1="676" y1="335" x2="684" y2="335" stroke="#1C2826" stroke-width="1.5"/>
+    <text x="670" y="339" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">−prem</text>
+
+    <!-- Strike marker -->
+    <line x1="940" y1="110" x2="940" y2="430" stroke="#0D5957" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.6"/>
+    <text x="940" y="450" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#0D5957">Strike</text>
+
+    <!-- Payoff: linear decline from upper-left to (-prem, strike), then flat -->
+    <polyline points="680,150 940,335 1140,335" fill="none" stroke="#15807D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Annotations -->
+    <text x="760" y="160" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#15807D">Profit climbs</text>
+    <text x="760" y="178" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">(stock toward 0)</text>
+
+    <text x="1050" y="380" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#E09A33">Lose premium</text>
+    <text x="1050" y="397" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">(stock ≥ strike)</text>
+
+    <text x="1140" y="302" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">Stock price at expiry →</text>
+    <text x="640" y="115" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">P/L</text>
+  </g>
+
+  <!-- Divider -->
+  <line x1="80" y1="490" x2="1140" y2="490" stroke="#E6E0D5" stroke-width="1.5"/>
+
+  <!-- ============ BOTTOM-LEFT: SELL CALL ============ -->
+  <g>
+    <text x="300" y="540" text-anchor="middle"
+          font-family="Fraunces, serif" font-size="24" font-weight="600" fill="#0D5957">Sell call (short call)</text>
+    <text x="300" y="566" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">Receive premium · loses when stock rises above strike</text>
+
+    <!-- Axes -->
+    <line x1="80" y1="730" x2="540" y2="730" stroke="#1C2826" stroke-width="1.5"/>
+    <line x1="80" y1="600" x2="80" y2="870" stroke="#1C2826" stroke-width="1.5"/>
+    <text x="70" y="735" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">0</text>
+
+    <!-- +prem marker -->
+    <line x1="76" y1="680" x2="84" y2="680" stroke="#1C2826" stroke-width="1.5"/>
+    <text x="70" y="684" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">+prem</text>
+
+    <!-- Strike marker -->
+    <line x1="280" y1="600" x2="280" y2="870" stroke="#0D5957" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.6"/>
+    <text x="280" y="890" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#0D5957">Strike</text>
+
+    <!-- Payoff: flat at +prem until strike, then declining -->
+    <polyline points="80,680 280,680 540,860" fill="none" stroke="#15807D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Annotations -->
+    <text x="180" y="640" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#15807D">Keep premium</text>
+    <text x="180" y="658" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">(stock ≤ strike)</text>
+
+    <text x="480" y="858" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#E09A33">Lose as price rises</text>
+    <text x="480" y="838" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">(unlimited in theory)</text>
+
+    <text x="540" y="752" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">Stock price at expiry →</text>
+    <text x="40" y="605" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">P/L</text>
+  </g>
+
+  <!-- ============ BOTTOM-RIGHT: SELL PUT ============ -->
+  <g>
+    <text x="900" y="540" text-anchor="middle"
+          font-family="Fraunces, serif" font-size="24" font-weight="600" fill="#0D5957">Sell put (short put)</text>
+    <text x="900" y="566" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">Receive premium · loses when stock falls below strike</text>
+
+    <!-- Axes -->
+    <line x1="680" y1="730" x2="1140" y2="730" stroke="#1C2826" stroke-width="1.5"/>
+    <line x1="680" y1="600" x2="680" y2="870" stroke="#1C2826" stroke-width="1.5"/>
+    <text x="670" y="735" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">0</text>
+
+    <!-- +prem marker -->
+    <line x1="676" y1="680" x2="684" y2="680" stroke="#1C2826" stroke-width="1.5"/>
+    <text x="670" y="684" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">+prem</text>
+
+    <!-- Strike marker -->
+    <line x1="940" y1="600" x2="940" y2="870" stroke="#0D5957" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.6"/>
+    <text x="940" y="890" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#0D5957">Strike</text>
+
+    <!-- Payoff: rising from lower-left to (+prem, strike), then flat -->
+    <polyline points="680,860 940,680 1140,680" fill="none" stroke="#15807D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Annotations -->
+    <text x="760" y="858" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#E09A33">Lose as price falls</text>
+    <text x="760" y="838" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">(down to zero)</text>
+
+    <text x="1050" y="640" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#15807D">Keep premium</text>
+    <text x="1050" y="658" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">(stock ≥ strike)</text>
+
+    <text x="1140" y="752" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">Stock price at expiry →</text>
+    <text x="640" y="605" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">P/L</text>
+  </g>
+</svg>

@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title">
+  <title id="title">The four basic options positions arranged as a 2x2 matrix</title>
+  <rect width="1200" height="700" fill="#FBF6EE"/>
+
+  <!-- Column headers -->
+  <text x="450" y="58" text-anchor="middle"
+        font-family="Fraunces, Georgia, serif" font-size="28" font-weight="600" fill="#0D5957">CALL</text>
+  <text x="450" y="86" text-anchor="middle"
+        font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">contract on the right to BUY</text>
+
+  <text x="900" y="58" text-anchor="middle"
+        font-family="Fraunces, Georgia, serif" font-size="28" font-weight="600" fill="#0D5957">PUT</text>
+  <text x="900" y="86" text-anchor="middle"
+        font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">contract on the right to SELL</text>
+
+  <!-- Row labels -->
+  <g transform="translate(120, 245)">
+    <text text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#0D5957"
+          letter-spacing="0.5" transform="rotate(-90)">BUY</text>
+    <text x="0" y="22" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.65"
+          letter-spacing="0.3" transform="rotate(-90) translate(0, 22)">you pay premium · hold a right</text>
+  </g>
+  <g transform="translate(120, 525)">
+    <text text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="20" font-weight="600" fill="#0D5957"
+          letter-spacing="0.5" transform="rotate(-90)">SELL</text>
+    <text x="0" y="22" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.65"
+          letter-spacing="0.3" transform="rotate(-90) translate(0, 22)">you receive premium · take an obligation</text>
+  </g>
+
+  <!-- BUY CALL (top-left) -->
+  <g>
+    <rect x="200" y="120" width="500" height="240" rx="16" fill="#FFFFFF" stroke="#E6E0D5" stroke-width="2"/>
+    <text x="232" y="162" font-family="Fraunces, serif" font-size="24" font-weight="600" fill="#15807D">Buy call</text>
+    <text x="232" y="196" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.75">Right to BUY at the strike</text>
+
+    <!-- Cash flow chip -->
+    <rect x="232" y="218" width="160" height="32" rx="16" fill="#FBF6EE" stroke="#E09A33" stroke-width="1.5"/>
+    <text x="312" y="240" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#E09A33">− Pay premium</text>
+
+    <text x="232" y="288" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">Market view</text>
+    <text x="232" y="310" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#0D5957">Bullish — stock rises sharply</text>
+
+    <text x="232" y="338" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">Max loss: premium paid</text>
+  </g>
+
+  <!-- BUY PUT (top-right) -->
+  <g>
+    <rect x="730" y="120" width="350" height="240" rx="16" fill="#FFFFFF" stroke="#E6E0D5" stroke-width="2"/>
+    <text x="762" y="162" font-family="Fraunces, serif" font-size="24" font-weight="600" fill="#15807D">Buy put</text>
+    <text x="762" y="196" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.75">Right to SELL at the strike</text>
+
+    <rect x="762" y="218" width="160" height="32" rx="16" fill="#FBF6EE" stroke="#E09A33" stroke-width="1.5"/>
+    <text x="842" y="240" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#E09A33">− Pay premium</text>
+
+    <text x="762" y="288" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">Market view</text>
+    <text x="762" y="310" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#0D5957">Bearish — stock falls sharply</text>
+
+    <text x="762" y="338" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">Max loss: premium paid</text>
+  </g>
+
+  <!-- SELL CALL (bottom-left) -->
+  <g>
+    <rect x="200" y="400" width="500" height="240" rx="16" fill="#0D5957" stroke="#0D5957" stroke-width="2"/>
+    <text x="232" y="442" font-family="Fraunces, serif" font-size="24" font-weight="600" fill="#FBF6EE">Sell call</text>
+    <text x="232" y="476" font-family="Inter, sans-serif" font-size="14" fill="#FBF6EE" opacity="0.8">Obligated to SELL at the strike</text>
+
+    <rect x="232" y="498" width="180" height="32" rx="16" fill="#0D5957" stroke="#F2C44E" stroke-width="1.5"/>
+    <text x="322" y="520" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#F2C44E">+ Receive premium</text>
+
+    <text x="232" y="568" font-family="Inter, sans-serif" font-size="13" fill="#FBF6EE" opacity="0.65">Market view</text>
+    <text x="232" y="590" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#FBF6EE">Neutral / slightly bearish</text>
+
+    <text x="232" y="618" font-family="Inter, sans-serif" font-size="13" fill="#FBF6EE" opacity="0.65">Max loss: unlimited (in theory)</text>
+  </g>
+
+  <!-- SELL PUT (bottom-right) -->
+  <g>
+    <rect x="730" y="400" width="350" height="240" rx="16" fill="#0D5957" stroke="#0D5957" stroke-width="2"/>
+    <text x="762" y="442" font-family="Fraunces, serif" font-size="24" font-weight="600" fill="#FBF6EE">Sell put</text>
+    <text x="762" y="476" font-family="Inter, sans-serif" font-size="14" fill="#FBF6EE" opacity="0.8">Obligated to BUY at the strike</text>
+
+    <rect x="762" y="498" width="180" height="32" rx="16" fill="#0D5957" stroke="#F2C44E" stroke-width="1.5"/>
+    <text x="852" y="520" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#F2C44E">+ Receive premium</text>
+
+    <text x="762" y="568" font-family="Inter, sans-serif" font-size="13" fill="#FBF6EE" opacity="0.65">Market view</text>
+    <text x="762" y="590" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#FBF6EE">Neutral / slightly bullish</text>
+
+    <text x="762" y="618" font-family="Inter, sans-serif" font-size="13" fill="#FBF6EE" opacity="0.65">Max loss: large (stock to zero)</text>
+  </g>
+
+  <!-- Footer caption -->
+  <text x="600" y="680" text-anchor="middle"
+        font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.55">
+    Buyers want big moves. Sellers want stillness. Every options trade has one of each on each side.
+  </text>
+</svg>

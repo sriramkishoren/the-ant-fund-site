@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title">
+  <title id="title">Calls and puts — the four basic options positions</title>
+  <rect width="1600" height="900" fill="#FBF6EE"/>
+
+  <!-- Title -->
+  <text x="800" y="100" text-anchor="middle"
+        font-family="Fraunces, Georgia, serif" font-size="64" font-weight="600"
+        fill="#0D5957" letter-spacing="-0.5">Calls &amp; Puts</text>
+  <text x="800" y="148" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="400"
+        fill="#1C2826" opacity="0.7" letter-spacing="0.4">Four positions, two rights, one asymmetry</text>
+
+  <!-- Central cross/axes -->
+  <line x1="800" y1="240" x2="800" y2="820" stroke="#15807D" stroke-width="2" opacity="0.35"/>
+  <line x1="280" y1="530" x2="1320" y2="530" stroke="#15807D" stroke-width="2" opacity="0.35"/>
+
+  <!-- Axis labels -->
+  <text x="800" y="225" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="600"
+        fill="#0D5957" letter-spacing="1.2">BUY  (rights)</text>
+  <text x="800" y="850" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="600"
+        fill="#0D5957" letter-spacing="1.2">SELL  (obligations)</text>
+
+  <g transform="translate(255, 535)">
+    <text text-anchor="middle"
+          font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="600"
+          fill="#0D5957" letter-spacing="1.2" transform="rotate(-90)">CALLS</text>
+  </g>
+  <g transform="translate(1345, 535)">
+    <text text-anchor="middle"
+          font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="600"
+          fill="#0D5957" letter-spacing="1.2" transform="rotate(90)">PUTS</text>
+  </g>
+
+  <!-- Top-left: Buy Call -->
+  <g>
+    <rect x="370" y="270" width="380" height="220" rx="18" fill="#FFFFFF" stroke="#E6E0D5" stroke-width="2"/>
+    <text x="560" y="320" text-anchor="middle"
+          font-family="Fraunces, Georgia, serif" font-size="32" font-weight="600" fill="#15807D">Buy call</text>
+    <text x="560" y="354" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="15" fill="#1C2826" opacity="0.75">Right to BUY at the strike</text>
+    <text x="560" y="402" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#E09A33">Pay premium</text>
+    <text x="560" y="442" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">You profit if the stock</text>
+    <text x="560" y="462" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#0D5957">rises sharply</text>
+  </g>
+
+  <!-- Top-right: Buy Put -->
+  <g>
+    <rect x="850" y="270" width="380" height="220" rx="18" fill="#FFFFFF" stroke="#E6E0D5" stroke-width="2"/>
+    <text x="1040" y="320" text-anchor="middle"
+          font-family="Fraunces, Georgia, serif" font-size="32" font-weight="600" fill="#15807D">Buy put</text>
+    <text x="1040" y="354" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="15" fill="#1C2826" opacity="0.75">Right to SELL at the strike</text>
+    <text x="1040" y="402" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#E09A33">Pay premium</text>
+    <text x="1040" y="442" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">You profit if the stock</text>
+    <text x="1040" y="462" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#0D5957">falls sharply</text>
+  </g>
+
+  <!-- Bottom-left: Sell Call -->
+  <g>
+    <rect x="370" y="570" width="380" height="220" rx="18" fill="#0D5957" stroke="#0D5957" stroke-width="2"/>
+    <text x="560" y="620" text-anchor="middle"
+          font-family="Fraunces, Georgia, serif" font-size="32" font-weight="600" fill="#FBF6EE">Sell call</text>
+    <text x="560" y="654" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="15" fill="#FBF6EE" opacity="0.8">Obligated to SELL at the strike</text>
+    <text x="560" y="702" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#F2C44E">Receive premium</text>
+    <text x="560" y="742" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="14" fill="#FBF6EE" opacity="0.75">You profit if the stock</text>
+    <text x="560" y="762" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#FBF6EE">stays flat or falls</text>
+  </g>
+
+  <!-- Bottom-right: Sell Put -->
+  <g>
+    <rect x="850" y="570" width="380" height="220" rx="18" fill="#0D5957" stroke="#0D5957" stroke-width="2"/>
+    <text x="1040" y="620" text-anchor="middle"
+          font-family="Fraunces, Georgia, serif" font-size="32" font-weight="600" fill="#FBF6EE">Sell put</text>
+    <text x="1040" y="654" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="15" fill="#FBF6EE" opacity="0.8">Obligated to BUY at the strike</text>
+    <text x="1040" y="702" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="14" font-weight="500" fill="#F2C44E">Receive premium</text>
+    <text x="1040" y="742" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="14" fill="#FBF6EE" opacity="0.75">You profit if the stock</text>
+    <text x="1040" y="762" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#FBF6EE">stays flat or rises</text>
+  </g>
+</svg>

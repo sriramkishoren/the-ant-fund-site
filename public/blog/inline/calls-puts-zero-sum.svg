@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-labelledby="title">
+  <title id="title">The zero-sum mirror — the buyer's profit is the seller's loss, dollar for dollar</title>
+  <rect width="1200" height="600" fill="#FBF6EE"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle"
+        font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">The zero-sum mirror</text>
+  <text x="600" y="78" text-anchor="middle"
+        font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">
+    Same call contract, two sides. Add the two lines at any stock price → they sum to zero.
+  </text>
+
+  <!-- Axes -->
+  <line x1="160" y1="320" x2="1080" y2="320" stroke="#1C2826" stroke-width="1.5"/>
+  <line x1="160" y1="130" x2="160" y2="520" stroke="#1C2826" stroke-width="1.5"/>
+
+  <!-- Zero line label -->
+  <text x="148" y="325" text-anchor="end" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">0</text>
+
+  <!-- +prem and -prem markers -->
+  <line x1="156" y1="260" x2="164" y2="260" stroke="#1C2826" stroke-width="1.5"/>
+  <text x="148" y="264" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">+prem</text>
+
+  <line x1="156" y1="380" x2="164" y2="380" stroke="#1C2826" stroke-width="1.5"/>
+  <text x="148" y="384" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">−prem</text>
+
+  <!-- Strike marker -->
+  <line x1="560" y1="130" x2="560" y2="520" stroke="#0D5957" stroke-dasharray="4 4" stroke-width="1.5" opacity="0.55"/>
+  <text x="560" y="540" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#0D5957">Strike</text>
+
+  <!-- X axis label -->
+  <text x="1080" y="345" text-anchor="end" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">Stock price at expiry →</text>
+  <text x="120" y="135" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">P/L</text>
+
+  <!-- Long call (buyer): flat at -prem until strike, then rising -->
+  <polyline points="160,380 560,380 1080,150" fill="none" stroke="#15807D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Short call (seller): flat at +prem until strike, then falling -->
+  <polyline points="160,260 560,260 1080,490" fill="none" stroke="#E09A33" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Vertical pair lines at a sample stock price showing the equal-and-opposite payoffs -->
+  <g opacity="0.45">
+    <line x1="860" y1="226" x2="860" y2="414" stroke="#1C2826" stroke-width="1" stroke-dasharray="3 4"/>
+  </g>
+
+  <!-- Sample-point dots and labels -->
+  <circle cx="860" cy="226" r="6" fill="#15807D"/>
+  <circle cx="860" cy="414" r="6" fill="#E09A33"/>
+  <text x="876" y="222" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#15807D">+$X (buyer's gain)</text>
+  <text x="876" y="430" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#E09A33">−$X (seller's loss)</text>
+
+  <!-- Legend -->
+  <g transform="translate(180, 110)">
+    <line x1="0" y1="6" x2="36" y2="6" stroke="#15807D" stroke-width="4" stroke-linecap="round"/>
+    <text x="46" y="10" font-family="Inter, sans-serif" font-size="13" fill="#1C2826">Buyer (long call)</text>
+
+    <line x1="220" y1="6" x2="256" y2="6" stroke="#E09A33" stroke-width="4" stroke-linecap="round"/>
+    <text x="266" y="10" font-family="Inter, sans-serif" font-size="13" fill="#1C2826">Seller (short call)</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="600" y="580" text-anchor="middle"
+        font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.55">
+    Every options trade is a zero-sum transfer between two parties. The same is true for puts — just mirror across the strike.
+  </text>
+</svg>
