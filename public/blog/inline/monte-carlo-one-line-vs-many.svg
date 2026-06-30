@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-labelledby="title">
+  <title id="title">A flat-average calculator shows a single smooth line; Monte Carlo shows ten thousand jagged possible futures</title>
+  <rect width="1200" height="600" fill="#FBF6EE"/>
+
+  <!-- Section titles -->
+  <text x="300" y="50" text-anchor="middle"
+        font-family="Fraunces, serif" font-size="24" font-weight="600" fill="#0D5957">Flat-average calculator</text>
+  <text x="300" y="76" text-anchor="middle"
+        font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">one assumed return every year, forever</text>
+
+  <text x="900" y="50" text-anchor="middle"
+        font-family="Fraunces, serif" font-size="24" font-weight="600" fill="#0D5957">Monte Carlo</text>
+  <text x="900" y="76" text-anchor="middle"
+        font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">ten thousand realistic futures</text>
+
+  <!-- LEFT PANEL: single smooth line -->
+  <g>
+    <!-- Axes -->
+    <line x1="80" y1="500" x2="540" y2="500" stroke="#1C2826" stroke-width="1.5" opacity="0.6"/>
+    <line x1="80" y1="130" x2="80" y2="500" stroke="#1C2826" stroke-width="1.5" opacity="0.6"/>
+
+    <!-- Axis labels -->
+    <text x="80" y="520" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.6">today</text>
+    <text x="540" y="520" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.6">end</text>
+    <text x="40" y="135" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.6">$</text>
+
+    <!-- Single smooth growth curve from (80,420) to (540,160) -->
+    <path d="M80 420 Q 200 380, 320 300 T 540 160"
+          fill="none" stroke="#15807D" stroke-width="3.5" stroke-linecap="round"/>
+
+    <!-- Endpoint -->
+    <circle cx="540" cy="160" r="6" fill="#15807D"/>
+
+    <!-- Annotation -->
+    <text x="540" y="148" text-anchor="end" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#0D5957">one number</text>
+
+    <!-- Caption -->
+    <text x="300" y="565" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.65">
+      Pretends markets grow at the same rate every year. Comforting. Wrong.
+    </text>
+  </g>
+
+  <!-- Divider -->
+  <line x1="600" y1="120" x2="600" y2="540" stroke="#E6E0D5" stroke-width="1.5"/>
+
+  <!-- RIGHT PANEL: many jagged paths -->
+  <g>
+    <!-- Axes -->
+    <line x1="680" y1="500" x2="1140" y2="500" stroke="#1C2826" stroke-width="1.5" opacity="0.6"/>
+    <line x1="680" y1="130" x2="680" y2="500" stroke="#1C2826" stroke-width="1.5" opacity="0.6"/>
+
+    <text x="680" y="520" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.6">today</text>
+    <text x="1140" y="520" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.6">end</text>
+    <text x="640" y="135" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.6">$</text>
+
+    <!-- Many sample paths drawn as polylines with jittered y values
+         All start at (680, 420). End values span from ~480 (failure) to ~140 (great). -->
+    <g stroke="#15807D" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.22">
+      <polyline points="680,420 720,418 760,402 800,410 840,388 880,372 920,360 960,346 1000,326 1040,318 1080,290 1110,270 1140,250"/>
+      <polyline points="680,420 720,422 760,418 800,400 840,392 880,378 920,366 960,354 1000,340 1040,322 1080,308 1110,288 1140,272"/>
+      <polyline points="680,420 720,415 760,420 800,405 840,400 880,388 920,378 960,360 1000,350 1040,330 1080,316 1110,300 1140,288"/>
+      <polyline points="680,420 720,410 760,398 800,388 840,372 880,360 920,348 960,330 1000,320 1040,300 1080,280 1110,260 1140,240"/>
+      <polyline points="680,420 720,425 760,424 800,418 840,410 880,402 920,390 960,378 1000,365 1040,352 1080,338 1110,322 1140,310"/>
+      <polyline points="680,420 720,430 760,438 800,432 840,425 880,420 920,415 960,408 1000,395 1040,378 1080,362 1110,346 1140,330"/>
+      <polyline points="680,420 720,408 760,392 800,402 840,385 880,372 920,358 960,348 1000,330 1040,310 1080,290 1110,270 1140,255"/>
+      <polyline points="680,420 720,400 760,388 800,372 840,360 880,348 920,332 960,318 1000,300 1040,278 1080,258 1110,236 1140,210"/>
+      <polyline points="680,420 720,425 760,420 800,418 840,408 880,398 920,388 960,372 1000,360 1040,348 1080,328 1110,312 1140,295"/>
+      <polyline points="680,420 720,415 760,410 800,400 840,392 880,380 920,365 960,352 1000,338 1040,318 1080,300 1110,282 1140,260"/>
+      <polyline points="680,420 720,420 760,430 800,440 840,452 880,460 920,470 960,478 1000,484 1040,488 1080,492 1110,495 1140,498"/>
+      <polyline points="680,420 720,425 760,428 800,432 840,440 880,448 920,450 960,460 1000,468 1040,476 1080,482 1110,488 1140,494"/>
+      <polyline points="680,420 720,418 760,418 800,422 840,432 880,438 920,448 960,460 1000,468 1040,476 1080,484 1110,490 1140,497"/>
+      <polyline points="680,420 720,420 760,432 800,442 840,452 880,460 920,470 960,476 1000,485 1040,492 1080,496 1110,499 1140,500"/>
+    </g>
+
+    <!-- Median emphasized -->
+    <polyline points="680,420 720,415 760,408 800,395 840,385 880,370 920,355 960,340 1000,325 1040,308 1080,290 1110,270 1140,255"
+              fill="none" stroke="#0D5957" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Failed-run path emphasized -->
+    <polyline points="680,420 720,432 760,448 800,460 840,470 880,478 920,484 960,488 1000,492 1040,495 1080,497 1110,499 1140,500"
+              fill="none" stroke="#E09A33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Annotations -->
+    <text x="1140" y="248" text-anchor="end" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#0D5957">median path</text>
+    <text x="1140" y="513" text-anchor="end" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#E09A33">a failed run</text>
+
+    <!-- Caption -->
+    <text x="900" y="565" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.65">
+      A range of plausible futures, and the odds of each. The honest answer.
+    </text>
+  </g>
+</svg>

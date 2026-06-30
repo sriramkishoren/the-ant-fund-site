@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-labelledby="title">
+  <title id="title">Distribution of terminal portfolio values, with success rate, 10th percentile, median, and 90th percentile labeled</title>
+  <rect width="1200" height="600" fill="#FBF6EE"/>
+
+  <!-- Title -->
+  <text x="600" y="48" text-anchor="middle"
+        font-family="Fraunces, serif" font-size="24" font-weight="600" fill="#0D5957">Distribution of terminal portfolio values</text>
+  <text x="600" y="74" text-anchor="middle"
+        font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">
+    Every simulation produces one ending balance. Stack them up and this is the shape you get.
+  </text>
+
+  <!-- Plot area: x from 100 to 1100, baseline y=460 -->
+  <!-- X axis -->
+  <line x1="100" y1="460" x2="1100" y2="460" stroke="#1C2826" stroke-width="1.5" opacity="0.6"/>
+  <text x="100" y="482" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.65">$0</text>
+  <text x="600" y="482" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.65">terminal value →</text>
+  <text x="1100" y="482" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.65">very large</text>
+
+  <!-- Y axis (count) -->
+  <line x1="100" y1="120" x2="100" y2="460" stroke="#1C2826" stroke-width="1.5" opacity="0.6"/>
+  <text x="60" y="125" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.65">runs</text>
+
+  <!-- Histogram bars. 30 bins from x=110 to x=1090. Bar width ~30, gap 2. -->
+  <!-- Heights chosen to look like a right-skewed distribution with a small spike at zero.
+       Bar y = 460 - h. Bins indexed 0..29; first 3 are the failure cluster (amber), rest teal. -->
+
+  <!-- Failure cluster (amber): bins 0–2 -->
+  <g fill="#E09A33">
+    <rect x="110" y="380" width="30" height="80"/>
+    <rect x="142" y="410" width="30" height="50"/>
+    <rect x="174" y="430" width="30" height="30"/>
+  </g>
+
+  <!-- Success cluster (teal): bins 3–29, heights forming a right-skewed hump -->
+  <g fill="#15807D">
+    <!-- climbing slope -->
+    <rect x="206" y="395" width="30" height="65"/>
+    <rect x="238" y="365" width="30" height="95"/>
+    <rect x="270" y="320" width="30" height="140"/>
+    <rect x="302" y="275" width="30" height="185"/>
+    <rect x="334" y="225" width="30" height="235"/>
+    <rect x="366" y="180" width="30" height="280"/>
+    <rect x="398" y="145" width="30" height="315"/>
+    <!-- peak -->
+    <rect x="430" y="125" width="30" height="335"/>
+    <rect x="462" y="135" width="30" height="325"/>
+    <rect x="494" y="160" width="30" height="300"/>
+    <rect x="526" y="190" width="30" height="270"/>
+    <!-- descending slope, long tail -->
+    <rect x="558" y="225" width="30" height="235"/>
+    <rect x="590" y="255" width="30" height="205"/>
+    <rect x="622" y="290" width="30" height="170"/>
+    <rect x="654" y="320" width="30" height="140"/>
+    <rect x="686" y="345" width="30" height="115"/>
+    <rect x="718" y="370" width="30" height="90"/>
+    <rect x="750" y="390" width="30" height="70"/>
+    <rect x="782" y="405" width="30" height="55"/>
+    <rect x="814" y="417" width="30" height="43"/>
+    <rect x="846" y="426" width="30" height="34"/>
+    <rect x="878" y="433" width="30" height="27"/>
+    <rect x="910" y="438" width="30" height="22"/>
+    <rect x="942" y="443" width="30" height="17"/>
+    <rect x="974" y="447" width="30" height="13"/>
+    <rect x="1006" y="450" width="30" height="10"/>
+    <rect x="1038" y="453" width="30" height="7"/>
+  </g>
+
+  <!-- Percentile markers — vertical dashed lines with labels on top -->
+  <g font-family="Inter, sans-serif" font-size="12">
+    <!-- 10th percentile: around bin index 5 → x ≈ 285 -->
+    <line x1="285" y1="100" x2="285" y2="460" stroke="#0D5957" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.7"/>
+    <rect x="225" y="90" width="120" height="22" rx="6" fill="#0D5957"/>
+    <text x="285" y="106" text-anchor="middle" font-weight="600" fill="#FBF6EE">10th percentile</text>
+
+    <!-- Median: around bin index 11 → x ≈ 477 -->
+    <line x1="477" y1="100" x2="477" y2="460" stroke="#0D5957" stroke-width="2" opacity="0.9"/>
+    <rect x="430" y="90" width="94" height="22" rx="6" fill="#0D5957"/>
+    <text x="477" y="106" text-anchor="middle" font-weight="600" fill="#FBF6EE">Median</text>
+
+    <!-- 90th percentile: around bin index 18 → x ≈ 701 -->
+    <line x1="701" y1="100" x2="701" y2="460" stroke="#0D5957" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.7"/>
+    <rect x="641" y="90" width="120" height="22" rx="6" fill="#0D5957"/>
+    <text x="701" y="106" text-anchor="middle" font-weight="600" fill="#FBF6EE">90th percentile</text>
+  </g>
+
+  <!-- Annotation for failure cluster -->
+  <g font-family="Inter, sans-serif" font-size="12">
+    <line x1="170" y1="345" x2="170" y2="375" stroke="#E09A33" stroke-width="1.2"/>
+    <text x="170" y="335" text-anchor="middle" font-weight="600" fill="#E09A33">Failed runs</text>
+    <text x="170" y="350" text-anchor="middle" fill="#1C2826" opacity="0.65" font-size="11">(ran out of money)</text>
+  </g>
+
+  <!-- Annotation for long tail -->
+  <g font-family="Inter, sans-serif" font-size="12">
+    <line x1="940" y1="395" x2="900" y2="425" stroke="#0D5957" stroke-width="1.2" opacity="0.7"/>
+    <text x="965" y="380" font-weight="600" fill="#0D5957">Long right tail</text>
+    <text x="965" y="395" fill="#1C2826" opacity="0.65" font-size="11">a few lucky runs</text>
+    <text x="965" y="410" fill="#1C2826" opacity="0.65" font-size="11">grew very large</text>
+  </g>
+
+  <!-- Reading guide along the bottom -->
+  <g transform="translate(0, 510)" font-family="Inter, sans-serif" font-size="12" fill="#1C2826">
+    <text x="600" y="0" text-anchor="middle" opacity="0.75">
+      <tspan font-weight="600" fill="#E09A33">Failed runs</tspan>
+      <tspan>  ←  the bars at $0 feed your </tspan>
+      <tspan font-weight="600" fill="#0D5957">success rate</tspan>
+      <tspan>.  The </tspan>
+      <tspan font-weight="600" fill="#0D5957">median</tspan>
+      <tspan> sits near the peak. </tspan>
+      <tspan font-weight="600" fill="#0D5957">P10</tspan>
+      <tspan> &amp; </tspan>
+      <tspan font-weight="600" fill="#0D5957">P90</tspan>
+      <tspan> bracket the middle 80%.</tspan>
+    </text>
+    <text x="600" y="22" text-anchor="middle" opacity="0.55" font-size="11">
+      The gap from median to 90th is larger than from median to 10th — that asymmetry is why median beats average.
+    </text>
+  </g>
+</svg>

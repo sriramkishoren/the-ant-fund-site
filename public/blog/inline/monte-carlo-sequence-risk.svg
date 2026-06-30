@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-labelledby="title">
+  <title id="title">Sequence-of-returns risk: two portfolios, same average return, different timing</title>
+  <rect width="1200" height="640" fill="#FBF6EE"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle"
+        font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">Sequence-of-returns risk</text>
+  <text x="600" y="78" text-anchor="middle"
+        font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">
+    Same starting balance. Same set of annual returns. Same 30-year average. Only the order is different.
+  </text>
+
+  <!-- Plot area: x from 120 to 1080, y from 130 (top) to 480 (bottom) -->
+  <!-- Axes -->
+  <line x1="120" y1="480" x2="1080" y2="480" stroke="#1C2826" stroke-width="1.5" opacity="0.6"/>
+  <line x1="120" y1="130" x2="120" y2="480" stroke="#1C2826" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Y axis labels -->
+  <text x="112" y="485" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.6">$0</text>
+  <line x1="116" y1="370" x2="124" y2="370" stroke="#1C2826" stroke-width="1.5" opacity="0.6"/>
+  <text x="112" y="374" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.6">start</text>
+  <text x="80" y="135" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.6">Portfolio $</text>
+
+  <!-- X axis labels -->
+  <text x="120" y="505" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">Year 1</text>
+  <text x="600" y="505" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">Year 15</text>
+  <text x="1080" y="505" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">Year 30</text>
+
+  <!-- Grid line at zero (already on axis) -->
+
+  <!-- PERSON A: bad years first, drifts toward zero
+       Start at (120, 370), early dip toward zero, brief recovery, then drained -->
+  <path d="M120 370
+           L 152 395
+           L 184 430
+           L 216 455
+           L 248 442
+           L 280 460
+           L 312 450
+           L 344 462
+           L 376 470
+           L 408 475
+           L 440 470
+           L 472 478
+           L 504 472
+           L 536 477
+           L 568 480
+           L 600 478
+           L 632 480
+           L 664 480
+           L 696 480
+           L 728 480
+           L 1080 480"
+        fill="none" stroke="#E09A33" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 5"/>
+
+  <!-- PERSON B: good years first, climbs steadily, late dip
+       Start at (120, 370), strong growth, slight dip at the end -->
+  <path d="M120 370
+           L 152 350
+           L 184 320
+           L 216 290
+           L 248 260
+           L 280 235
+           L 312 220
+           L 344 205
+           L 376 195
+           L 408 180
+           L 440 170
+           L 472 160
+           L 504 155
+           L 536 152
+           L 568 150
+           L 600 150
+           L 632 155
+           L 664 162
+           L 696 160
+           L 728 165
+           L 760 170
+           L 792 175
+           L 824 180
+           L 856 185
+           L 888 195
+           L 920 200
+           L 952 215
+           L 984 232
+           L 1016 250
+           L 1048 245
+           L 1080 240"
+        fill="none" stroke="#0D5957" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Endpoint markers -->
+  <circle cx="1080" cy="480" r="6" fill="#E09A33"/>
+  <circle cx="1080" cy="240" r="6" fill="#0D5957"/>
+
+  <!-- "Crash" shaded regions to make timing obvious -->
+  <g opacity="0.12">
+    <rect x="140" y="130" width="100" height="350" fill="#E09A33"/>
+    <rect x="950" y="130" width="100" height="350" fill="#E09A33"/>
+  </g>
+  <text x="190" y="148" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="500" fill="#E09A33">crash</text>
+  <text x="190" y="162" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#E09A33" opacity="0.7">years 1–3</text>
+  <text x="1000" y="148" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="500" fill="#E09A33">crash</text>
+  <text x="1000" y="162" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#E09A33" opacity="0.7">years 28–30</text>
+
+  <!-- Endpoint labels -->
+  <text x="1094" y="244" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0D5957">Person B</text>
+  <text x="1094" y="262" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.65">ends with money</text>
+  <text x="1094" y="276" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.65">to spare</text>
+
+  <text x="1094" y="484" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#E09A33">Person A</text>
+  <text x="1094" y="502" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.65">runs out of money</text>
+
+  <!-- Legend / starting label -->
+  <g transform="translate(155, 380)">
+    <text font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.6">same start →</text>
+  </g>
+
+  <!-- Bottom explanation strip -->
+  <g transform="translate(120, 550)">
+    <rect x="0" y="0" width="460" height="68" rx="10" fill="#FFFFFF" stroke="#E6E0D5"/>
+    <text x="14" y="22" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#E09A33">Person A — bad luck early</text>
+    <text x="14" y="42" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.8">Crash in years 1–3, while withdrawing. Selling</text>
+    <text x="14" y="58" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.8">low permanently shrinks the pot.</text>
+  </g>
+  <g transform="translate(620, 550)">
+    <rect x="0" y="0" width="460" height="68" rx="10" fill="#FFFFFF" stroke="#E6E0D5"/>
+    <text x="14" y="22" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#0D5957">Person B — bad luck late</text>
+    <text x="14" y="42" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.8">Same crash near the end, after decades of</text>
+    <text x="14" y="58" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.8">growth have already done their work.</text>
+  </g>
+</svg>

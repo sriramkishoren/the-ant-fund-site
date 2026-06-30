@@ -5,8 +5,16 @@
     <link>https://theantfund.com</link>
     <description>Slow, steady wealth for everyday investors — calculators, education, and clear thinking on the road to financial independence.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Jun 2026 00:46:36 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 01:17:00 GMT</lastBuildDate>
     <atom:link href="https://theantfund.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Will my money last? A beginner&apos;s guide to the Monte Carlo retirement calculator</title>
+      <link>https://theantfund.com/blog/monte-carlo-explained</link>
+      <guid isPermaLink="true">https://theantfund.com/blog/monte-carlo-explained</guid>
+      <pubDate>Mon, 29 Jun 2026 12:00:00 GMT</pubDate>
+      <category>Retirement</category>
+      <description>What a Monte Carlo retirement calculator actually is, how it works under the hood, and how to read every number it gives you — explained in plain English.</description>
+    </item>
     <item>
       <title>Calls and puts, explained: a beginner&apos;s guide to buying and selling options</title>
       <link>https://theantfund.com/blog/calls-and-puts-explained</link>
@@ -30,14 +38,6 @@
       <pubDate>Sun, 28 Jun 2026 12:00:00 GMT</pubDate>
       <category>Meta</category>
       <description>A throwaway post used during initial setup to verify the blog pipeline end-to-end. Delete this once a real article ships.</description>
-    </item>
-    <item>
-      <title>How Monte Carlo simulation answers the question every retiree asks</title>
-      <link>https://theantfund.com/blog/monte-carlo-explained</link>
-      <guid isPermaLink="true">https://theantfund.com/blog/monte-carlo-explained</guid>
-      <pubDate>Tue, 12 May 2026 12:00:00 GMT</pubDate>
-      <category>Retirement</category>
-      <description>A single average return hides the question that actually matters: how often does the plan run out of money? Monte Carlo answers it ten thousand times over.</description>
     </item>
     <item>
       <title>The 4% rule, explained for normal people</title>
