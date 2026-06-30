@@ -12,7 +12,9 @@
     "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "new-post": "tsx scripts/new-post.ts"
+    "test": "vitest run",
+    "new-post": "tsx scripts/new-post.ts",
+    "build:shiller-dataset": "tsx scripts/build-shiller-dataset.ts"
   },
   "dependencies": {
     "@fontsource/fraunces": "^5.0.20",
@@ -49,6 +51,7 @@
     "tsx": "^4.19.0",
     "typescript": "^5.5.4",
     "vite": "^5.4.3",
-    "vite-react-ssg": "^0.9.0"
+    "vite-react-ssg": "^0.9.0",
+    "vitest": "^4.1.9"
   }
 }
