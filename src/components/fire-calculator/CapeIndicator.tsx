@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { InfoTooltip } from '@/components/ui/InfoTooltip';
 
 type Props = {
   cape: number;
@@ -55,13 +56,28 @@ export function CapeIndicator({ cape, asOf, isOverride, defaultCape, onChange }:
           </button>
         </span>
       ) : (
-        <span className="flex items-center gap-2">
-          <span>
-            CAPE today{' '}
-            <span className="font-medium text-teal-dark">{cape.toFixed(1)}</span>
-            {isOverride ? <span className="ml-1 text-amber">(override)</span> : (
-              <span className="ml-1 text-ink/55">(as of {asOf})</span>
-            )}
+        <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <span className="flex items-center gap-1.5">
+            <span>
+              CAPE today{' '}
+              <span className="font-medium text-teal-dark">{cape.toFixed(1)}</span>
+              {isOverride ? <span className="ml-1 text-amber">(override)</span> : (
+                <span className="ml-1 text-ink/55">(as of {asOf})</span>
+              )}
+            </span>
+            <InfoTooltip label="What is CAPE?">
+              <span className="block space-y-1.5">
+                <span className="block">
+                  <span className="font-medium text-teal-dark">CAPE</span> (Shiller PE) = today&apos;s S&amp;P 500 price ÷ the 10-year average of inflation-adjusted earnings. A widely-used gauge of how expensive US stocks are right now.
+                </span>
+                <span className="block">
+                  Long-run average <span className="font-medium">~17</span>; dot-com peak <span className="font-medium">44</span>; today <span className="font-medium">{cape.toFixed(1)}</span> = elevated.
+                </span>
+                <span className="block text-ink/70">
+                  Used to nudge the default safe-withdrawal rate down when stocks are expensive — historically every failure of the 4% rule clustered at high-CAPE retirements.
+                </span>
+              </span>
+            </InfoTooltip>
           </span>
           <button
             type="button"
