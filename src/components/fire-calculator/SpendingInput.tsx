@@ -1,4 +1,5 @@
 import { useId } from 'react';
+import { formatCurrency } from '@/lib/format';
 
 type Props = {
   value: number;
@@ -7,11 +8,17 @@ type Props = {
 
 export function SpendingInput({ value, onChange }: Props) {
   const id = useId();
+  const monthly = value > 0 ? value / 12 : 0;
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium text-teal-dark">
-        Annual spending in retirement
-      </label>
+      <div className="flex flex-wrap items-baseline justify-between gap-x-3">
+        <label htmlFor={id} className="block text-sm font-medium text-teal-dark">
+          Annual spending in retirement
+        </label>
+        <span className="text-xs text-ink/55">
+          ≈ <span className="font-medium text-teal-dark">{formatCurrency(monthly)}</span>/month
+        </span>
+      </div>
       <div className="relative mt-1">
         <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-ink/60">
           $
