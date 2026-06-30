@@ -26,7 +26,11 @@ export function Hero() {
             independence — without the jargon, without the hype.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <LinkButton to="/products" variant="primary" size="lg">
+            <LinkButton
+              to="/tools/monte-carlo-retirement-calculator"
+              variant="primary"
+              size="lg"
+            >
               Try the retirement calculator
             </LinkButton>
             <LinkButton to="/blog" variant="secondary" size="lg">

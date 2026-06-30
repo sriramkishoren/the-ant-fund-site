@@ -42,4 +42,4 @@ Most "A vs B" questions have a range where the choice doesn't really matter. Say
 
 End with a small, concrete next step or a link to a tool that helps them decide. Don't end with "consult a professional."
 
-[Try the Monte Carlo retirement calculator →](/products)
+[Try the Monte Carlo retirement calculator →](/tools/monte-carlo-retirement-calculator)

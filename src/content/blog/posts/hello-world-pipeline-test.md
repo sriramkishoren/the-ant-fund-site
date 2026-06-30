@@ -73,7 +73,7 @@ If the image above renders and has its alt text wired up for screen readers, the
 
 ## Links
 
-Internal links should navigate without a full page reload — try clicking [the calculator hub](/products) or [the blog listing](/blog). External links should open in a new tab and carry `rel="noopener noreferrer"`, like the [Bogleheads wiki](https://www.bogleheads.org/). Anchor links should jump to the right section, like jumping back to [what this post is for](#what-this-post-is-for).
+Internal links should navigate without a full page reload — try clicking [the tools hub](/tools) or [the blog listing](/blog). External links should open in a new tab and carry `rel="noopener noreferrer"`, like the [Bogleheads wiki](https://www.bogleheads.org/). Anchor links should jump to the right section, like jumping back to [what this post is for](#what-this-post-is-for).
 
 ## What I'm intentionally **not** testing here
 
@@ -85,4 +85,4 @@ Internal links should navigate without a full page reload — try clicking [the 
 
 Once a real article is live, delete this file from `src/content/blog/posts/` and rebuild. The sitemap, RSS feed, "Latest Articles" home-page strip, and blog listing will all update automatically. No other edits required.
 
-[Try the Monte Carlo retirement calculator →](/products)
+[Try the Monte Carlo retirement calculator →](/tools/monte-carlo-retirement-calculator)

@@ -34,4 +34,4 @@ Every finance article hides assumptions. Surface them. What did you not model? W
 
 End with a small, concrete action — not "talk to a financial advisor," but something the reader can do this week. Then link to the calculator or to a related post that helps them do it.
 
-[Try the Monte Carlo retirement calculator →](/products)
+[Try the Monte Carlo retirement calculator →](/tools/monte-carlo-retirement-calculator)

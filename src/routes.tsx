@@ -1,6 +1,7 @@
 import type { RouteRecord } from 'vite-react-ssg';
 import { Layout } from '@/components/layout/Layout';
 import { getAllSlugs } from '@/content/blog';
+import { getLiveToolSlugs } from '@/features/tools/registry';
 
 export const routes: RouteRecord[] = [
   {
@@ -13,9 +14,17 @@ export const routes: RouteRecord[] = [
         entry: 'src/pages/Home.tsx',
       },
       {
-        path: 'products',
-        lazy: () => import('@/pages/Products').then((m) => ({ Component: m.default })),
-        entry: 'src/pages/Products.tsx',
+        path: 'tools',
+        lazy: () => import('@/pages/Tools').then((m) => ({ Component: m.default })),
+        entry: 'src/pages/Tools.tsx',
+      },
+      {
+        path: 'tools/:slug',
+        lazy: () => import('@/pages/ToolPage').then((m) => ({ Component: m.default })),
+        entry: 'src/pages/ToolPage.tsx',
+        // Same pattern as blog/:slug — return the FULL path including the
+        // parent prefix so each live tool pre-renders to its own .html file.
+        getStaticPaths: () => getLiveToolSlugs().map((slug) => `tools/${slug}`),
       },
       {
         path: 'blog',

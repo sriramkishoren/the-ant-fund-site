@@ -17,8 +17,8 @@ export default function NotFound() {
             home
           </Link>{' '}
           or visiting the{' '}
-          <Link to="/products" className="text-teal">
-            calculator
+          <Link to="/tools" className="text-teal">
+            tools
           </Link>
           .
         </p>

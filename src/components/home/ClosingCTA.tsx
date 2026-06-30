@@ -20,7 +20,11 @@ export function ClosingCTA() {
           thousand possible futures fan out in seconds.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <LinkButton to="/products" variant="primary" size="lg">
+          <LinkButton
+            to="/tools/monte-carlo-retirement-calculator"
+            variant="primary"
+            size="lg"
+          >
             Open the calculator
           </LinkButton>
           <LinkButton

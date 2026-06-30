@@ -17,8 +17,8 @@ export function Footer() {
             <p className="font-medium text-ink">Explore</p>
             <ul className="mt-2 space-y-1">
               <li>
-                <Link to="/products" className="no-underline hover:underline">
-                  Calculators
+                <Link to="/tools" className="no-underline hover:underline">
+                  Tools
                 </Link>
               </li>
               <li>

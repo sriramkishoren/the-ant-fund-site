@@ -4,13 +4,20 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadAllPosts } from './load-posts';
+import { loadLiveToolSlugs } from './load-tools';
 
 const SITE_ORIGIN = 'https://theantfund.com';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const publicDir = resolve(__dirname, '..', 'public');
 
-const staticPaths = ['/', '/products', '/blog'];
+const liveToolSlugs = loadLiveToolSlugs();
+const staticPaths = [
+  '/',
+  '/tools',
+  ...liveToolSlugs.map((slug) => `/tools/${slug}`),
+  '/blog',
+];
 const posts = loadAllPosts();
 
 const now = new Date().toISOString().slice(0, 10);

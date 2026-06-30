@@ -328,4 +328,4 @@ Notice the mirror in action: Example 1 and Example 3 are the same contract from 
 
 If this is the first piece you have read about options, the next natural step is to see what an actual income strategy built from these four positions looks like end-to-end. The [Wheel — a foundations guide to selling options for income](/blog/the-wheel-options-foundations) walks through the two short positions (cash-secured put and covered call) in much more detail, with worked numbers, the Greeks, and the honest downside.
 
-And if you got here cold and the patient-saver side of investing is more your speed, [try the Monte Carlo retirement calculator →](/products) to see what the long-arc compounding side of the same question looks like.
+And if you got here cold and the patient-saver side of investing is more your speed, [try the Monte Carlo retirement calculator →](/tools/monte-carlo-retirement-calculator) to see what the long-arc compounding side of the same question looks like.

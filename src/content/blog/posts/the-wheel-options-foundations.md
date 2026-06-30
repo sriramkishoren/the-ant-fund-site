@@ -557,4 +557,4 @@ Where **S** = spot price, **K** = strike. Per-contract dollar figures multiply p
 
 Premium selling is mechanical, but it is not passive. The mechanics shown here — moneyness, the Greeks, the intrinsic-vs-extrinsic split, the execution discipline — are the foundation. What you do *with* that foundation is your decision, and your responsibility.
 
-If you got here from the calculator, the same patient-saver mindset applies to both. If you got here cold, [try the Monte Carlo retirement calculator →](/products) to see what the long-arc compounding side of the same question looks like.
+If you got here from the calculator, the same patient-saver mindset applies to both. If you got here cold, [try the Monte Carlo retirement calculator →](/tools/monte-carlo-retirement-calculator) to see what the long-arc compounding side of the same question looks like.
