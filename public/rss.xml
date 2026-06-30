@@ -5,8 +5,16 @@
     <link>https://theantfund.com</link>
     <description>Slow, steady wealth for everyday investors — calculators, education, and clear thinking on the road to financial independence.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Jun 2026 01:17:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 02:51:54 GMT</lastBuildDate>
     <atom:link href="https://theantfund.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Your FIRE number: every major method, calculated and compared</title>
+      <link>https://theantfund.com/blog/your-fi-number</link>
+      <guid isPermaLink="true">https://theantfund.com/blog/your-fi-number</guid>
+      <pubDate>Mon, 29 Jun 2026 12:00:00 GMT</pubDate>
+      <category>FIRE</category>
+      <description>There&apos;s one equation underneath every FIRE calculator. The whole debate is about how to set one number in it. A field guide to seven methods — Bengen&apos;s 4% rule, Morningstar&apos;s forward-looking SWR, CAPE-linked rates, Guyton-Klinger guardrails, dynamic withdrawals, and the variants (Lean, Fat, Coast, Barista) — plus the architecture that combines them.</description>
+    </item>
     <item>
       <title>Will my money last? A beginner&apos;s guide to the Monte Carlo retirement calculator</title>
       <link>https://theantfund.com/blog/monte-carlo-explained</link>
@@ -54,14 +62,6 @@
       <pubDate>Thu, 09 Apr 2026 12:00:00 GMT</pubDate>
       <category>Investing Basics</category>
       <description>The case for indexing isn&apos;t about cynicism — it&apos;s about humility, fees, and what twenty years of data tell us about beating the market.</description>
-    </item>
-    <item>
-      <title>What &quot;financial independence&quot; really means (and how to size your number)</title>
-      <link>https://theantfund.com/blog/your-fi-number</link>
-      <guid isPermaLink="true">https://theantfund.com/blog/your-fi-number</guid>
-      <pubDate>Sat, 21 Mar 2026 12:00:00 GMT</pubDate>
-      <category>FIRE</category>
-      <description>Financial independence is a spreadsheet idea before it&apos;s a lifestyle. Here&apos;s how to translate your annual spending into a target portfolio.</description>
     </item>
   </channel>
 </rss>

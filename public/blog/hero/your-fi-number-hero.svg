@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title">
+  <title id="title">The one FIRE equation, with the multiplier dial running from 33x at a 3% rate to 17x at a 6% rate</title>
+  <rect width="1600" height="900" fill="#FBF6EE"/>
+
+  <!-- Title block -->
+  <text x="800" y="100" text-anchor="middle"
+        font-family="Fraunces, Georgia, serif" font-size="60" font-weight="600"
+        fill="#0D5957" letter-spacing="-0.5">When have I saved enough?</text>
+  <text x="800" y="146" text-anchor="middle"
+        font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="400"
+        fill="#1C2826" opacity="0.7" letter-spacing="0.4">One equation. The whole debate is about one number inside it.</text>
+
+  <!-- The equation, centered, with prominent typography -->
+  <g transform="translate(800, 290)">
+    <!-- "FIRE number" label -->
+    <text x="-440" y="0" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="14" font-weight="500"
+          fill="#15807D" letter-spacing="1" opacity="0.85">FIRE NUMBER</text>
+    <text x="-440" y="60" text-anchor="middle"
+          font-family="Fraunces, serif" font-size="56" font-weight="600" fill="#0D5957">
+      ?
+    </text>
+
+    <!-- Equals sign -->
+    <text x="-220" y="50" text-anchor="middle"
+          font-family="Fraunces, serif" font-size="56" font-weight="500" fill="#0D5957" opacity="0.7">=</text>
+
+    <!-- Annual spending -->
+    <text x="0" y="0" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="14" font-weight="500"
+          fill="#15807D" letter-spacing="1" opacity="0.85">ANNUAL SPENDING</text>
+    <text x="0" y="60" text-anchor="middle"
+          font-family="Fraunces, serif" font-size="56" font-weight="500" fill="#1C2826">
+      $&#8202;&#8202;X
+    </text>
+
+    <!-- Divide -->
+    <text x="220" y="50" text-anchor="middle"
+          font-family="Fraunces, serif" font-size="56" font-weight="500" fill="#0D5957" opacity="0.7">÷</text>
+
+    <!-- SWR -->
+    <text x="440" y="0" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="14" font-weight="500"
+          fill="#E09A33" letter-spacing="1">SAFE WITHDRAWAL RATE</text>
+    <text x="440" y="60" text-anchor="middle"
+          font-family="Fraunces, serif" font-size="56" font-weight="600" fill="#E09A33">
+      SWR
+    </text>
+  </g>
+
+  <!-- Underline arrow highlighting SWR as the contested number -->
+  <g transform="translate(1240, 360)">
+    <line x1="0" y1="0" x2="0" y2="40" stroke="#E09A33" stroke-width="2" />
+    <text x="0" y="62" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="13" font-style="italic"
+          fill="#E09A33" font-weight="500">all the debate is about this</text>
+  </g>
+
+  <!-- The multiplier dial -->
+  <g transform="translate(800, 580)">
+    <!-- Header -->
+    <text x="0" y="-20" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="14" font-weight="500"
+          fill="#0D5957" letter-spacing="1">FIRE MULTIPLE = 1 / SWR</text>
+
+    <!-- Horizontal track -->
+    <line x1="-540" y1="40" x2="540" y2="40" stroke="#E6E0D5" stroke-width="6" stroke-linecap="round"/>
+    <!-- Filled portion teal (between 3% and 6%) -->
+    <line x1="-540" y1="40" x2="540" y2="40" stroke="#15807D" stroke-width="6" stroke-linecap="round" opacity="0.35"/>
+
+    <!-- Tick marks: at 3%, 3.5%, 4%, 4.7%, 5%, 5.5%, 6% mapped across -540..540 -->
+    <!-- map: x = -540 + (rate - 3) / (6 - 3) * 1080 -->
+    <g>
+      <!-- 3.0% -->
+      <line x1="-540" y1="28" x2="-540" y2="52" stroke="#0D5957" stroke-width="3"/>
+      <text x="-540" y="80" text-anchor="middle" font-family="Fraunces, serif" font-size="22" font-weight="600" fill="#0D5957">3.0%</text>
+      <text x="-540" y="102" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.6">× 33.3</text>
+
+      <!-- 3.5% → x = -360 -->
+      <line x1="-360" y1="32" x2="-360" y2="48" stroke="#0D5957" stroke-width="2" opacity="0.6"/>
+      <text x="-360" y="80" text-anchor="middle" font-family="Fraunces, serif" font-size="18" font-weight="500" fill="#0D5957" opacity="0.75">3.5%</text>
+      <text x="-360" y="100" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.55">× 28.6</text>
+
+      <!-- 4.0% → x = -180 -->
+      <line x1="-180" y1="28" x2="-180" y2="52" stroke="#0D5957" stroke-width="3"/>
+      <text x="-180" y="80" text-anchor="middle" font-family="Fraunces, serif" font-size="22" font-weight="600" fill="#0D5957">4.0%</text>
+      <text x="-180" y="102" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.6">× 25.0</text>
+
+      <!-- 4.7% → x = 72 -->
+      <line x1="72" y1="28" x2="72" y2="52" stroke="#E09A33" stroke-width="3"/>
+      <text x="72" y="80" text-anchor="middle" font-family="Fraunces, serif" font-size="22" font-weight="600" fill="#E09A33">4.7%</text>
+      <text x="72" y="102" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.6">× 21.3</text>
+
+      <!-- 5.0% → x = 180 -->
+      <line x1="180" y1="32" x2="180" y2="48" stroke="#0D5957" stroke-width="2" opacity="0.6"/>
+      <text x="180" y="80" text-anchor="middle" font-family="Fraunces, serif" font-size="18" font-weight="500" fill="#0D5957" opacity="0.75">5.0%</text>
+      <text x="180" y="100" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.55">× 20.0</text>
+
+      <!-- 5.5% → x = 360 -->
+      <line x1="360" y1="32" x2="360" y2="48" stroke="#0D5957" stroke-width="2" opacity="0.6"/>
+      <text x="360" y="80" text-anchor="middle" font-family="Fraunces, serif" font-size="18" font-weight="500" fill="#0D5957" opacity="0.75">5.5%</text>
+      <text x="360" y="100" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.55">× 18.2</text>
+
+      <!-- 6.0% → x = 540 -->
+      <line x1="540" y1="28" x2="540" y2="52" stroke="#0D5957" stroke-width="3"/>
+      <text x="540" y="80" text-anchor="middle" font-family="Fraunces, serif" font-size="22" font-weight="600" fill="#0D5957">6.0%</text>
+      <text x="540" y="102" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.6">× 16.7</text>
+    </g>
+
+    <!-- End-labels: "more conservative" / "more aggressive" -->
+    <text x="-540" y="-50" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="13" font-weight="500"
+          fill="#1C2826" opacity="0.65">more conservative</text>
+    <text x="540" y="-50" text-anchor="middle"
+          font-family="Inter, sans-serif" font-size="13" font-weight="500"
+          fill="#1C2826" opacity="0.65">more aggressive</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="800" y="850" text-anchor="middle"
+        font-family="Inter, sans-serif" font-size="15" font-weight="400"
+        fill="#1C2826" opacity="0.6" letter-spacing="0.2">
+    Every FIRE method below is a different way of choosing where to land on this dial — and whether the dial moves over time.
+  </text>
+</svg>

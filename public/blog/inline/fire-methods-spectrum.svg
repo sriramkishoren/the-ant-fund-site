@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title">
+  <title id="title">The starting safe withdrawal rates recommended by every major FIRE method, plotted on the same scale</title>
+  <rect width="1200" height="620" fill="#FBF6EE"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle"
+        font-family="Fraunces, serif" font-size="24" font-weight="600" fill="#0D5957">
+    Where each method lands on the dial
+  </text>
+  <text x="600" y="76" text-anchor="middle"
+        font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">
+    Starting safe withdrawal rate (and the implied FIRE multiple) for the major approaches.
+  </text>
+
+  <!-- Axis at y=520; x maps 2.0% (x=120) to 6.0% (x=1080) -->
+  <line x1="120" y1="520" x2="1080" y2="520" stroke="#1C2826" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- X tick marks every 0.5% -->
+  <g font-family="Inter, sans-serif" font-size="12" fill="#1C2826">
+    <!-- 2.0% → 120 -->
+    <line x1="120" y1="515" x2="120" y2="525" stroke="#1C2826" opacity="0.6"/>
+    <text x="120" y="545" text-anchor="middle" opacity="0.7">2.0%</text>
+    <text x="120" y="565" text-anchor="middle" opacity="0.5" font-size="11">× 50</text>
+
+    <!-- 2.5% → 240 -->
+    <line x1="240" y1="515" x2="240" y2="525" stroke="#1C2826" opacity="0.6"/>
+    <text x="240" y="545" text-anchor="middle" opacity="0.7">2.5%</text>
+    <text x="240" y="565" text-anchor="middle" opacity="0.5" font-size="11">× 40</text>
+
+    <!-- 3.0% → 360 -->
+    <line x1="360" y1="515" x2="360" y2="525" stroke="#1C2826" opacity="0.6"/>
+    <text x="360" y="545" text-anchor="middle" opacity="0.7">3.0%</text>
+    <text x="360" y="565" text-anchor="middle" opacity="0.5" font-size="11">× 33</text>
+
+    <!-- 3.5% → 480 -->
+    <line x1="480" y1="515" x2="480" y2="525" stroke="#1C2826" opacity="0.6"/>
+    <text x="480" y="545" text-anchor="middle" opacity="0.7">3.5%</text>
+    <text x="480" y="565" text-anchor="middle" opacity="0.5" font-size="11">× 28.6</text>
+
+    <!-- 4.0% → 600 -->
+    <line x1="600" y1="515" x2="600" y2="525" stroke="#1C2826" opacity="0.6"/>
+    <text x="600" y="545" text-anchor="middle" opacity="0.7">4.0%</text>
+    <text x="600" y="565" text-anchor="middle" opacity="0.5" font-size="11">× 25</text>
+
+    <!-- 4.5% → 720 -->
+    <line x1="720" y1="515" x2="720" y2="525" stroke="#1C2826" opacity="0.6"/>
+    <text x="720" y="545" text-anchor="middle" opacity="0.7">4.5%</text>
+    <text x="720" y="565" text-anchor="middle" opacity="0.5" font-size="11">× 22</text>
+
+    <!-- 5.0% → 840 -->
+    <line x1="840" y1="515" x2="840" y2="525" stroke="#1C2826" opacity="0.6"/>
+    <text x="840" y="545" text-anchor="middle" opacity="0.7">5.0%</text>
+    <text x="840" y="565" text-anchor="middle" opacity="0.5" font-size="11">× 20</text>
+
+    <!-- 5.5% → 960 -->
+    <line x1="960" y1="515" x2="960" y2="525" stroke="#1C2826" opacity="0.6"/>
+    <text x="960" y="545" text-anchor="middle" opacity="0.7">5.5%</text>
+    <text x="960" y="565" text-anchor="middle" opacity="0.5" font-size="11">× 18.2</text>
+
+    <!-- 6.0% → 1080 -->
+    <line x1="1080" y1="515" x2="1080" y2="525" stroke="#1C2826" opacity="0.6"/>
+    <text x="1080" y="545" text-anchor="middle" opacity="0.7">6.0%</text>
+    <text x="1080" y="565" text-anchor="middle" opacity="0.5" font-size="11">× 16.7</text>
+  </g>
+
+  <text x="120" y="595" text-anchor="start" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.65">
+    ← more conservative
+  </text>
+  <text x="1080" y="595" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.65">
+    more aggressive →
+  </text>
+
+  <!-- Helper map: x = 120 + (rate - 2)/4 * 960. So per 1%, 240 px. -->
+  <!-- Each method gets a vertical pill (range) or marker (point) above the axis, labeled. -->
+
+  <!-- CAPE-linked, today's regime: 2.5%–3.3%. x = 240..432 -->
+  <g>
+    <rect x="240" y="430" width="192" height="20" rx="10" fill="#15807D" opacity="0.85"/>
+    <text x="336" y="445" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#FBF6EE">CAPE-linked (today)</text>
+    <text x="336" y="418" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.65">2.5%–3.3%</text>
+  </g>
+
+  <!-- Morningstar 2026: 3.9% point -->
+  <g>
+    <circle cx="576" cy="370" r="8" fill="#0D5957"/>
+    <line x1="576" y1="378" x2="576" y2="520" stroke="#0D5957" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.45"/>
+    <text x="576" y="358" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#0D5957">Morningstar 2026</text>
+    <text x="576" y="343" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.65">3.9%</text>
+  </g>
+
+  <!-- Bengen 4% rule: 4.0% point -->
+  <g>
+    <circle cx="600" cy="310" r="8" fill="#0D5957"/>
+    <line x1="600" y1="318" x2="600" y2="520" stroke="#0D5957" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.45"/>
+    <text x="600" y="298" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#0D5957">Bengen 4% rule</text>
+    <text x="600" y="283" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.65">4.0%</text>
+  </g>
+
+  <!-- VPW: 4.6% point -->
+  <g>
+    <circle cx="744" cy="250" r="8" fill="#15807D"/>
+    <line x1="744" y1="258" x2="744" y2="520" stroke="#15807D" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.45"/>
+    <text x="744" y="238" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#15807D">VPW (start)</text>
+    <text x="744" y="223" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.65">~4.6%</text>
+  </g>
+
+  <!-- Bengen 2025 SAFEMAX: 4.7% point (amber) -->
+  <g>
+    <circle cx="768" cy="190" r="9" fill="#E09A33"/>
+    <line x1="768" y1="199" x2="768" y2="520" stroke="#E09A33" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.45"/>
+    <text x="768" y="178" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#E09A33">Bengen 2025 SAFEMAX</text>
+    <text x="768" y="163" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.65">4.7% (updated floor)</text>
+  </g>
+
+  <!-- Guyton-Klinger range 5.2%–5.6%: x = 888..984 -->
+  <g>
+    <rect x="888" y="130" width="96" height="20" rx="10" fill="#15807D" opacity="0.85"/>
+    <text x="936" y="145" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#FBF6EE">Guyton-Klinger</text>
+    <text x="936" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#1C2826" opacity="0.65">5.2%–5.6%</text>
+  </g>
+
+  <!-- Constant-% / Endowment: up to 5.7% — show a range 5.0–5.7% as that's the family -->
+  <g>
+    <rect x="840" y="98" width="168" height="20" rx="10" fill="#15807D" opacity="0.55"/>
+    <text x="924" y="113" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="600" fill="#FBF6EE">Constant-% / Endowment (up to ~5.7%)</text>
+  </g>
+
+  <!-- Title for the chart -->
+  <text x="120" y="120" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.55">Approaches stacked by typical starting rate</text>
+</svg>

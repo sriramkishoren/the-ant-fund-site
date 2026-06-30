@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" role="img" aria-labelledby="title">
+  <title id="title">Guyton-Klinger withdrawal-rate rails over a retirement: initial rate at 5%, upper rail at 6%, lower rail at 4%, with Capital Preservation cuts and Prosperity raises triggered when the line punches through</title>
+  <rect width="1200" height="660" fill="#FBF6EE"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle"
+        font-family="Fraunces, serif" font-size="24" font-weight="600" fill="#0D5957">
+    Guyton-Klinger guardrails over time
+  </text>
+  <text x="600" y="76" text-anchor="middle"
+        font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">
+    The current withdrawal rate wanders inside ±20% rails. Punching through triggers a 10% spending adjustment.
+  </text>
+
+  <!-- Plot area: x = year 1..30 → x_px 120..1080
+       y = withdrawal rate 3%..8% → y_px 460..130 -->
+  <!-- Axes -->
+  <line x1="120" y1="460" x2="1080" y2="460" stroke="#1C2826" stroke-width="1.5" opacity="0.6"/>
+  <line x1="120" y1="120" x2="120" y2="460" stroke="#1C2826" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Y ticks at 3, 4, 5, 6, 7, 8% -->
+  <g font-family="Inter, sans-serif" font-size="12" fill="#1C2826">
+    <line x1="112" y1="460" x2="120" y2="460" stroke="#1C2826" opacity="0.6"/>
+    <text x="105" y="464" text-anchor="end" opacity="0.7">3%</text>
+    <line x1="112" y1="394" x2="120" y2="394" stroke="#1C2826" opacity="0.6"/>
+    <text x="105" y="398" text-anchor="end" opacity="0.7">4%</text>
+    <line x1="112" y1="328" x2="120" y2="328" stroke="#1C2826" opacity="0.6"/>
+    <text x="105" y="332" text-anchor="end" opacity="0.7">5%</text>
+    <line x1="112" y1="262" x2="120" y2="262" stroke="#1C2826" opacity="0.6"/>
+    <text x="105" y="266" text-anchor="end" opacity="0.7">6%</text>
+    <line x1="112" y1="196" x2="120" y2="196" stroke="#1C2826" opacity="0.6"/>
+    <text x="105" y="200" text-anchor="end" opacity="0.7">7%</text>
+    <line x1="112" y1="130" x2="120" y2="130" stroke="#1C2826" opacity="0.6"/>
+    <text x="105" y="134" text-anchor="end" opacity="0.7">8%</text>
+  </g>
+  <text x="60" y="125" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7" text-anchor="middle">withdrawal</text>
+  <text x="60" y="140" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7" text-anchor="middle">rate</text>
+
+  <!-- X ticks every 5 years -->
+  <g font-family="Inter, sans-serif" font-size="12" fill="#1C2826">
+    <!-- Year 1 → 120 -->
+    <line x1="120" y1="460" x2="120" y2="468" stroke="#1C2826" opacity="0.6"/>
+    <text x="120" y="485" text-anchor="middle" opacity="0.7">Year 1</text>
+    <!-- Year 5 → 252 -->
+    <line x1="252" y1="460" x2="252" y2="468" stroke="#1C2826" opacity="0.6"/>
+    <text x="252" y="485" text-anchor="middle" opacity="0.7">5</text>
+    <!-- Year 10 → 418 -->
+    <line x1="418" y1="460" x2="418" y2="468" stroke="#1C2826" opacity="0.6"/>
+    <text x="418" y="485" text-anchor="middle" opacity="0.7">10</text>
+    <!-- Year 15 → 583 -->
+    <line x1="583" y1="460" x2="583" y2="468" stroke="#1C2826" opacity="0.6"/>
+    <text x="583" y="485" text-anchor="middle" opacity="0.7">15</text>
+    <!-- Year 20 → 748 -->
+    <line x1="748" y1="460" x2="748" y2="468" stroke="#1C2826" opacity="0.6"/>
+    <text x="748" y="485" text-anchor="middle" opacity="0.7">20</text>
+    <!-- Year 25 → 914 -->
+    <line x1="914" y1="460" x2="914" y2="468" stroke="#1C2826" opacity="0.6"/>
+    <text x="914" y="485" text-anchor="middle" opacity="0.7">25</text>
+    <!-- Year 30 → 1080 -->
+    <line x1="1080" y1="460" x2="1080" y2="468" stroke="#1C2826" opacity="0.6"/>
+    <text x="1080" y="485" text-anchor="middle" opacity="0.7">30</text>
+  </g>
+  <text x="600" y="510" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">years into retirement →</text>
+
+  <!-- Initial-rate line at 5% (y=328) -->
+  <line x1="120" y1="328" x2="1080" y2="328" stroke="#0D5957" stroke-width="2" opacity="0.8"/>
+  <text x="1090" y="332" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#0D5957">initial 5%</text>
+
+  <!-- Upper rail at 6% (y=262) — dashed -->
+  <line x1="120" y1="262" x2="1080" y2="262" stroke="#E09A33" stroke-width="2" stroke-dasharray="6 5" opacity="0.85"/>
+  <text x="1090" y="266" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#E09A33">+20% (cut)</text>
+
+  <!-- Lower rail at 4% (y=394) — dashed teal -->
+  <line x1="120" y1="394" x2="1080" y2="394" stroke="#15807D" stroke-width="2" stroke-dasharray="6 5" opacity="0.85"/>
+  <text x="1090" y="398" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#15807D">−20% (raise)</text>
+
+  <!-- Shaded "rails" zone -->
+  <rect x="120" y="262" width="960" height="132" fill="#15807D" opacity="0.06"/>
+
+  <!-- The wandering withdrawal-rate path -->
+  <!-- Realistic path: meanders, hits upper rail around year 8 (triggers cut), drops back, drifts up again,
+       hits upper rail again around year 14 (whipsaw cut), recovers slowly, eventually drops to lower rail
+       around year 22 (prosperity raise). -->
+  <polyline points="120,328
+                   160,335
+                   200,320
+                   240,300
+                   280,278
+                   315,260
+                   345,250
+                   380,255
+                   410,272
+                   440,290
+                   475,275
+                   510,260
+                   545,250
+                   580,275
+                   615,295
+                   650,310
+                   685,325
+                   720,340
+                   755,360
+                   790,378
+                   825,395
+                   860,405
+                   895,398
+                   930,385
+                   965,370
+                   1000,355
+                   1035,345
+                   1080,340"
+            fill="none" stroke="#1C2826" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+
+  <!-- Trigger annotations -->
+  <!-- Cut #1 at ~year 8 (x≈345, y≈250) -->
+  <g>
+    <circle cx="345" cy="250" r="6" fill="#E09A33"/>
+    <line x1="345" y1="244" x2="345" y2="200" stroke="#E09A33" stroke-width="1.2"/>
+    <text x="345" y="190" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#E09A33">CUT 10%</text>
+    <text x="345" y="175" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#1C2826" opacity="0.65">Capital Preservation triggers</text>
+  </g>
+
+  <!-- Cut #2 at ~year 13 (x≈510, y≈260) - whipsaw -->
+  <g>
+    <circle cx="510" cy="260" r="6" fill="#E09A33"/>
+    <line x1="510" y1="254" x2="510" y2="220" stroke="#E09A33" stroke-width="1.2"/>
+    <text x="510" y="210" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#E09A33">CUT 10% again</text>
+    <text x="510" y="195" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#1C2826" opacity="0.65">(whipsaw)</text>
+  </g>
+
+  <!-- Raise at ~year 21 (x≈825, y≈395) -->
+  <g>
+    <circle cx="825" cy="395" r="6" fill="#15807D"/>
+    <line x1="825" y1="401" x2="825" y2="430" stroke="#15807D" stroke-width="1.2"/>
+    <text x="825" y="445" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#15807D">RAISE 10%</text>
+  </g>
+
+  <!-- The whipsaw critique callout -->
+  <g transform="translate(120, 540)">
+    <rect x="0" y="0" width="960" height="92" rx="10" fill="#FFFFFF" stroke="#E6E0D5"/>
+    <text x="18" y="24" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0D5957">
+      The whipsaw critique
+    </text>
+    <text x="18" y="46" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.8">
+      In severe sequences, the upper rail can fire repeatedly — stacking 10% cuts on top of each other while the lower rail only restores income long after recovery.
+    </text>
+    <text x="18" y="64" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.8">
+      Kitces / Income Lab (2024): GFC = 28% G-K cut vs 3% with risk-based guardrails. 1970s stagflation = 54% vs 32%. Depression = 45% vs 8%. Dot-com = 36% vs 0%.
+    </text>
+    <text x="18" y="82" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.8">
+      <tspan font-weight="600" fill="#0D5957">The modern fix:</tspan> set the rails on probability of success, not on withdrawal rate. Smaller, better-timed cuts.
+    </text>
+  </g>
+</svg>
