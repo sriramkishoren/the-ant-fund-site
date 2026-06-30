@@ -39,9 +39,9 @@ export const TOOL_METAS: ToolMeta[] = [
     name: 'FIRE Calculator',
     shortName: 'FIRE number',
     description:
-      'Translate your annual spending into a financial-independence target and the savings rate to get there.',
+      'Translate your annual spending into a financial-independence target with a valuation-aware safe withdrawal rate. Runs entirely in your browser.',
     category: 'FIRE',
-    status: 'soon',
+    status: 'live',
   },
   {
     slug: 'swp-planner',
