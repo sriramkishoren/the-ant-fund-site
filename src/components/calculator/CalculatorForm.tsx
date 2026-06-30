@@ -143,6 +143,7 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
               step={0.5}
               suffix="%"
               help="Annual std. dev."
+              tip="How much yearly returns swing around the average. A higher number means bigger booms and busts. As a rough benchmark: US stocks have been around 15% over the long run; bonds closer to 5%; a 60/40 mix sits in between."
               onChange={(e) => set('returnStdevPct', num(e.target.value))}
               error={err('returnStdevPct')}
             />
