@@ -6,6 +6,7 @@ import { HeadlineCard } from '@/components/fire-calculator/HeadlineCard';
 import { SpendingInput } from '@/components/fire-calculator/SpendingInput';
 import { YearsToRetirementInput } from '@/components/fire-calculator/YearsToRetirementInput';
 import { InflationInput } from '@/components/fire-calculator/InflationInput';
+import { TaxRateInput } from '@/components/fire-calculator/TaxRateInput';
 import { SwrSlider } from '@/components/fire-calculator/SwrSlider';
 import { CapeIndicator } from '@/components/fire-calculator/CapeIndicator';
 import { Disclaimer } from '@/components/fire-calculator/Disclaimer';
@@ -24,6 +25,7 @@ import { withBase } from '@/lib/basePath';
 const DEFAULT_SPENDING = 50_000;
 const DEFAULT_YEARS_TO_RETIREMENT = 0;
 const DEFAULT_INFLATION = 0.03; // 3% — standard FIRE-community assumption
+const DEFAULT_TAX_RATE = 0; // off by default — user opts in if they need gross-up
 const FALLBACK_CAPE = 38; // used until the bundled dataset loads
 
 export default function FireCalculator() {
@@ -94,6 +96,9 @@ function BeginnerTier() {
   const [inflationRate, setInflationRate] = useState<number>(
     initialUrlState.inflationRate ?? DEFAULT_INFLATION,
   );
+  const [taxRate, setTaxRate] = useState<number>(
+    initialUrlState.taxRate ?? DEFAULT_TAX_RATE,
+  );
 
   // CAPE: bundled default (from dataset) unless the user has set an override.
   const [capeOverride, setCapeOverride] = useState<number | undefined>(
@@ -144,16 +149,20 @@ function BeginnerTier() {
         swr,
         yearsToRetirement,
         inflationRate,
+        taxRate,
         capeOverride,
       });
       const next = `${window.location.pathname}?${qs}`;
       window.history.replaceState(null, '', next);
     });
     return () => window.cancelAnimationFrame(id);
-  }, [spending, swr, yearsToRetirement, inflationRate, capeOverride]);
+  }, [spending, swr, yearsToRetirement, inflationRate, taxRate, capeOverride]);
 
   // ─── Headline math ────────────────────────────────────────────────────
-  const { fireNumber, multiple } = computeHeadline({ annualSpending: spending, swr });
+  // Gross up the user's spending to the pre-tax withdrawal needed to net it.
+  // taxRate=0 → no gross-up, withdrawal === spending.
+  const grossWithdrawal = taxRate > 0 && taxRate < 1 ? spending / (1 - taxRate) : spending;
+  const { fireNumber, multiple } = computeHeadline({ annualSpending: grossWithdrawal, swr });
 
   // ─── Copy link ────────────────────────────────────────────────────────
   const handleCopyLink = useCallback(async () => {
@@ -172,12 +181,15 @@ function BeginnerTier() {
         multiple={multiple}
         swr={swr}
         annualSpending={spending}
+        grossWithdrawal={grossWithdrawal}
+        taxRate={taxRate}
         yearsToRetirement={yearsToRetirement}
         inflationRate={inflationRate}
       />
 
       <div className="grid gap-6 rounded-xl border border-border bg-surface p-6 shadow-sm sm:grid-cols-1">
         <SpendingInput value={spending} onChange={setSpending} />
+        <TaxRateInput value={taxRate} onChange={setTaxRate} />
         <div className="grid gap-6 sm:grid-cols-2">
           <YearsToRetirementInput value={yearsToRetirement} onChange={setYearsToRetirement} />
           <InflationInput value={inflationRate} onChange={setInflationRate} />

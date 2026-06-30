@@ -8,6 +8,8 @@ export interface BeginnerUrlState {
   yearsToRetirement: number;
   /** Inflation rate for the nominal-at-retirement projection (fraction). */
   inflationRate: number;
+  /** Effective tax rate on withdrawals (fraction). Used to gross up spending. */
+  taxRate: number;
   capeOverride?: number;
 }
 
@@ -23,6 +25,9 @@ export function encodeBeginnerState(s: BeginnerUrlState): string {
   if (Math.abs(s.inflationRate - 0.03) > 1e-6) {
     params.set('infl', s.inflationRate.toFixed(4));
   }
+  if (s.taxRate > 0) {
+    params.set('tax', s.taxRate.toFixed(4));
+  }
   if (s.capeOverride !== undefined) {
     params.set('cape', s.capeOverride.toFixed(2));
   }
@@ -36,6 +41,7 @@ export function decodeBeginnerState(search: string): Partial<BeginnerUrlState> {
   const swr = params.get('swr');
   const years = params.get('y');
   const infl = params.get('infl');
+  const tax = params.get('tax');
   const cape = params.get('cape');
   if (s !== null) {
     const n = Number(s);
@@ -52,6 +58,10 @@ export function decodeBeginnerState(search: string): Partial<BeginnerUrlState> {
   if (infl !== null) {
     const n = Number(infl);
     if (Number.isFinite(n) && n >= 0 && n <= 0.15) out.inflationRate = n;
+  }
+  if (tax !== null) {
+    const n = Number(tax);
+    if (Number.isFinite(n) && n >= 0 && n <= 0.5) out.taxRate = n;
   }
   if (cape !== null) {
     const n = Number(cape);

@@ -4,7 +4,11 @@ type Props = {
   fireNumber: number;
   multiple: number;
   swr: number;
+  /** Spending the user entered (their after-tax need if taxRate > 0). */
   annualSpending: number;
+  /** Grossed-up pre-tax withdrawal sized by the engine. Equals annualSpending when taxRate = 0. */
+  grossWithdrawal: number;
+  taxRate: number;
   /** Optional: years until retirement. When > 0 we also show the nominal
    *  inflated equivalent at retirement so users not retiring today understand
    *  the today's-dollars framing. */
@@ -18,6 +22,8 @@ export function HeadlineCard({
   multiple,
   swr,
   annualSpending,
+  grossWithdrawal,
+  taxRate,
   yearsToRetirement,
   inflationRate,
 }: Props) {
@@ -31,6 +37,8 @@ export function HeadlineCard({
   const inflatedSpending = showProjection
     ? annualSpending * Math.pow(1 + inflationRate, yearsToRetirement)
     : 0;
+
+  const taxApplied = taxRate > 0 && Number.isFinite(grossWithdrawal);
 
   return (
     <section
@@ -50,8 +58,17 @@ export function HeadlineCard({
         in today&apos;s dollars
       </p>
       <p className="mt-4 text-sm text-ink/65">
-        ≈ × {mult} of annual spending
+        ≈ × {mult} of pre-tax annual withdrawal
       </p>
+
+      {taxApplied ? (
+        <p className="mx-auto mt-3 max-w-xl text-xs text-ink/65">
+          After-tax spending {formatCurrency(annualSpending)}/yr ÷ (1 −{' '}
+          {formatPercent(taxRate)} tax) ={' '}
+          <span className="font-medium text-teal-dark">{formatCurrency(grossWithdrawal)}</span>/yr
+          pre-tax withdrawal
+        </p>
+      ) : null}
 
       {showProjection ? (
         <div className="mx-auto mt-7 max-w-xl rounded-lg border border-border bg-cream/50 px-4 py-3 text-sm">
@@ -65,7 +82,7 @@ export function HeadlineCard({
       ) : null}
 
       <p className="mx-auto mt-6 max-w-xl text-sm text-ink/75">
-        {formatCurrency(annualSpending)}/yr ÷ {formatPercent(swr)} = the portfolio that supports your spending forever at this safe withdrawal rate.
+        {formatCurrency(grossWithdrawal)}/yr ÷ {formatPercent(swr)} = the portfolio that supports your withdrawal forever at this safe withdrawal rate.
       </p>
     </section>
   );
