@@ -41,7 +41,9 @@ export function SpendingInput({ value, onChange }: Props) {
         </span>
       </div>
       <p className="mt-1 text-xs text-ink/60">
-        Today&apos;s dollars — the lifestyle you want to fund every year of retirement.
+        <span className="font-medium text-teal-dark">In today&apos;s dollars</span> — what your
+        retirement lifestyle would cost if you started living it this year. The headline FIRE
+        number comes out in today&apos;s dollars too.
       </p>
     </div>
   );

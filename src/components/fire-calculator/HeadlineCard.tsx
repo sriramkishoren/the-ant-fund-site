@@ -5,12 +5,32 @@ type Props = {
   multiple: number;
   swr: number;
   annualSpending: number;
+  /** Optional: years until retirement. When > 0 we also show the nominal
+   *  inflated equivalent at retirement so users not retiring today understand
+   *  the today's-dollars framing. */
+  yearsToRetirement: number;
+  /** Assumed annual inflation for the projection (e.g. 0.03 = 3%). */
+  inflationRate: number;
 };
 
-export function HeadlineCard({ fireNumber, multiple, swr, annualSpending }: Props) {
-  // Robust display for absurd inputs.
+export function HeadlineCard({
+  fireNumber,
+  multiple,
+  swr,
+  annualSpending,
+  yearsToRetirement,
+  inflationRate,
+}: Props) {
   const display = Number.isFinite(fireNumber) ? formatCurrency(fireNumber) : '—';
   const mult = Number.isFinite(multiple) ? multiple.toFixed(1) : '—';
+
+  const showProjection = yearsToRetirement > 0 && Number.isFinite(fireNumber);
+  const inflated = showProjection
+    ? fireNumber * Math.pow(1 + inflationRate, yearsToRetirement)
+    : 0;
+  const inflatedSpending = showProjection
+    ? annualSpending * Math.pow(1 + inflationRate, yearsToRetirement)
+    : 0;
 
   return (
     <section
@@ -26,9 +46,24 @@ export function HeadlineCard({ fireNumber, multiple, swr, annualSpending }: Prop
       >
         {display}
       </p>
-      <p className="mt-3 text-sm text-ink/65">
+      <p className="mt-2 text-xs font-medium uppercase tracking-[0.14em] text-ink/55">
+        in today&apos;s dollars
+      </p>
+      <p className="mt-4 text-sm text-ink/65">
         ≈ × {mult} of annual spending
       </p>
+
+      {showProjection ? (
+        <div className="mx-auto mt-7 max-w-xl rounded-lg border border-border bg-cream/50 px-4 py-3 text-sm">
+          <p className="text-ink/70">
+            If you retire in <span className="font-medium text-teal-dark">{yearsToRetirement} years</span>, the same purchasing power is roughly{' '}
+            <span className="font-medium text-teal-dark">{formatCurrency(inflated)}</span>{' '}
+            in nominal dollars
+            <span className="text-ink/55"> (≈ {formatCurrency(inflatedSpending)}/yr of spending at {formatPercent(inflationRate)} inflation).</span>
+          </p>
+        </div>
+      ) : null}
+
       <p className="mx-auto mt-6 max-w-xl text-sm text-ink/75">
         {formatCurrency(annualSpending)}/yr ÷ {formatPercent(swr)} = the portfolio that supports your spending forever at this safe withdrawal rate.
       </p>

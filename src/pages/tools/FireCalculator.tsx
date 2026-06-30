@@ -4,6 +4,7 @@ import { Container } from '@/components/layout/Container';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { HeadlineCard } from '@/components/fire-calculator/HeadlineCard';
 import { SpendingInput } from '@/components/fire-calculator/SpendingInput';
+import { YearsToRetirementInput } from '@/components/fire-calculator/YearsToRetirementInput';
 import { SwrSlider } from '@/components/fire-calculator/SwrSlider';
 import { CapeIndicator } from '@/components/fire-calculator/CapeIndicator';
 import { Disclaimer } from '@/components/fire-calculator/Disclaimer';
@@ -20,6 +21,8 @@ import { withBase } from '@/lib/basePath';
 
 // Beginner-tier defaults. Match docs/fire-calculator/SPEC.md §3.
 const DEFAULT_SPENDING = 50_000;
+const DEFAULT_YEARS_TO_RETIREMENT = 0;
+const ASSUMED_INFLATION = 0.03; // 3% — standard FIRE-community assumption
 const FALLBACK_CAPE = 38; // used until the bundled dataset loads
 
 export default function FireCalculator() {
@@ -84,6 +87,9 @@ function BeginnerTier() {
   const [spending, setSpending] = useState<number>(
     initialUrlState.spending ?? DEFAULT_SPENDING,
   );
+  const [yearsToRetirement, setYearsToRetirement] = useState<number>(
+    initialUrlState.yearsToRetirement ?? DEFAULT_YEARS_TO_RETIREMENT,
+  );
 
   // CAPE: bundled default (from dataset) unless the user has set an override.
   const [capeOverride, setCapeOverride] = useState<number | undefined>(
@@ -129,12 +135,12 @@ function BeginnerTier() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const id = window.requestAnimationFrame(() => {
-      const qs = encodeBeginnerState({ spending, swr, capeOverride });
+      const qs = encodeBeginnerState({ spending, swr, yearsToRetirement, capeOverride });
       const next = `${window.location.pathname}?${qs}`;
       window.history.replaceState(null, '', next);
     });
     return () => window.cancelAnimationFrame(id);
-  }, [spending, swr, capeOverride]);
+  }, [spending, swr, yearsToRetirement, capeOverride]);
 
   // ─── Headline math ────────────────────────────────────────────────────
   const { fireNumber, multiple } = computeHeadline({ annualSpending: spending, swr });
@@ -156,10 +162,13 @@ function BeginnerTier() {
         multiple={multiple}
         swr={swr}
         annualSpending={spending}
+        yearsToRetirement={yearsToRetirement}
+        inflationRate={ASSUMED_INFLATION}
       />
 
       <div className="grid gap-6 rounded-xl border border-border bg-surface p-6 shadow-sm sm:grid-cols-1">
         <SpendingInput value={spending} onChange={setSpending} />
+        <YearsToRetirementInput value={yearsToRetirement} onChange={setYearsToRetirement} />
         <SwrSlider value={swr} onChange={setSwr} capeAwareRate={capeAwareRate} />
         {dataset ? (
           <CapeIndicator
