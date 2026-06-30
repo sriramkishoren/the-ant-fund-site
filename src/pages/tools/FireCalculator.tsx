@@ -5,6 +5,7 @@ import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { HeadlineCard } from '@/components/fire-calculator/HeadlineCard';
 import { SpendingInput } from '@/components/fire-calculator/SpendingInput';
 import { YearsToRetirementInput } from '@/components/fire-calculator/YearsToRetirementInput';
+import { InflationInput } from '@/components/fire-calculator/InflationInput';
 import { SwrSlider } from '@/components/fire-calculator/SwrSlider';
 import { CapeIndicator } from '@/components/fire-calculator/CapeIndicator';
 import { Disclaimer } from '@/components/fire-calculator/Disclaimer';
@@ -22,7 +23,7 @@ import { withBase } from '@/lib/basePath';
 // Beginner-tier defaults. Match docs/fire-calculator/SPEC.md §3.
 const DEFAULT_SPENDING = 50_000;
 const DEFAULT_YEARS_TO_RETIREMENT = 0;
-const ASSUMED_INFLATION = 0.03; // 3% — standard FIRE-community assumption
+const DEFAULT_INFLATION = 0.03; // 3% — standard FIRE-community assumption
 const FALLBACK_CAPE = 38; // used until the bundled dataset loads
 
 export default function FireCalculator() {
@@ -90,6 +91,9 @@ function BeginnerTier() {
   const [yearsToRetirement, setYearsToRetirement] = useState<number>(
     initialUrlState.yearsToRetirement ?? DEFAULT_YEARS_TO_RETIREMENT,
   );
+  const [inflationRate, setInflationRate] = useState<number>(
+    initialUrlState.inflationRate ?? DEFAULT_INFLATION,
+  );
 
   // CAPE: bundled default (from dataset) unless the user has set an override.
   const [capeOverride, setCapeOverride] = useState<number | undefined>(
@@ -135,12 +139,18 @@ function BeginnerTier() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const id = window.requestAnimationFrame(() => {
-      const qs = encodeBeginnerState({ spending, swr, yearsToRetirement, capeOverride });
+      const qs = encodeBeginnerState({
+        spending,
+        swr,
+        yearsToRetirement,
+        inflationRate,
+        capeOverride,
+      });
       const next = `${window.location.pathname}?${qs}`;
       window.history.replaceState(null, '', next);
     });
     return () => window.cancelAnimationFrame(id);
-  }, [spending, swr, yearsToRetirement, capeOverride]);
+  }, [spending, swr, yearsToRetirement, inflationRate, capeOverride]);
 
   // ─── Headline math ────────────────────────────────────────────────────
   const { fireNumber, multiple } = computeHeadline({ annualSpending: spending, swr });
@@ -163,12 +173,15 @@ function BeginnerTier() {
         swr={swr}
         annualSpending={spending}
         yearsToRetirement={yearsToRetirement}
-        inflationRate={ASSUMED_INFLATION}
+        inflationRate={inflationRate}
       />
 
       <div className="grid gap-6 rounded-xl border border-border bg-surface p-6 shadow-sm sm:grid-cols-1">
         <SpendingInput value={spending} onChange={setSpending} />
-        <YearsToRetirementInput value={yearsToRetirement} onChange={setYearsToRetirement} />
+        <div className="grid gap-6 sm:grid-cols-2">
+          <YearsToRetirementInput value={yearsToRetirement} onChange={setYearsToRetirement} />
+          <InflationInput value={inflationRate} onChange={setInflationRate} />
+        </div>
         <SwrSlider value={swr} onChange={setSwr} capeAwareRate={capeAwareRate} />
         {dataset ? (
           <CapeIndicator
