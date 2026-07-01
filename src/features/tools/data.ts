@@ -44,30 +44,6 @@ export const TOOL_METAS: ToolMeta[] = [
     status: 'live',
   },
   {
-    slug: 'swp-planner',
-    name: 'Safe Withdrawal Planner',
-    description:
-      'Model dynamic withdrawal strategies side by side — guardrails, fixed-percent, and inflation-adjusted draws.',
-    category: 'Retirement',
-    status: 'soon',
-  },
-  {
-    slug: 'sip-calculator',
-    name: 'SIP / DCA Planner',
-    description:
-      'Project a systematic monthly investment plan with adjustable contributions and realistic, variable returns.',
-    category: 'Investing',
-    status: 'soon',
-  },
-  {
-    slug: 'net-worth-tracker',
-    name: 'Net Worth Tracker',
-    description:
-      'A no-account, local-only way to snapshot assets and liabilities and watch the line trend over time.',
-    category: 'Planning',
-    status: 'soon',
-  },
-  {
     slug: 'rental-property-roi',
     name: 'Rental Property ROI',
     description:
