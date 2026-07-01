@@ -4,9 +4,7 @@ import { Mission } from '@/components/home/Mission';
 import { FeaturedTools } from '@/components/home/FeaturedTools';
 import { Benefits } from '@/components/home/Benefits';
 import { LatestArticles } from '@/components/home/LatestArticles';
-import { Testimonials } from '@/components/home/Testimonials';
 import { Newsletter } from '@/components/home/Newsletter';
-import { ClosingCTA } from '@/components/home/ClosingCTA';
 import { SITE_NAME, SITE_ORIGIN } from '@/lib/seo';
 
 const organizationJsonLd = {
@@ -33,9 +31,7 @@ export default function Home() {
       <FeaturedTools />
       <Benefits />
       <LatestArticles />
-      <Testimonials />
       <Newsletter />
-      <ClosingCTA />
     </>
   );
 }
