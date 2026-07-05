@@ -2,23 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://theantfund.com/</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-05</lastmod>
   </url>
   <url>
     <loc>https://theantfund.com/tools</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-05</lastmod>
   </url>
   <url>
     <loc>https://theantfund.com/tools/monte-carlo-retirement-calculator</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-05</lastmod>
   </url>
   <url>
     <loc>https://theantfund.com/tools/fire-calculator</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-05</lastmod>
+  </url>
+  <url>
+    <loc>https://theantfund.com/tools/investment-calculator</loc>
+    <lastmod>2026-07-05</lastmod>
   </url>
   <url>
     <loc>https://theantfund.com/blog</loc>
-    <lastmod>2026-06-30</lastmod>
+    <lastmod>2026-07-05</lastmod>
   </url>
   <url>
     <loc>https://theantfund.com/blog/your-fi-number</loc>
@@ -35,17 +39,5 @@
   <url>
     <loc>https://theantfund.com/blog/the-wheel-options-foundations</loc>
     <lastmod>2026-06-28</lastmod>
-  </url>
-  <url>
-    <loc>https://theantfund.com/blog/hello-world-pipeline-test</loc>
-    <lastmod>2026-06-28</lastmod>
-  </url>
-  <url>
-    <loc>https://theantfund.com/blog/four-percent-rule</loc>
-    <lastmod>2026-04-28</lastmod>
-  </url>
-  <url>
-    <loc>https://theantfund.com/blog/index-funds-vs-picking-stocks</loc>
-    <lastmod>2026-04-09</lastmod>
   </url>
 </urlset>

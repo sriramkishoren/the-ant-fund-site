@@ -5,7 +5,7 @@
     <link>https://theantfund.com</link>
     <description>Slow, steady wealth for everyday investors — calculators, education, and clear thinking on the road to financial independence.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Jun 2026 12:11:53 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 15:08:58 GMT</lastBuildDate>
     <atom:link href="https://theantfund.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Your FIRE number: every major method, calculated and compared</title>
@@ -38,30 +38,6 @@
       <pubDate>Sun, 28 Jun 2026 12:00:00 GMT</pubDate>
       <category>Options</category>
       <description>What calls and puts actually are, how the Wheel strategy generates income, and where premium selling really earns — a careful look at the math behind options income.</description>
-    </item>
-    <item>
-      <title>Hello, world — a pipeline test post</title>
-      <link>https://theantfund.com/blog/hello-world-pipeline-test</link>
-      <guid isPermaLink="true">https://theantfund.com/blog/hello-world-pipeline-test</guid>
-      <pubDate>Sun, 28 Jun 2026 12:00:00 GMT</pubDate>
-      <category>Meta</category>
-      <description>A throwaway post used during initial setup to verify the blog pipeline end-to-end. Delete this once a real article ships.</description>
-    </item>
-    <item>
-      <title>The 4% rule, explained for normal people</title>
-      <link>https://theantfund.com/blog/four-percent-rule</link>
-      <guid isPermaLink="true">https://theantfund.com/blog/four-percent-rule</guid>
-      <pubDate>Tue, 28 Apr 2026 12:00:00 GMT</pubDate>
-      <category>Retirement</category>
-      <description>It&apos;s a starting point, not a law of physics. Where the 4% rule came from, what it actually claims, and why it still holds up after forty years.</description>
-    </item>
-    <item>
-      <title>Index funds vs. picking stocks: what the math actually says</title>
-      <link>https://theantfund.com/blog/index-funds-vs-picking-stocks</link>
-      <guid isPermaLink="true">https://theantfund.com/blog/index-funds-vs-picking-stocks</guid>
-      <pubDate>Thu, 09 Apr 2026 12:00:00 GMT</pubDate>
-      <category>Investing Basics</category>
-      <description>The case for indexing isn&apos;t about cynicism — it&apos;s about humility, fees, and what twenty years of data tell us about beating the market.</description>
     </item>
   </channel>
 </rss>

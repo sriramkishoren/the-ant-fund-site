@@ -44,6 +44,15 @@ export const TOOL_METAS: ToolMeta[] = [
     status: 'live',
   },
   {
+    slug: 'investment-calculator',
+    name: 'Investment Calculator',
+    shortName: 'Investment growth',
+    description:
+      'Project how contributions and compounding grow an investment — or solve for the contribution, return, starting amount, or time you need to hit a goal. Compare scenarios side by side.',
+    category: 'Investing',
+    status: 'live',
+  },
+  {
     slug: 'rental-property-roi',
     name: 'Rental Property ROI',
     description:
