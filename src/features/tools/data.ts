@@ -44,6 +44,15 @@ export const TOOL_METAS: ToolMeta[] = [
     status: 'live',
   },
   {
+    slug: 'bucket-strategy-planner',
+    name: 'Bucket Strategy Planner',
+    shortName: 'Bucket strategy',
+    description:
+      'Plan and stress-test a two-bucket retirement withdrawal strategy — a stability bucket funds spending, a growth bucket refills it — with research-backed guardrail rules, Monte Carlo success rates, and a January-2000 dot-com stress test.',
+    category: 'Retirement',
+    status: 'live',
+  },
+  {
     slug: 'investment-calculator',
     name: 'Investment Calculator',
     shortName: 'Investment growth',
