@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title">
+  <title id="title">Splitting a $1.5 million portfolio: the stability bucket is the smaller of five years of expenses ($300k) or 35% of the portfolio ($525k), so $300k goes to stability and the remaining $1.2M goes to growth. The starting withdrawal rate is 4%.</title>
+  <rect width="1200" height="700" fill="#FBF6EE"/>
+
+  <!-- Title -->
+  <text x="600" y="50" text-anchor="middle" font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">Sizing the buckets on $1.5M</text>
+  <text x="600" y="78" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">Spend $5,000/month = $60,000/year. First, size the stability bucket.</text>
+
+  <!-- The rule: min of two -->
+  <g>
+    <rect x="150" y="110" width="410" height="120" rx="12" fill="#FFFFFF" stroke="#E6E0D5"/>
+    <text x="355" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#0D5957">Rule A — five years of expenses</text>
+    <text x="355" y="182" text-anchor="middle" font-family="Fraunces, serif" font-size="30" font-weight="600" fill="#15807D">$300,000</text>
+    <text x="355" y="210" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.65">$60,000 × 5</text>
+
+    <rect x="640" y="110" width="410" height="120" rx="12" fill="#FFFFFF" stroke="#E6E0D5"/>
+    <text x="845" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#0D5957">Rule B — 35% cap</text>
+    <text x="845" y="182" text-anchor="middle" font-family="Fraunces, serif" font-size="30" font-weight="600" fill="#1C2826" opacity="0.55">$525,000</text>
+    <text x="845" y="210" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.65">35% × $1.5M</text>
+  </g>
+
+  <text x="600" y="270" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" fill="#1C2826">
+    Take the <tspan font-weight="700" fill="#0D5957">smaller</tspan> number →
+    <tspan font-weight="700" fill="#15807D">$300,000</tspan> is your stability bucket.
+  </text>
+
+  <!-- Allocation bar -->
+  <text x="150" y="330" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#0D5957">Your $1.5M, split</text>
+  <!-- full bar: 150..1050 = 900px for 1.5M -->
+  <!-- stability 300k = 20% => 180px; growth 1.2M = 80% => 720px -->
+  <g>
+    <!-- Stability segment 150..330 -->
+    <rect x="150" y="350" width="180" height="90" fill="#15807D" fill-opacity="0.85"/>
+    <!-- Growth segment 330..1050 -->
+    <rect x="330" y="350" width="720" height="90" fill="#E09A33" fill-opacity="0.85"/>
+    <rect x="150" y="350" width="900" height="90" fill="none" stroke="#E6E0D5" stroke-width="1.5"/>
+
+    <text x="240" y="400" text-anchor="middle" font-family="Fraunces, serif" font-size="20" font-weight="600" fill="#FFFFFF">$300k</text>
+    <text x="240" y="424" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#FFFFFF" opacity="0.9">Stability · 20%</text>
+
+    <text x="690" y="398" text-anchor="middle" font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#FFFFFF">$1.2M</text>
+    <text x="690" y="424" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#FFFFFF" opacity="0.95">Growth · 80% · stock index funds</text>
+  </g>
+
+  <!-- Inside the stability bucket: the conveyor of maturities -->
+  <text x="150" y="500" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#0D5957">Inside the stability bucket — no decisions, just a conveyor belt</text>
+  <g font-family="Inter, sans-serif">
+    <!-- Year 1 -->
+    <rect x="150" y="518" width="150" height="86" rx="10" fill="#15807D" fill-opacity="0.16" stroke="#15807D" stroke-width="1.5"/>
+    <text x="225" y="544" text-anchor="middle" font-size="13" font-weight="600" fill="#0D5957">Year 1</text>
+    <text x="225" y="566" text-anchor="middle" font-size="12" fill="#1C2826" opacity="0.75">$60–70k</text>
+    <text x="225" y="586" text-anchor="middle" font-size="11" fill="#1C2826" opacity="0.6">savings + money</text>
+    <text x="225" y="599" text-anchor="middle" font-size="11" fill="#1C2826" opacity="0.6">market fund</text>
+
+    <!-- Years 2-5 ladder rungs -->
+    <rect x="315" y="518" width="112" height="86" rx="10" fill="#15807D" fill-opacity="0.13" stroke="#15807D" stroke-width="1.5"/>
+    <text x="371" y="548" text-anchor="middle" font-size="13" font-weight="600" fill="#0D5957">Year 2</text>
+    <text x="371" y="574" text-anchor="middle" font-size="11" fill="#1C2826" opacity="0.65">bond/CD</text>
+    <text x="371" y="590" text-anchor="middle" font-size="11" fill="#1C2826" opacity="0.65">rung</text>
+
+    <rect x="437" y="518" width="112" height="86" rx="10" fill="#15807D" fill-opacity="0.13" stroke="#15807D" stroke-width="1.5"/>
+    <text x="493" y="548" text-anchor="middle" font-size="13" font-weight="600" fill="#0D5957">Year 3</text>
+    <text x="493" y="574" text-anchor="middle" font-size="11" fill="#1C2826" opacity="0.65">bond/CD</text>
+    <text x="493" y="590" text-anchor="middle" font-size="11" fill="#1C2826" opacity="0.65">rung</text>
+
+    <rect x="559" y="518" width="112" height="86" rx="10" fill="#15807D" fill-opacity="0.13" stroke="#15807D" stroke-width="1.5"/>
+    <text x="615" y="548" text-anchor="middle" font-size="13" font-weight="600" fill="#0D5957">Year 4</text>
+    <text x="615" y="574" text-anchor="middle" font-size="11" fill="#1C2826" opacity="0.65">bond/CD</text>
+    <text x="615" y="590" text-anchor="middle" font-size="11" fill="#1C2826" opacity="0.65">rung</text>
+
+    <rect x="681" y="518" width="112" height="86" rx="10" fill="#15807D" fill-opacity="0.13" stroke="#15807D" stroke-width="1.5"/>
+    <text x="737" y="548" text-anchor="middle" font-size="13" font-weight="600" fill="#0D5957">Year 5</text>
+    <text x="737" y="574" text-anchor="middle" font-size="11" fill="#1C2826" opacity="0.65">bond/CD</text>
+    <text x="737" y="590" text-anchor="middle" font-size="11" fill="#1C2826" opacity="0.65">rung</text>
+
+    <!-- withdrawal-rate callout -->
+    <rect x="820" y="518" width="230" height="86" rx="10" fill="#FFFFFF" stroke="#E6E0D5"/>
+    <text x="935" y="546" text-anchor="middle" font-size="13" font-weight="600" fill="#0D5957">Starting withdrawal rate</text>
+    <text x="935" y="582" text-anchor="middle" font-family="Fraunces, serif" font-size="30" font-weight="600" fill="#0D5957">4.0%</text>
+  </g>
+
+  <text x="600" y="648" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.7">Each January one rung matures and becomes that year's spending money — the belt simply rolls forward.</text>
+</svg>

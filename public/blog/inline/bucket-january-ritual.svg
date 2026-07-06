@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 740" role="img" aria-labelledby="title">
+  <title id="title">The annual January decision: check last year's stock return. If the growth bucket fell more than 15% it was a crash year, so skip the refill, sell nothing, and freeze spending. Otherwise refill the stability bucket back to target. Every year, also check the withdrawal rate and trim spending 10% if it exceeds 5.2%.</title>
+  <rect width="1200" height="740" fill="#FBF6EE"/>
+
+  <defs>
+    <marker id="jrArrow" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto">
+      <path d="M1 1 L9 6 L1 11 Z" fill="#1C2826" fill-opacity="0.7"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="600" y="48" text-anchor="middle" font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">The one-hour January ritual</text>
+  <text x="600" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">The whole strategy runs on this single annual decision. Everything else is automatic.</text>
+
+  <!-- Start pill -->
+  <rect x="460" y="102" width="280" height="52" rx="26" fill="#0D5957"/>
+  <text x="600" y="134" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#FFFFFF">Check last year's stock return</text>
+  <line x1="600" y1="154" x2="600" y2="182" stroke="#1C2826" stroke-opacity="0.7" stroke-width="2.5" marker-end="url(#jrArrow)"/>
+
+  <!-- Decision diamond -->
+  <polygon points="600,190 780,268 600,346 420,268" fill="#FFFFFF" stroke="#E09A33" stroke-width="2.5"/>
+  <text x="600" y="258" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#0D5957">Did the growth bucket</text>
+  <text x="600" y="280" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#0D5957">fall more than 15%?</text>
+
+  <!-- YES branch (left) -->
+  <line x1="420" y1="268" x2="300" y2="268" stroke="#1C2826" stroke-opacity="0.7" stroke-width="2.5"/>
+  <line x1="300" y1="268" x2="300" y2="392" stroke="#1C2826" stroke-opacity="0.7" stroke-width="2.5" marker-end="url(#jrArrow)"/>
+  <text x="360" y="256" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#E09A33">YES — crash year</text>
+
+  <rect x="110" y="396" width="380" height="176" rx="14" fill="#FFFFFF" stroke="#E09A33" stroke-width="2"/>
+  <text x="130" y="428" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#E09A33">Do nothing.</text>
+  <text x="130" y="460" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.85">• Sell no stocks at the bottom.</text>
+  <text x="130" y="488" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.85">• Spend from the stability bucket —</text>
+  <text x="146" y="508" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.85">it exists precisely for this.</text>
+  <text x="130" y="536" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.85">• Freeze spending — no inflation</text>
+  <text x="146" y="556" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.85">raise this year.</text>
+
+  <!-- NO branch (right) -->
+  <line x1="780" y1="268" x2="900" y2="268" stroke="#1C2826" stroke-opacity="0.7" stroke-width="2.5"/>
+  <line x1="900" y1="268" x2="900" y2="392" stroke="#1C2826" stroke-opacity="0.7" stroke-width="2.5" marker-end="url(#jrArrow)"/>
+  <text x="840" y="256" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#15807D">NO — normal / good year</text>
+
+  <rect x="710" y="396" width="380" height="176" rx="14" fill="#FFFFFF" stroke="#15807D" stroke-width="2"/>
+  <text x="730" y="428" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#15807D">Refill.</text>
+  <text x="730" y="460" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.85">• Sell just enough growth to top</text>
+  <text x="746" y="480" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.85">the stability bucket back to target</text>
+  <text x="746" y="500" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.85">(min: 5 years / 35%).</text>
+  <text x="730" y="528" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.85">• Buy a new rung at the far end</text>
+  <text x="746" y="548" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.85">of the bond ladder.</text>
+
+  <!-- Merge to guardrail -->
+  <path d="M300 572 C 300 620, 450 616, 500 626" fill="none" stroke="#1C2826" stroke-opacity="0.7" stroke-width="2.5"/>
+  <path d="M900 572 C 900 620, 750 616, 700 626" fill="none" stroke="#1C2826" stroke-opacity="0.7" stroke-width="2.5" marker-end="url(#jrArrow)"/>
+  <path d="M500 626 L520 626" fill="none" stroke="#1C2826" stroke-opacity="0.7" stroke-width="2.5" marker-end="url(#jrArrow)"/>
+
+  <!-- Guardrail box -->
+  <rect x="300" y="628" width="600" height="96" rx="14" fill="#FBF6EE" stroke="#0D5957" stroke-width="2"/>
+  <text x="600" y="658" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#0D5957">Then check one health number — every year</text>
+  <text x="600" y="684" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.85">Yearly spending ÷ total money. If it crosses ~5.2%, trim spending 10%</text>
+  <text x="600" y="704" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.85">(or earn a little side income) until it drops back.</text>
+</svg>
