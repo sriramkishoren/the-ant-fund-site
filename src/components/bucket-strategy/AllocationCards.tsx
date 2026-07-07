@@ -1,5 +1,5 @@
 import type { SimulationResult } from '@/features/bucket-strategy/types';
-import { formatMoney } from '@/features/bucket-strategy/money';
+import { formatMoney, formatMoneyCompact } from '@/features/bucket-strategy/money';
 
 type Props = {
   result: SimulationResult;
@@ -16,13 +16,15 @@ export function AllocationCards({ result, totalPortfolio }: Props) {
     <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
       <Card
         label="Stability bucket"
-        value={formatMoney(result.initialStability)}
+        value={formatMoneyCompact(result.initialStability)}
+        exact={formatMoney(result.initialStability)}
         sub={`${stabilityPct.toFixed(0)}% of portfolio`}
         dot="bg-teal"
       />
       <Card
         label="Growth bucket"
-        value={formatMoney(result.initialGrowth)}
+        value={formatMoneyCompact(result.initialGrowth)}
+        exact={formatMoney(result.initialGrowth)}
         sub={`${growthPct.toFixed(0)}% of portfolio`}
         dot="bg-amber"
       />
@@ -48,21 +50,28 @@ export function AllocationCards({ result, totalPortfolio }: Props) {
 function Card({
   label,
   value,
+  exact,
   sub,
   dot,
 }: {
   label: string;
   value: string;
+  exact?: string;
   sub: string;
   dot: string;
 }) {
   return (
     <div className="rounded-2xl border border-border bg-surface p-5 shadow-sm">
       <div className="flex items-center gap-2">
-        <span aria-hidden="true" className={`h-2.5 w-2.5 rounded-full ${dot}`} />
+        <span aria-hidden="true" className={`h-2.5 w-2.5 flex-shrink-0 rounded-full ${dot}`} />
         <p className="text-xs font-medium uppercase tracking-wide text-ink/60">{label}</p>
       </div>
-      <p className="mt-2 font-heading text-2xl font-semibold text-teal-dark">{value}</p>
+      <p
+        className="mt-2 truncate font-heading text-2xl font-semibold tabular-nums text-teal-dark"
+        title={exact ?? value}
+      >
+        {value}
+      </p>
       <p className="mt-1 text-xs text-ink/60">{sub}</p>
     </div>
   );

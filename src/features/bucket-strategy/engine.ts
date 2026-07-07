@@ -12,6 +12,7 @@ import type {
   HistoricalYear,
   PercentileBand,
   SimulationResult,
+  WalkthroughYear,
 } from './types';
 
 // ── PRNG (mulberry32 + Box-Muller), same family as the other engines ─────────
@@ -58,8 +59,16 @@ interface PathStep {
   yearIndex: number;
   equityReturn: number;
   inflation: number;
-  stability: number;
-  growth: number;
+  // Start-of-year bucket balances (before the withdrawal).
+  startStability: number;
+  startGrowth: number;
+  guaranteedIncome: number; // Social Security + part-time income this year
+  netWithdrawal: number; // expenses net of guaranteed income, taken from buckets
+  growthGain: number; // $ the growth bucket earned this year
+  fixedGain: number; // $ the stability bucket earned this year
+  transfer: number; // + growth→stability (refill); − stability→growth (excess)
+  stability: number; // end-of-year
+  growth: number; // end-of-year
   portfolioNominal: number;
   portfolioReal: number;
   spending: number;
@@ -128,6 +137,8 @@ function computePath(
     const pt = t < params.partTimeYears ? params.partTimeMonthly * 12 : 0;
     const netW = Math.max(0, A - ss - pt);
 
+    const startStability = S;
+    const startGrowth = G;
     const portfolioStart = S + G;
     const WR = portfolioStart > 0 ? netW / portfolioStart : 0;
 
@@ -150,8 +161,12 @@ function computePath(
     }
 
     // Step 2 — returns.
+    const growthBeforeReturn = G;
+    const stabilityBeforeReturn = S;
     G = G * (1 + rE);
     S = S * (1 + rf);
+    const growthGain = G - growthBeforeReturn;
+    const fixedGain = S - stabilityBeforeReturn;
 
     // Step 3 — next year's spending.
     const Bnext = B * (1 + infl);
@@ -167,6 +182,7 @@ function computePath(
     // Step 4 — refill / two-way rebalance, unless a crash-skip fires.
     const skipped = isCrashSkip(rE, params.crashSkipThresholdPct);
     let refilled = false;
+    let transfer = 0; // + growth→stability (refill); − stability→growth (excess)
     if (!skipped && !failed) {
       const portfolioNow = S + G;
       const target = effectiveStabilityTarget({
@@ -179,11 +195,13 @@ function computePath(
         const need = Math.min(target - S, G);
         S += need;
         G -= need;
+        transfer = need;
         refilled = need > 0;
       } else if (S > target) {
         const excess = S - target;
         S -= excess;
         G += excess;
+        transfer = -excess;
         refilled = excess > 0;
       }
     }
@@ -197,6 +215,13 @@ function computePath(
       yearIndex: t,
       equityReturn: rE,
       inflation: infl,
+      startStability,
+      startGrowth,
+      guaranteedIncome: ss + pt,
+      netWithdrawal: netW,
+      growthGain,
+      fixedGain,
+      transfer,
       stability: S,
       growth: G,
       portfolioNominal,
@@ -251,6 +276,36 @@ function historicalPath(params: BucketParams): HistoricalYear[] {
   const inflations = HISTORICAL_US.map((r) => r.cpiInflation);
   const steps = computePath(params, equityReturns, inflations);
   return steps.map((s, i) => toHistoricalYear(s, HISTORICAL_US[i].year));
+}
+
+/**
+ * Deterministic "average return every year" walkthrough — the equity bucket
+ * earns exactly its expected return each year (no volatility, no crashes) and
+ * inflation is constant. It won't match any single Monte Carlo run, but it's the
+ * clearest way to *see* the mechanics: how spending grows with inflation, how
+ * the buckets earn, and how the yearly transfer keeps the stability bucket
+ * topped up.
+ */
+export function simulateWalkthrough(params: BucketParams): WalkthroughYear[] {
+  const H = params.horizonYears;
+  const equityReturns = new Array<number>(H).fill(params.equityReturnPct / 100);
+  const inflations = new Array<number>(H).fill(params.inflationPct / 100);
+  const steps = computePath(params, equityReturns, inflations);
+  return steps.map((s) => ({
+    year: s.yearIndex + 1,
+    startStability: s.startStability,
+    startGrowth: s.startGrowth,
+    spending: s.spending,
+    guaranteedIncome: s.guaranteedIncome,
+    netWithdrawal: s.netWithdrawal,
+    marketGain: s.growthGain + s.fixedGain,
+    transfer: s.transfer,
+    endStability: s.stability,
+    endGrowth: s.growth,
+    endTotal: s.portfolioNominal,
+    skipped: s.skipped,
+    cut: s.cut,
+  }));
 }
 
 // ── Aggregation helpers ────────────────────────────────────────────────────
@@ -348,6 +403,7 @@ export function simulateBucketStrategy(
     medianFinalRealSpending: median(finalRealSpending),
     baselineFinalRealSpending: params.monthlyExpenses * 12,
     historicalPath: historicalPath(params),
+    walkthrough: simulateWalkthrough(params),
     meta: { runs, horizonYears: H, seed },
   };
 }

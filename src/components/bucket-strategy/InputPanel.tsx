@@ -10,7 +10,6 @@ type Props = {
   onChange: (patch: Partial<BucketParams>) => void;
   onRun: () => void;
   busy: boolean;
-  dirty: boolean;
 };
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
@@ -19,7 +18,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function InputPanel({ params, onChange, onRun, busy, dirty }: Props) {
+export function InputPanel({ params, onChange, onRun, busy }: Props) {
   const annualExpenses = params.monthlyExpenses * 12;
   const target = effectiveStabilityTarget({
     stabilityYears: params.stabilityYears,
@@ -67,6 +66,7 @@ export function InputPanel({ params, onChange, onRun, busy, dirty }: Props) {
           max={8}
           unit=" yrs"
           tip="How many years of spending to hold in safe assets. A bigger buffer rides out longer downturns without selling stocks, but too big a buffer drags on long-run growth."
+          help="Years of expenses to keep safe — the buffer you live on during a crash."
         />
         <RangeSlider
           label="Cap (% of portfolio)"
@@ -75,7 +75,8 @@ export function InputPanel({ params, onChange, onRun, busy, dirty }: Props) {
           min={20}
           max={50}
           unit="%"
-          tip="An upper limit on the stability bucket as a share of the whole portfolio. It stops the safe bucket from getting so large it starves the growth engine — important early in retirement when the buffer is a big slice of a smaller pot."
+          tip="A ceiling on the stability bucket, as a share of your whole portfolio. The safe bucket is sized at the SMALLER of the buffer (years of expenses) and this cap. Why it matters: early in retirement — or with a smaller portfolio — a fixed number of years of expenses can be a huge slice of your money, leaving too little in stocks to grow. The cap keeps a lid on that. Lower cap → more in the growth bucket (more long-run growth, more short-term risk). Higher cap → a bigger safety cushion, less growth. It only changes anything when the cap is the smaller of the two rules (shown below)."
+          help="Ceiling on the safe bucket as a share of the portfolio. Lower = more in stocks; higher = a bigger safe cushion."
         />
 
         {/* Prominent computed target */}
@@ -106,6 +107,14 @@ export function InputPanel({ params, onChange, onRun, busy, dirty }: Props) {
       {/* Market assumptions */}
       <div className="space-y-4">
         <SectionTitle>Market assumptions</SectionTitle>
+        <div className="rounded-lg border border-border bg-cream/50 px-3 py-2 text-xs leading-relaxed text-ink/70">
+          Returns below are <span className="font-medium text-teal-dark">nominal</span> (before
+          inflation). Your <span className="font-medium text-teal-dark">expenses grow with
+          inflation every year</span>, so what matters is the gap between them. With the defaults, a
+          10% equity return and 6% inflation is a ~4% <em>real</em> return. The results chart lets
+          you switch between <span className="font-medium text-teal-dark">Real</span> (today&rsquo;s
+          dollars) and <span className="font-medium text-teal-dark">Nominal</span>.
+        </div>
         <NumericInput
           label="Expected inflation"
           value={params.inflationPct}
@@ -114,6 +123,7 @@ export function InputPanel({ params, onChange, onRun, busy, dirty }: Props) {
           min={0}
           max={15}
           step={0.1}
+          help="Drives how fast your expenses (and any Social Security) grow each year."
         />
         <div className="grid grid-cols-2 gap-4">
           <NumericInput
@@ -124,6 +134,7 @@ export function InputPanel({ params, onChange, onRun, busy, dirty }: Props) {
             min={0}
             max={20}
             step={0.1}
+            help="Nominal, before inflation."
           />
           <NumericInput
             label="Equity volatility"
@@ -133,6 +144,7 @@ export function InputPanel({ params, onChange, onRun, busy, dirty }: Props) {
             min={1}
             max={40}
             step={0.5}
+            help="Year-to-year swings."
           />
         </div>
         <NumericInput
@@ -143,7 +155,7 @@ export function InputPanel({ params, onChange, onRun, busy, dirty }: Props) {
           min={0}
           max={15}
           step={0.1}
-          help="Return on the stability bucket (bonds / cash / short-term instruments)."
+          help="Nominal return on the stability bucket (bonds / cash / short-term)."
         />
       </div>
 
@@ -305,11 +317,11 @@ export function InputPanel({ params, onChange, onRun, busy, dirty }: Props) {
           disabled={busy}
           className="w-full rounded-lg bg-amber px-4 py-3 text-sm font-semibold text-ink shadow-sm transition-colors hover:bg-gold focus-visible:outline-2 focus-visible:outline-teal disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {busy ? 'Running…' : dirty ? 'Re-run simulation' : 'Run simulation'}
+          {busy ? 'Running…' : 'Run again (new random draws)'}
         </button>
-        {dirty && !busy ? (
-          <p className="text-center text-xs text-amber">Inputs changed — re-run to update results.</p>
-        ) : null}
+        <p className="text-center text-xs text-ink/55">
+          Results update automatically as you change any input.
+        </p>
       </div>
     </div>
   );

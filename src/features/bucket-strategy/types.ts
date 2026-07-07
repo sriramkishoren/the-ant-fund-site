@@ -60,6 +60,27 @@ export interface HistoricalYear {
   cut: boolean; // guardrail cut fired
 }
 
+/**
+ * One year of the deterministic "average return every year" walkthrough — a
+ * smooth illustration (no market ups and downs) of how money flows between the
+ * buckets. Used by the year-by-year table.
+ */
+export interface WalkthroughYear {
+  year: number; // 1-based
+  startStability: number;
+  startGrowth: number;
+  spending: number; // inflation-adjusted nominal spend this year
+  guaranteedIncome: number; // Social Security + part-time income
+  netWithdrawal: number; // taken from the buckets
+  marketGain: number; // growth + fixed-income earnings combined
+  transfer: number; // + growth→stability (refill); − stability→growth (excess)
+  endStability: number;
+  endGrowth: number;
+  endTotal: number;
+  skipped: boolean; // crash-skip fired (never, on the smooth path)
+  cut: boolean; // guardrail cut fired
+}
+
 export interface SimulationResult {
   successRate: number; // 0..1 — portfolio > 0 at horizon
   effectiveStabilityTarget: number; // initial min(years×annual, cap%×portfolio)
@@ -72,6 +93,7 @@ export interface SimulationResult {
   medianFinalRealSpending: number;
   baselineFinalRealSpending: number; // fully-indexed baseline (≈ today's annual spend)
   historicalPath: HistoricalYear[]; // deterministic 2000–2025 path
+  walkthrough: WalkthroughYear[]; // deterministic average-return illustration
   meta: { runs: number; horizonYears: number; seed?: number };
 }
 

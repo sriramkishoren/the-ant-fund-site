@@ -11,10 +11,22 @@ type Props = {
   /** Rendered next to the live value, e.g. "years" or "%". */
   unit?: string;
   tip?: string;
+  /** Short always-visible helper line below the slider. */
+  help?: string;
 };
 
 /** Labeled range slider with a live value read-out, matching the site tokens. */
-export function RangeSlider({ label, value, onChange, min, max, step = 1, unit, tip }: Props) {
+export function RangeSlider({
+  label,
+  value,
+  onChange,
+  min,
+  max,
+  step = 1,
+  unit,
+  tip,
+  help,
+}: Props) {
   const id = useId();
   return (
     <div>
@@ -40,6 +52,7 @@ export function RangeSlider({ label, value, onChange, min, max, step = 1, unit, 
         onChange={(e) => onChange(Number(e.target.value))}
         className="mt-2 block w-full accent-teal"
       />
+      {help ? <p className="mt-1 text-xs text-ink/60">{help}</p> : null}
     </div>
   );
 }

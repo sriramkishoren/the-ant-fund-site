@@ -6,11 +6,12 @@ import type {
   SimulationResult,
   WorkerOutbound,
 } from '@/features/bucket-strategy/types';
-import { formatMoney } from '@/features/bucket-strategy/money';
+import { formatMoney, formatMoneyCompact } from '@/features/bucket-strategy/money';
 import { InputPanel } from './InputPanel';
 import { AllocationCards } from './AllocationCards';
 import { FanChart } from './FanChart';
 import { DotComStressChart } from './DotComStressChart';
+import { WalkthroughTable } from './WalkthroughTable';
 import { RulesPanel } from './RulesPanel';
 import { EducationalIntro } from './EducationalIntro';
 import { Disclaimer } from './Disclaimer';
@@ -30,7 +31,6 @@ type Status =
 export function BucketPlanner() {
   const [params, setParams] = useState<BucketParams>(DEFAULT_BUCKET_PARAMS);
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
-  const [dirty, setDirty] = useState(false);
 
   const workerRef = useRef<Worker | null>(null);
   const workerSupported = useRef<boolean>(typeof Worker !== 'undefined');
@@ -47,7 +47,6 @@ export function BucketPlanner() {
   const run = useCallback(() => {
     const inputs = paramsRef.current;
     setStatus({ kind: 'running', completed: 0, total: inputs.numRuns * 2 });
-    setDirty(false);
 
     if (workerSupported.current) {
       try {
@@ -105,14 +104,16 @@ export function BucketPlanner() {
     });
   }, []);
 
-  // Auto-run once on mount so the user lands on a populated result.
+  // Auto-run on mount and (debounced) whenever inputs change, so every input —
+  // including the cap — is always reflected in the results without a manual
+  // step. The 400ms debounce coalesces rapid edits (typing, dragging a slider).
   useEffect(() => {
-    run();
-  }, [run]);
+    const id = setTimeout(() => run(), 400);
+    return () => clearTimeout(id);
+  }, [params, run]);
 
   const patch = (p: Partial<BucketParams>) => {
     setParams((prev) => ({ ...prev, ...p }));
-    setDirty(true);
   };
 
   const busy = status.kind === 'running';
@@ -123,7 +124,7 @@ export function BucketPlanner() {
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(340px,400px)_1fr]">
         <div className="lg:sticky lg:top-6 lg:self-start">
-          <InputPanel params={params} onChange={patch} onRun={run} busy={busy} dirty={dirty} />
+          <InputPanel params={params} onChange={patch} onRun={run} busy={busy} />
         </div>
 
         <div className="space-y-6">
@@ -180,6 +181,7 @@ function ResultsRegion({ status }: { status: Status }) {
       <FlexibilitySummary result={primary} />
       <FanChart primary={primary} comparison={guardrailsOff} />
       <DotComStressChart path={primary.historicalPath} />
+      <WalkthroughTable walkthrough={primary.walkthrough} params={usedParams} />
     </div>
   );
 }
@@ -206,12 +208,15 @@ function FlexibilitySummary({ result }: { result: SimulationResult }) {
         <p className="text-xs font-medium uppercase tracking-wide text-ink/60">
           Median final-year spending (real)
         </p>
-        <p className="mt-2 font-heading text-2xl font-semibold text-teal-dark">
-          {formatMoney(result.medianFinalRealSpending)}
+        <p
+          className="mt-2 font-heading text-2xl font-semibold text-teal-dark"
+          title={formatMoney(result.medianFinalRealSpending)}
+        >
+          {formatMoneyCompact(result.medianFinalRealSpending)}
         </p>
         <p className="mt-1 text-xs text-ink/60">
           {spendingRetention.toFixed(0)}% of the fully-indexed{' '}
-          {formatMoney(result.baselineFinalRealSpending)} baseline
+          {formatMoneyCompact(result.baselineFinalRealSpending)} baseline
         </p>
       </div>
     </div>
