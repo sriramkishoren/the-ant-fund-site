@@ -28,7 +28,6 @@
     <line x1="465" y1="330" x2="735" y2="285" stroke="#15807D" stroke-width="3" stroke-dasharray="7 5"/>
     <line x1="510" y1="279" x2="510" y2="323" stroke="#1C2826" stroke-width="1.5" opacity="0.5"/>
     <line x1="700" y1="191" x2="700" y2="279" stroke="#15807D" stroke-width="2"/>
-    <text x="230" y="0" font-size="0"> </text>
     <text x="600" y="372" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.85">The gap is <tspan font-weight="600">widening.</tspan></text>
     <text x="600" y="394" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#15807D">Momentum is accelerating — super bullish.</text>
   </g>

@@ -1,69 +1,70 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title">
-  <title id="title">An ascending triangle. Price repeatedly rallies into a flat overhead resistance level and pulls back, but each pullback bottoms at a higher low, so the range compresses. Rising demand meets fixed supply, and the pattern usually resolves in a breakout above the ceiling — though it can also break down.</title>
+  <title id="title">An ascending triangle. Price repeatedly rallies into a flat overhead resistance level and pulls back, but each pullback bottoms at a higher low, so the range compresses against the ceiling. Rising demand meets fixed supply, and it usually resolves in a breakout above the ceiling — though it can always break down instead.</title>
   <rect width="1200" height="620" fill="#FBF6EE"/>
 
   <defs>
-    <marker id="atUp" markerWidth="12" markerHeight="12" refX="6" refY="2" orient="auto">
-      <path d="M6 1 L11 10 L1 10 Z" fill="#15807D"/>
+    <!-- Arrowheads must be drawn pointing RIGHT: orient="auto" rotates them to follow the line. -->
+    <marker id="atUp" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 L9 5 L0 10 Z" fill="#15807D"/>
     </marker>
-    <marker id="atDown" markerWidth="12" markerHeight="12" refX="6" refY="10" orient="auto">
-      <path d="M6 11 L1 2 L11 2 Z" fill="#E09A33"/>
+    <marker id="atDown" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 L9 5 L0 10 Z" fill="#E09A33"/>
     </marker>
   </defs>
 
-  <text x="600" y="46" text-anchor="middle" font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">A chart pattern: the ascending triangle</text>
-  <text x="600" y="74" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">Rising demand pressing against a fixed wall of supply. The range squeezes until something gives.</text>
+  <text x="600" y="44" text-anchor="middle" font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">A chart pattern: the ascending triangle</text>
+  <text x="600" y="72" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">Rising demand pressing against a fixed wall of supply. The range squeezes until something gives.</text>
 
-  <!-- Plot frame -->
-  <line x1="110" y1="500" x2="1090" y2="500" stroke="#1C2826" stroke-width="1.5" opacity="0.45"/>
+  <line x1="110" y1="500" x2="1090" y2="500" stroke="#1C2826" stroke-width="1.5" opacity="0.4"/>
 
   <!-- Flat resistance (the ceiling) -->
-  <line x1="130" y1="170" x2="900" y2="170" stroke="#E09A33" stroke-width="3"/>
-  <text x="140" y="158" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#E09A33">RESISTANCE — a flat ceiling of supply</text>
-  <text x="140" y="196" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.65">sellers keep taking profits at the same price</text>
+  <line x1="140" y1="170" x2="900" y2="170" stroke="#E09A33" stroke-width="3"/>
+  <text x="145" y="158" font-family="Inter, sans-serif" font-size="13.5" font-weight="700" fill="#E09A33">RESISTANCE — a flat ceiling of supply</text>
 
-  <!-- Rising support (higher lows) -->
+  <!-- Rising support: every low sits exactly on this line -->
   <line x1="150" y1="450" x2="880" y2="200" stroke="#15807D" stroke-width="3"/>
-  <text x="300" y="470" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#15807D">RISING SUPPORT — higher lows</text>
-  <text x="300" y="490" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.65">buyers step in earlier and earlier</text>
 
-  <!-- Price path: bounces between rising support and flat resistance, then breaks out -->
-  <polyline points="150,450 250,175 330,390 430,175 510,330 610,175 690,285 770,175 830,240 880,172 930,120 1000,80"
-            fill="none" stroke="#0D5957" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- Price: highs pinned to y=173 (the ceiling), lows pinned to the support line -->
+  <polyline points="150,450 250,173 330,388 430,173 510,327 610,173 690,265 770,173 830,217 890,166 950,108 1010,72"
+            fill="none" stroke="#0D5957" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
 
-  <!-- Touch markers on resistance -->
+  <!-- Rejections at resistance -->
   <g fill="#E09A33">
-    <circle cx="250" cy="175" r="5"/>
-    <circle cx="430" cy="175" r="5"/>
-    <circle cx="610" cy="175" r="5"/>
-    <circle cx="770" cy="175" r="5"/>
+    <circle cx="250" cy="173" r="5"/>
+    <circle cx="430" cy="173" r="5"/>
+    <circle cx="610" cy="173" r="5"/>
+    <circle cx="770" cy="173" r="5"/>
   </g>
-  <!-- Higher-low markers -->
+  <!-- Higher lows, each landing on the support line -->
   <g fill="#15807D">
-    <circle cx="330" cy="390" r="5"/>
-    <circle cx="510" cy="330" r="5"/>
-    <circle cx="690" cy="285" r="5"/>
-    <circle cx="830" cy="240" r="5"/>
+    <circle cx="330" cy="388" r="5"/>
+    <circle cx="510" cy="327" r="5"/>
+    <circle cx="690" cy="265" r="5"/>
+    <circle cx="830" cy="217" r="5"/>
   </g>
+
+  <!-- Support label, placed under its own line -->
+  <text x="250" y="430" font-family="Inter, sans-serif" font-size="13.5" font-weight="700" fill="#15807D">RISING SUPPORT — each low is higher</text>
+  <text x="250" y="450" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.65">buyers are stepping in earlier and earlier</text>
 
   <!-- Breakout arrow -->
-  <line x1="905" y1="150" x2="960" y2="95" stroke="#15807D" stroke-width="3" marker-end="url(#atUp)"/>
-  <text x="990" y="80" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#15807D">BREAKOUT</text>
-  <text x="990" y="102" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.7">demand finally overwhelms</text>
-  <text x="990" y="120" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.7">the supply at the ceiling</text>
+  <line x1="898" y1="152" x2="948" y2="102" stroke="#15807D" stroke-width="3" marker-end="url(#atUp)"/>
+  <text x="975" y="92" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#15807D">BREAKOUT</text>
+  <text x="975" y="114" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.75">demand finally overwhelms the</text>
+  <text x="975" y="132" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.75">supply sitting at the ceiling</text>
 
-  <!-- Breakdown (the other possibility) -->
-  <line x1="905" y1="215" x2="960" y2="280" stroke="#E09A33" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#atDown)"/>
-  <text x="990" y="270" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#E09A33">…or breakdown</text>
-  <text x="990" y="290" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.7">it can always go the other way —</text>
-  <text x="990" y="308" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.7">a pattern is odds, not a promise</text>
+  <!-- Breakdown arrow (the other possibility) -->
+  <line x1="898" y1="218" x2="948" y2="272" stroke="#E09A33" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#atDown)"/>
+  <text x="975" y="262" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#E09A33">…or breakdown</text>
+  <text x="975" y="284" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.75">it can always go the other way —</text>
+  <text x="975" y="302" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.75">a pattern is odds, never a promise</text>
 
   <!-- Digestion callout -->
-  <rect x="110" y="540" width="980" height="56" rx="10" fill="#FFFFFF" stroke="#E6E0D5"/>
-  <text x="600" y="565" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.85">
-    <tspan font-weight="600" fill="#0D5957">Think of a pattern as digestion.</tspan> People buy, the market chews on those purchases in a range,
+  <rect x="110" y="536" width="980" height="60" rx="10" fill="#FFFFFF" stroke="#E6E0D5"/>
+  <text x="600" y="562" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.85">
+    <tspan font-weight="600" fill="#0D5957">Think of a pattern as digestion.</tspan> People buy, the market chews on those purchases inside a range,
   </text>
-  <text x="600" y="585" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.85">
-    and once it&#8217;s digested price either breaks out (up) or breaks down (down). That&#8217;s it.
+  <text x="600" y="583" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.85">
+    and once it&#8217;s digested, price either breaks out (up) or breaks down (down). That&#8217;s it.
   </text>
 </svg>

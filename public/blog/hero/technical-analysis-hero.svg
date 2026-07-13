@@ -1,82 +1,93 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title">
-  <title id="title">A candlestick chart rising over time with a moving-average line through it, annotated with the single question behind all technical analysis: who is winning right now, buyers or sellers?</title>
+  <title id="title">A rising candlestick chart with a moving-average line through it. One candle is called out to show the story it tells: sellers pushed price down, leaving a long lower wick, but buyers won by the close. A panel on the right states the one principle: when demand beats supply price rises, and when supply beats demand price falls.</title>
   <rect width="1600" height="900" fill="#FBF6EE"/>
 
-  <defs>
-    <marker id="hUp" markerWidth="12" markerHeight="12" refX="6" refY="2" orient="auto">
-      <path d="M6 1 L11 10 L1 10 Z" fill="#15807D"/>
-    </marker>
-    <marker id="hDown" markerWidth="12" markerHeight="12" refX="6" refY="10" orient="auto">
-      <path d="M6 11 L1 2 L11 2 Z" fill="#E09A33"/>
-    </marker>
-  </defs>
-
   <!-- Title -->
-  <text x="800" y="98" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="60" font-weight="600" fill="#0D5957" letter-spacing="-0.5">Technical analysis</text>
-  <text x="800" y="146" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="21" fill="#1C2826" opacity="0.7">Every pattern, every indicator — one question: who is winning, buyers or sellers?</text>
+  <text x="620" y="98" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="60" font-weight="600" fill="#0D5957" letter-spacing="-0.5">Technical analysis</text>
+  <text x="620" y="144" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="20" fill="#1C2826" opacity="0.7">Every pattern, every indicator — one question: who is winning, buyers or sellers?</text>
 
   <!-- Axis baseline -->
-  <line x1="150" y1="790" x2="1300" y2="790" stroke="#1C2826" stroke-width="1.5" opacity="0.4"/>
+  <line x1="140" y1="800" x2="1090" y2="800" stroke="#1C2826" stroke-width="1.5" opacity="0.35"/>
 
-  <!-- Moving average line under the candles -->
-  <path d="M200 690 C 400 650, 560 590, 700 540 S 960 450, 1080 360"
-        fill="none" stroke="#0D5957" stroke-width="3" stroke-dasharray="8 6" opacity="0.55"/>
-  <text x="1096" y="352" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#0D5957" opacity="0.75">moving average</text>
+  <!-- Moving average line -->
+  <path d="M200 700 C 400 660, 560 600, 700 550 S 960 460, 1080 370"
+        fill="none" stroke="#0D5957" stroke-width="3" stroke-dasharray="8 6" opacity="0.5"/>
+  <text x="1010" y="430" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#0D5957" opacity="0.7">moving average</text>
 
-  <!-- Candles. Teal = buyers closed it higher; amber = sellers closed it lower.
-       (The post's point: the colour is a convention — the STRUCTURE is the story.) -->
-  <g stroke-linecap="round">
-    <!-- c1 bull -->
-    <line x1="200" y1="640" x2="200" y2="700" stroke="#15807D" stroke-width="2.5"/>
-    <rect x="183" y="655" width="34" height="35" fill="#15807D"/>
-    <!-- c2 bull -->
-    <line x1="280" y1="610" x2="280" y2="680" stroke="#15807D" stroke-width="2.5"/>
-    <rect x="263" y="625" width="34" height="35" fill="#15807D"/>
-    <!-- c3 bear -->
-    <line x1="360" y1="590" x2="360" y2="650" stroke="#E09A33" stroke-width="2.5"/>
-    <rect x="343" y="625" width="34" height="15" fill="#E09A33"/>
-    <!-- c4 bull (long lower wick — buyers absorbed the sell-off) -->
-    <line x1="440" y1="570" x2="440" y2="672" stroke="#15807D" stroke-width="2.5"/>
-    <rect x="423" y="585" width="34" height="55" fill="#15807D"/>
-    <!-- c5 bull -->
-    <line x1="520" y1="530" x2="520" y2="600" stroke="#15807D" stroke-width="2.5"/>
-    <rect x="503" y="545" width="34" height="40" fill="#15807D"/>
-    <!-- c6 bear -->
-    <line x1="600" y1="500" x2="600" y2="575" stroke="#E09A33" stroke-width="2.5"/>
-    <rect x="583" y="545" width="34" height="15" fill="#E09A33"/>
-    <!-- c7 bull -->
-    <line x1="680" y1="490" x2="680" y2="590" stroke="#15807D" stroke-width="2.5"/>
-    <rect x="663" y="505" width="34" height="55" fill="#15807D"/>
-    <!-- c8 bull -->
-    <line x1="760" y1="440" x2="760" y2="520" stroke="#15807D" stroke-width="2.5"/>
-    <rect x="743" y="460" width="34" height="45" fill="#15807D"/>
-    <!-- c9 bear -->
-    <line x1="840" y1="420" x2="840" y2="482" stroke="#E09A33" stroke-width="2.5"/>
-    <rect x="823" y="460" width="34" height="12" fill="#E09A33"/>
-    <!-- c10 bull -->
-    <line x1="920" y1="380" x2="920" y2="502" stroke="#15807D" stroke-width="2.5"/>
-    <rect x="903" y="400" width="34" height="70" fill="#15807D"/>
-    <!-- c11 bull -->
-    <line x1="1000" y1="330" x2="1000" y2="420" stroke="#15807D" stroke-width="2.5"/>
-    <rect x="983" y="350" width="34" height="50" fill="#15807D"/>
-    <!-- c12 bull -->
-    <line x1="1080" y1="290" x2="1080" y2="382" stroke="#15807D" stroke-width="2.5"/>
-    <rect x="1063" y="305" width="34" height="45" fill="#15807D"/>
+  <!-- Candles. Teal = closed higher, amber = closed lower. -->
+  <g>
+    <line x1="200" y1="650" x2="200" y2="710" stroke="#0D5957" stroke-width="2.5"/>
+    <rect x="183" y="665" width="34" height="35" fill="#15807D"/>
+
+    <line x1="280" y1="620" x2="280" y2="690" stroke="#0D5957" stroke-width="2.5"/>
+    <rect x="263" y="635" width="34" height="35" fill="#15807D"/>
+
+    <line x1="360" y1="600" x2="360" y2="660" stroke="#1C2826" stroke-width="2.5" opacity="0.8"/>
+    <rect x="343" y="635" width="34" height="15" fill="#E09A33"/>
+
+    <!-- c4 — the annotated candle: long lower wick, body near the top -->
+    <line x1="440" y1="580" x2="440" y2="682" stroke="#0D5957" stroke-width="2.5"/>
+    <rect x="423" y="595" width="34" height="55" fill="#15807D"/>
+
+    <line x1="520" y1="540" x2="520" y2="610" stroke="#0D5957" stroke-width="2.5"/>
+    <rect x="503" y="555" width="34" height="40" fill="#15807D"/>
+
+    <line x1="600" y1="510" x2="600" y2="585" stroke="#1C2826" stroke-width="2.5" opacity="0.8"/>
+    <rect x="583" y="555" width="34" height="15" fill="#E09A33"/>
+
+    <line x1="680" y1="500" x2="680" y2="600" stroke="#0D5957" stroke-width="2.5"/>
+    <rect x="663" y="515" width="34" height="55" fill="#15807D"/>
+
+    <line x1="760" y1="450" x2="760" y2="530" stroke="#0D5957" stroke-width="2.5"/>
+    <rect x="743" y="470" width="34" height="45" fill="#15807D"/>
+
+    <line x1="840" y1="430" x2="840" y2="492" stroke="#1C2826" stroke-width="2.5" opacity="0.8"/>
+    <rect x="823" y="470" width="34" height="12" fill="#E09A33"/>
+
+    <line x1="920" y1="390" x2="920" y2="512" stroke="#0D5957" stroke-width="2.5"/>
+    <rect x="903" y="410" width="34" height="70" fill="#15807D"/>
+
+    <line x1="1000" y1="340" x2="1000" y2="430" stroke="#0D5957" stroke-width="2.5"/>
+    <rect x="983" y="360" width="34" height="50" fill="#15807D"/>
+
+    <line x1="1080" y1="300" x2="1080" y2="392" stroke="#0D5957" stroke-width="2.5"/>
+    <rect x="1063" y="315" width="34" height="45" fill="#15807D"/>
   </g>
 
-  <!-- Supply / demand tug-of-war -->
-  <g>
-    <line x1="1360" y1="640" x2="1360" y2="480" stroke="#15807D" stroke-width="5" marker-end="url(#hUp)"/>
-    <text x="1390" y="520" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#15807D">DEMAND</text>
-    <text x="1390" y="546" font-family="Inter, sans-serif" font-size="15" fill="#1C2826" opacity="0.7">buyers win → price rises</text>
+  <!-- Callout tying one candle to the principle -->
+  <path d="M418 620 L340 520" fill="none" stroke="#1C2826" stroke-width="1.5" opacity="0.45"/>
+  <circle cx="418" cy="620" r="4" fill="#1C2826" opacity="0.55"/>
+  <text x="330" y="452" text-anchor="end" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#0D5957">One candle, one battle</text>
+  <text x="330" y="478" text-anchor="end" font-family="Inter, sans-serif" font-size="14.5" fill="#1C2826" opacity="0.8">Sellers shoved price down — that&#8217;s the long</text>
+  <text x="330" y="498" text-anchor="end" font-family="Inter, sans-serif" font-size="14.5" fill="#1C2826" opacity="0.8">lower wick. But buyers absorbed it and</text>
+  <text x="330" y="518" text-anchor="end" font-family="Inter, sans-serif" font-size="14.5" font-weight="600" fill="#0D5957">closed it near the top. Buyers won.</text>
 
-    <line x1="1360" y1="660" x2="1360" y2="810" stroke="#E09A33" stroke-width="5" marker-end="url(#hDown)"/>
-    <text x="1390" y="712" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#E09A33">SUPPLY</text>
-    <text x="1390" y="738" font-family="Inter, sans-serif" font-size="15" fill="#1C2826" opacity="0.7">sellers win → price falls</text>
+  <!-- ── Right panel: the one principle ── -->
+  <rect x="1150" y="250" width="390" height="360" rx="16" fill="#FFFFFF" stroke="#E6E0D5" stroke-width="2"/>
+  <text x="1345" y="292" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#0D5957">The only question that matters</text>
+
+  <!-- Demand: arrow drawn by hand so it always points up -->
+  <g>
+    <rect x="1196" y="352" width="9" height="58" fill="#15807D"/>
+    <polygon points="1200.5,326 1218,356 1183,356" fill="#15807D"/>
+    <text x="1246" y="356" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#15807D">DEMAND &gt; SUPPLY</text>
+    <text x="1246" y="380" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.8">more buyers than sellers</text>
+    <text x="1246" y="402" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#0D5957">→ price rises</text>
+  </g>
+
+  <line x1="1180" y1="440" x2="1510" y2="440" stroke="#E6E0D5" stroke-width="1.5"/>
+
+  <!-- Supply: arrow drawn by hand so it always points down -->
+  <g>
+    <rect x="1196" y="478" width="9" height="58" fill="#E09A33"/>
+    <polygon points="1200.5,562 1183,532 1218,532" fill="#E09A33"/>
+    <text x="1246" y="500" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#E09A33">SUPPLY &gt; DEMAND</text>
+    <text x="1246" y="524" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.8">more sellers than buyers</text>
+    <text x="1246" y="546" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#E09A33">→ price falls</text>
   </g>
 
   <!-- Caption -->
-  <text x="725" y="862" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#1C2826" opacity="0.6">
-    A thousand patterns have a thousand names. All of them are footnotes to one tug-of-war.
+  <text x="620" y="862" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" fill="#1C2826" opacity="0.6">
+    A thousand patterns have a thousand names. All of them are footnotes to that one tug-of-war.
   </text>
 </svg>
