@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-labelledby="title">
+  <title id="title">Support and resistance versus trend lines. On the left, price oscillates between a horizontal resistance level above and a horizontal support level below. On the right, the same behaviour happens along angled lines — a rising channel of higher highs and higher lows — which traders call trend lines.</title>
+  <rect width="1200" height="640" fill="#FBF6EE"/>
+
+  <text x="600" y="46" text-anchor="middle" font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">Support &amp; resistance — and trend lines</text>
+  <text x="600" y="74" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">Same behaviour. If the level is flat we call it support/resistance; if it&#8217;s angled we call it a trend line.</text>
+
+  <!-- LEFT PANEL: horizontal S/R -->
+  <g>
+    <rect x="60" y="105" width="520" height="380" rx="14" fill="#FFFFFF" stroke="#E6E0D5"/>
+    <text x="320" y="136" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#0D5957">Horizontal → support &amp; resistance</text>
+
+    <!-- Resistance -->
+    <line x1="95" y1="185" x2="545" y2="185" stroke="#E09A33" stroke-width="3"/>
+    <text x="100" y="176" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#E09A33">RESISTANCE — profit-taking caps the rally</text>
+
+    <!-- Support -->
+    <line x1="95" y1="420" x2="545" y2="420" stroke="#15807D" stroke-width="3"/>
+    <text x="100" y="440" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#15807D">SUPPORT — buyers step in</text>
+
+    <!-- Price bouncing between -->
+    <polyline points="105,400 165,190 225,410 290,188 350,415 415,186 480,405 545,250"
+              fill="none" stroke="#0D5957" stroke-width="2.5" stroke-linejoin="round"/>
+    <g fill="#E09A33">
+      <circle cx="165" cy="190" r="4"/><circle cx="290" cy="188" r="4"/><circle cx="415" cy="186" r="4"/>
+    </g>
+    <g fill="#15807D">
+      <circle cx="225" cy="410" r="4"/><circle cx="350" cy="415" r="4"/><circle cx="480" cy="405" r="4"/>
+    </g>
+  </g>
+
+  <!-- RIGHT PANEL: angled trend lines / channel -->
+  <g>
+    <rect x="620" y="105" width="520" height="380" rx="14" fill="#FFFFFF" stroke="#E6E0D5"/>
+    <text x="880" y="136" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#0D5957">Angled → trend lines (a channel)</text>
+
+    <!-- Upper trend line -->
+    <line x1="655" y1="390" x2="1105" y2="180" stroke="#E09A33" stroke-width="3"/>
+    <text x="960" y="192" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#E09A33">rising resistance</text>
+
+    <!-- Lower trend line -->
+    <line x1="655" y1="455" x2="1105" y2="245" stroke="#15807D" stroke-width="3"/>
+    <text x="660" y="475" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#15807D">rising support</text>
+
+    <!-- Price zig-zagging up inside the channel -->
+    <polyline points="660,450 715,395 770,432 830,368 890,405 950,340 1010,378 1070,312 1105,290"
+              fill="none" stroke="#0D5957" stroke-width="2.5" stroke-linejoin="round"/>
+
+    <text x="880" y="440" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.75">People keep buying at higher and higher prices —</text>
+    <text x="880" y="458" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.75">demand is steadily rising.</text>
+  </g>
+
+  <!-- Bottom relationship note -->
+  <rect x="60" y="520" width="1080" height="90" rx="12" fill="#FFFFFF" stroke="#0D5957" stroke-width="1.5"/>
+  <text x="600" y="550" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#0D5957">How does this relate to chart patterns?</text>
+  <text x="600" y="576" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.85">Support and resistance are the <tspan font-style="italic">ingredients</tspan>; the chart pattern is the <tspan font-style="italic">dish</tspan>.</text>
+  <text x="600" y="596" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.7">Every pattern has support and resistance built into it — how they converge, run parallel, or flatten out <tspan font-style="italic">is</tspan> the pattern.</text>
+</svg>

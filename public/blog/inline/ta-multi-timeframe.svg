@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title">
+  <title id="title">Multi-time-frame analysis, always top-down. The trade signal comes from the higher timeframe (weekly or daily), you confirm it on the hourly chart, and you only drop to the 5-minute chart to fine-tune the entry price — never as the source of the idea. A signal lasts roughly five to six units of its own timeframe.</title>
+  <rect width="1200" height="700" fill="#FBF6EE"/>
+
+  <defs>
+    <marker id="mtArrow" markerWidth="12" markerHeight="12" refX="8" refY="6" orient="auto">
+      <path d="M1 1 L9 6 L1 11 Z" fill="#0D5957"/>
+    </marker>
+  </defs>
+
+  <text x="600" y="46" text-anchor="middle" font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">Multi-time-frame analysis — always top-down</text>
+  <text x="600" y="74" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">The signal comes from above. The lower chart only refines the entry — it never generates the idea.</text>
+
+  <!-- Funnel steps -->
+  <g>
+    <!-- Step 1 -->
+    <rect x="150" y="110" width="640" height="70" rx="12" fill="#0D5957"/>
+    <text x="172" y="142" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#FFFFFF">1 · Weekly / Daily — the SIGNAL</text>
+    <text x="172" y="165" font-family="Inter, sans-serif" font-size="13" fill="#FFFFFF" opacity="0.85">Where the trade idea is born. (Monthly = long-term, Buffett-style investing.)</text>
+    <line x1="470" y1="180" x2="470" y2="208" stroke="#0D5957" stroke-width="3" marker-end="url(#mtArrow)"/>
+
+    <!-- Step 2 -->
+    <rect x="190" y="212" width="560" height="70" rx="12" fill="#15807D"/>
+    <text x="212" y="244" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#FFFFFF">2 · Hourly — CONFIRM</text>
+    <text x="212" y="267" font-family="Inter, sans-serif" font-size="13" fill="#FFFFFF" opacity="0.9">Does the lower chart agree? If yes, take the trade.</text>
+    <line x1="470" y1="282" x2="470" y2="310" stroke="#0D5957" stroke-width="3" marker-end="url(#mtArrow)"/>
+
+    <!-- Step 3 -->
+    <rect x="230" y="314" width="480" height="70" rx="12" fill="#E09A33"/>
+    <text x="252" y="346" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#1C2826">3 · 5-minute — FINE-TUNE ENTRY</text>
+    <text x="252" y="369" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.85">Purely to get a good price. Never the source of the idea.</text>
+  </g>
+
+  <!-- Warning -->
+  <rect x="820" y="212" width="310" height="172" rx="12" fill="#FFFFFF" stroke="#E09A33" stroke-width="2"/>
+  <text x="975" y="244" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#E09A33">Never trade off the</text>
+  <text x="975" y="266" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#E09A33">5-min or 1-min chart</text>
+  <text x="975" y="296" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.8">…unless you are a genuine</text>
+  <text x="975" y="314" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.8">day trader. Fast charts are full</text>
+  <text x="975" y="332" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.8">of fake breakouts, false</text>
+  <text x="975" y="350" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.8">breakdowns, and chop.</text>
+
+  <!-- Duration rule -->
+  <rect x="60" y="420" width="520" height="240" rx="14" fill="#FFFFFF" stroke="#E6E0D5"/>
+  <text x="320" y="452" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#0D5957">How long does a signal last?</text>
+  <text x="320" y="476" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.75">Roughly <tspan font-weight="700" fill="#0D5957">5–6 units of its own timeframe.</tspan></text>
+
+  <g font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826">
+    <line x1="90" y1="494" x2="550" y2="494" stroke="#E6E0D5"/>
+    <text x="105" y="520">1-minute chart</text><text x="535" y="520" text-anchor="end" font-weight="600" fill="#0D5957">~5–6 minutes</text>
+    <line x1="90" y1="534" x2="550" y2="534" stroke="#E6E0D5"/>
+    <text x="105" y="560">1-hour chart</text><text x="535" y="560" text-anchor="end" font-weight="600" fill="#0D5957">~5–6 hours</text>
+    <line x1="90" y1="574" x2="550" y2="574" stroke="#E6E0D5"/>
+    <text x="105" y="600">Daily chart</text><text x="535" y="600" text-anchor="end" font-weight="600" fill="#0D5957">~5–6 days</text>
+    <line x1="90" y1="614" x2="550" y2="614" stroke="#E6E0D5"/>
+    <text x="105" y="640">Weekly chart</text><text x="535" y="640" text-anchor="end" font-weight="600" fill="#0D5957">~5–6 weeks</text>
+  </g>
+
+  <!-- Cricket analogy -->
+  <rect x="620" y="420" width="520" height="240" rx="14" fill="#FFFFFF" stroke="#E6E0D5"/>
+  <text x="880" y="452" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#0D5957">Which game are you playing?</text>
+
+  <g font-family="Inter, sans-serif">
+    <circle cx="662" cy="492" r="6" fill="#E09A33"/>
+    <text x="682" y="490" font-size="14" font-weight="700" fill="#1C2826">Hourly ≈ a T20 match</text>
+    <text x="682" y="510" font-size="12.5" fill="#1C2826" opacity="0.7">fast, explosive, over quickly → day trading</text>
+
+    <circle cx="662" cy="552" r="6" fill="#15807D"/>
+    <text x="682" y="550" font-size="14" font-weight="700" fill="#1C2826">Daily ≈ a One-Day match</text>
+    <text x="682" y="570" font-size="12.5" fill="#1C2826" opacity="0.7">a full day&#8217;s contest → swing trading</text>
+
+    <circle cx="662" cy="612" r="6" fill="#0D5957"/>
+    <text x="682" y="610" font-size="14" font-weight="700" fill="#1C2826">Weekly ≈ a Test match</text>
+    <text x="682" y="630" font-size="12.5" fill="#1C2826" opacity="0.7">the long game → position / long-term</text>
+  </g>
+
+  <text x="880" y="656" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.65">Money is made in every format — but you must know which one you&#8217;re in.</text>
+</svg>

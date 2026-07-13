@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title">
+  <title id="title">Bollinger Bands: a 20-day moving average with an upper and lower band plotted a set number of standard deviations away. The bands widen when volatility rises and contract when it falls. When they squeeze tightly together, an explosive breakout is usually imminent. Price hugging the upper band is bullish; hugging the lower band is bearish.</title>
+  <rect width="1200" height="620" fill="#FBF6EE"/>
+
+  <defs>
+    <marker id="bbUp" markerWidth="12" markerHeight="12" refX="6" refY="2" orient="auto">
+      <path d="M6 1 L11 10 L1 10 Z" fill="#15807D"/>
+    </marker>
+  </defs>
+
+  <text x="600" y="46" text-anchor="middle" font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">Bollinger Bands: the squeeze and the break</text>
+  <text x="600" y="74" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">Three parts: a 20-day moving average, an upper band, and a lower band that breathe with volatility.</text>
+
+  <!-- Band envelope: wide → squeeze → expand -->
+  <path d="M100 170 C 250 200, 380 265, 520 285 C 620 298, 700 296, 780 288 C 880 276, 980 190, 1120 120
+           L1120 300 C 980 330, 880 350, 780 348 C 700 346, 620 344, 520 340 C 380 336, 250 380, 100 430 Z"
+        fill="#15807D" opacity="0.12"/>
+
+  <!-- Upper band -->
+  <path d="M100 170 C 250 200, 380 265, 520 285 C 620 298, 700 296, 780 288 C 880 276, 980 190, 1120 120"
+        fill="none" stroke="#15807D" stroke-width="2.5"/>
+  <!-- Lower band -->
+  <path d="M100 430 C 250 380, 380 336, 520 340 C 620 344, 700 346, 780 348 C 880 350, 980 330, 1120 300"
+        fill="none" stroke="#15807D" stroke-width="2.5"/>
+  <!-- Middle: 20-day MA -->
+  <path d="M100 300 C 250 290, 380 300, 520 312 C 620 320, 700 320, 780 318 C 880 312, 980 260, 1120 210"
+        fill="none" stroke="#0D5957" stroke-width="2.5" stroke-dasharray="7 5"/>
+
+  <!-- Price line: rides bands, squeezes, then breaks out -->
+  <path d="M100 190 C 160 240, 200 380, 260 370 C 310 362, 350 280, 400 290 C 450 300, 470 330, 520 330
+           C 570 330, 610 305, 660 312 C 710 318, 740 300, 780 302 C 830 300, 880 250, 940 190 C 1000 140, 1060 110, 1120 95"
+        fill="none" stroke="#1C2826" stroke-width="2.5" opacity="0.8"/>
+
+  <!-- Squeeze bracket -->
+  <line x1="520" y1="290" x2="520" y2="336" stroke="#E09A33" stroke-width="2"/>
+  <line x1="780" y1="292" x2="780" y2="344" stroke="#E09A33" stroke-width="2"/>
+  <rect x="520" y="288" width="260" height="58" fill="#E09A33" opacity="0.1"/>
+  <text x="650" y="392" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#E09A33">THE SQUEEZE</text>
+  <text x="650" y="412" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.75">bands converge → volatility is drying up</text>
+  <text x="650" y="430" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.75">→ an explosive move is coming</text>
+
+  <!-- Breakout arrow -->
+  <line x1="900" y1="200" x2="960" y2="140" stroke="#15807D" stroke-width="3" marker-end="url(#bbUp)"/>
+  <text x="960" y="105" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#15807D">BREAKOUT</text>
+  <text x="1010" y="230" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.7">price hugs the upper band</text>
+  <text x="1010" y="248" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="600" fill="#0D5957">= bullish, stay with it</text>
+
+  <!-- Labels -->
+  <text x="112" y="162" font-family="Inter, sans-serif" font-size="12.5" font-weight="600" fill="#15807D">upper band</text>
+  <text x="112" y="448" font-family="Inter, sans-serif" font-size="12.5" font-weight="600" fill="#15807D">lower band</text>
+  <text x="112" y="292" font-family="Inter, sans-serif" font-size="12.5" font-weight="600" fill="#0D5957">20-day MA</text>
+
+  <!-- Rules -->
+  <rect x="100" y="480" width="1020" height="110" rx="12" fill="#FFFFFF" stroke="#E6E0D5"/>
+  <text x="122" y="508" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.9">• Hugging the <tspan font-weight="600" fill="#15807D">upper band</tspan> → bullish. Hugging the <tspan font-weight="600" fill="#E09A33">lower band</tspan> → bearish.</text>
+  <text x="122" y="534" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.9">• Bands <tspan font-weight="600">expanding</tspan> → volatility rising. Bands <tspan font-weight="600">contracting</tspan> → volatility falling.</text>
+  <text x="122" y="560" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.9">• Bands <tspan font-weight="600" fill="#E09A33">converging tightly</tspan> → a breakout is imminent (the break itself tells you the direction).</text>
+  <text x="122" y="582" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.65">The 20-day MA is already built in — so you never need to plot a separate one.</text>
+</svg>

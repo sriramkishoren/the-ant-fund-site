@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title">
+  <title id="title">Anatomy of a candlestick. Each candle encodes four prices — open, high, low and close (OHLC). The rectangular body spans the open and the close; the thin wicks above and below mark the high and low that price touched but could not hold.</title>
+  <rect width="1200" height="620" fill="#FBF6EE"/>
+
+  <text x="600" y="50" text-anchor="middle" font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">Anatomy of a candlestick</text>
+  <text x="600" y="78" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">One candle = one time period (a day, an hour, a week). It packs in four prices: O, H, L, C.</text>
+
+  <!-- LEFT: a bullish candle (close above open) -->
+  <g>
+    <!-- upper wick -->
+    <line x1="330" y1="150" x2="330" y2="220" stroke="#0D5957" stroke-width="3"/>
+    <!-- body -->
+    <rect x="295" y="220" width="70" height="180" fill="#15807D" rx="2"/>
+    <!-- lower wick -->
+    <line x1="330" y1="400" x2="330" y2="490" stroke="#0D5957" stroke-width="3"/>
+
+    <!-- Guide lines + labels -->
+    <line x1="330" y1="150" x2="560" y2="150" stroke="#1C2826" stroke-width="1" stroke-dasharray="4 4" opacity="0.45"/>
+    <text x="572" y="146" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#0D5957">H — High</text>
+    <text x="572" y="166" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.7">highest price touched in the period</text>
+
+    <line x1="365" y1="220" x2="560" y2="220" stroke="#1C2826" stroke-width="1" stroke-dasharray="4 4" opacity="0.45"/>
+    <text x="572" y="216" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#0D5957">C — Close</text>
+    <text x="572" y="236" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.7">where the period ended (the top of the body here)</text>
+
+    <line x1="365" y1="400" x2="560" y2="400" stroke="#1C2826" stroke-width="1" stroke-dasharray="4 4" opacity="0.45"/>
+    <text x="572" y="396" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#0D5957">O — Open</text>
+    <text x="572" y="416" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.7">where the period started</text>
+
+    <line x1="330" y1="490" x2="560" y2="490" stroke="#1C2826" stroke-width="1" stroke-dasharray="4 4" opacity="0.45"/>
+    <text x="572" y="486" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#0D5957">L — Low</text>
+    <text x="572" y="506" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.7">lowest price touched in the period</text>
+
+    <!-- Body / wick callouts on the left -->
+    <line x1="255" y1="310" x2="288" y2="310" stroke="#15807D" stroke-width="1.5"/>
+    <text x="248" y="306" text-anchor="end" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#15807D">BODY</text>
+    <text x="248" y="326" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">open → close</text>
+    <text x="248" y="342" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">who actually won</text>
+
+    <line x1="255" y1="450" x2="325" y2="450" stroke="#E09A33" stroke-width="1.5"/>
+    <text x="248" y="446" text-anchor="end" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#E09A33">WICK</text>
+    <text x="248" y="466" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">(a.k.a. the shadow)</text>
+    <text x="248" y="482" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">where a side tried and failed</text>
+  </g>
+
+  <!-- RIGHT: the story a long lower wick tells -->
+  <g transform="translate(880, 0)">
+    <text x="0" y="150" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#0D5957">The story in one candle</text>
+
+    <!-- candle with long lower wick -->
+    <line x1="0" y1="200" x2="0" y2="230" stroke="#0D5957" stroke-width="3"/>
+    <rect x="-30" y="230" width="60" height="70" fill="#15807D" rx="2"/>
+    <line x1="0" y1="300" x2="0" y2="430" stroke="#0D5957" stroke-width="3"/>
+
+    <!-- annotations -->
+    <text x="0" y="470" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.85">1. Opened, then sold off hard</text>
+    <text x="0" y="492" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.85">(long lower wick = sellers pushed)</text>
+    <text x="0" y="518" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.85">2. Buyers stepped in at the low</text>
+    <text x="0" y="540" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0D5957">3. Closed near the top → buyers won</text>
+  </g>
+
+  <!-- Bottom note -->
+  <rect x="100" y="560" width="1000" height="42" rx="10" fill="#FFFFFF" stroke="#E6E0D5"/>
+  <text x="600" y="587" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.85">
+    <tspan font-weight="600" fill="#0D5957">Forget the colour.</tspan> What matters is where the body sits relative to the wicks — that is the supply-demand story.
+  </text>
+</svg>

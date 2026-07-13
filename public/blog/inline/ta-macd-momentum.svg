@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="title">
+  <title id="title">MACD stands for Moving Average Convergence Divergence. It measures the gap between a fast and a slow moving average. When the two lines run parallel the trend is simply continuing. When they expand apart, momentum is accelerating — powerfully bullish. When they converge, momentum is fading, warning of consolidation or a reversal.</title>
+  <rect width="1200" height="560" fill="#FBF6EE"/>
+
+  <text x="600" y="46" text-anchor="middle" font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">MACD = Moving Average Convergence Divergence</text>
+  <text x="600" y="74" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">The name <tspan font-style="italic">is</tspan> the concept: what is the gap between a fast and a slow moving average doing?</text>
+
+  <!-- PANEL 1: PARALLEL -->
+  <g>
+    <rect x="60" y="110" width="340" height="300" rx="14" fill="#FFFFFF" stroke="#E6E0D5"/>
+    <text x="230" y="142" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#1C2826" opacity="0.75">PARALLEL</text>
+
+    <line x1="95" y1="290" x2="365" y2="200" stroke="#0D5957" stroke-width="3"/>
+    <line x1="95" y1="340" x2="365" y2="250" stroke="#15807D" stroke-width="3" stroke-dasharray="7 5"/>
+    <!-- gap markers -->
+    <line x1="150" y1="272" x2="150" y2="322" stroke="#1C2826" stroke-width="1.5" opacity="0.5"/>
+    <line x1="310" y1="218" x2="310" y2="268" stroke="#1C2826" stroke-width="1.5" opacity="0.5"/>
+    <text x="230" y="372" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.85">The gap stays the same.</text>
+    <text x="230" y="394" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0D5957">The trend is simply continuing.</text>
+  </g>
+
+  <!-- PANEL 2: EXPANDING -->
+  <g>
+    <rect x="430" y="110" width="340" height="300" rx="14" fill="#FFFFFF" stroke="#15807D" stroke-width="2"/>
+    <text x="600" y="142" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#15807D">EXPANDING</text>
+
+    <line x1="465" y1="300" x2="735" y2="175" stroke="#0D5957" stroke-width="3"/>
+    <line x1="465" y1="330" x2="735" y2="285" stroke="#15807D" stroke-width="3" stroke-dasharray="7 5"/>
+    <line x1="510" y1="279" x2="510" y2="323" stroke="#1C2826" stroke-width="1.5" opacity="0.5"/>
+    <line x1="700" y1="191" x2="700" y2="279" stroke="#15807D" stroke-width="2"/>
+    <text x="230" y="0" font-size="0"> </text>
+    <text x="600" y="372" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.85">The gap is <tspan font-weight="600">widening.</tspan></text>
+    <text x="600" y="394" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#15807D">Momentum is accelerating — super bullish.</text>
+  </g>
+
+  <!-- PANEL 3: CONVERGING -->
+  <g>
+    <rect x="800" y="110" width="340" height="300" rx="14" fill="#FFFFFF" stroke="#E09A33" stroke-width="2"/>
+    <text x="970" y="142" text-anchor="middle" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#E09A33">CONVERGING</text>
+
+    <line x1="835" y1="290" x2="1105" y2="240" stroke="#0D5957" stroke-width="3"/>
+    <line x1="835" y1="350" x2="1105" y2="255" stroke="#15807D" stroke-width="3" stroke-dasharray="7 5"/>
+    <line x1="870" y1="284" x2="870" y2="338" stroke="#E09A33" stroke-width="2"/>
+    <line x1="1080" y1="245" x2="1080" y2="258" stroke="#1C2826" stroke-width="1.5" opacity="0.5"/>
+    <text x="970" y="372" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.85">The gap is <tspan font-weight="600">shrinking.</tspan></text>
+    <text x="970" y="394" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#E09A33">Momentum is fading — pause or reversal.</text>
+  </g>
+
+  <!-- Bottom: the prized entry -->
+  <rect x="60" y="440" width="1080" height="90" rx="12" fill="#FFFFFF" stroke="#0D5957" stroke-width="1.5"/>
+  <text x="600" y="470" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#0D5957">The prized entry: &#8220;crossover, kiss, and bounce&#8221;</text>
+  <text x="600" y="496" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.85">MACD crosses up (bottoming) → pulls back to <tspan font-style="italic">kiss</tspan> the signal line → then bounces off it a second time.</text>
+  <text x="600" y="518" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.85">That second touch-and-bounce is the highest-conviction entry. A crossover <tspan font-weight="600" fill="#E09A33">down</tspan> is the signal to exit.</text>
+</svg>

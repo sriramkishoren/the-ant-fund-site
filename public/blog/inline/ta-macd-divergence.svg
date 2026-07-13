@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" role="img" aria-labelledby="title">
+  <title id="title">MACD divergence. Negative divergence: price makes a higher high but MACD makes a lower high — the rally is running on fumes, a topping pattern in bull markets. Positive divergence: price makes a lower low but MACD makes a higher low — selling pressure is exhausting, a bottoming pattern in bear markets.</title>
+  <rect width="1200" height="680" fill="#FBF6EE"/>
+
+  <text x="600" y="46" text-anchor="middle" font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">Divergence: when price and momentum disagree</text>
+  <text x="600" y="74" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">The most powerful thing MACD tells you — and it fires before the turn, not after.</text>
+
+  <!-- LEFT: NEGATIVE DIVERGENCE -->
+  <g>
+    <rect x="55" y="100" width="530" height="530" rx="14" fill="#FFFFFF" stroke="#E09A33" stroke-width="2"/>
+    <text x="320" y="132" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#E09A33">NEGATIVE DIVERGENCE</text>
+    <text x="320" y="154" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.7">a topping pattern — appears in bull markets</text>
+
+    <!-- price panel -->
+    <text x="80" y="184" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#1C2826" opacity="0.6">PRICE</text>
+    <polyline points="90,300 160,230 230,270 300,200 370,250 440,175 520,215"
+              fill="none" stroke="#1C2826" stroke-width="2.5" opacity="0.85" stroke-linejoin="round"/>
+    <!-- higher highs trendline -->
+    <line x1="160" y1="228" x2="440" y2="173" stroke="#0D5957" stroke-width="2" stroke-dasharray="5 4"/>
+    <circle cx="160" cy="230" r="5" fill="#0D5957"/>
+    <circle cx="300" cy="200" r="5" fill="#0D5957"/>
+    <circle cx="440" cy="175" r="5" fill="#0D5957"/>
+    <text x="455" y="160" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0D5957">higher highs ↑</text>
+
+    <line x1="80" y1="330" x2="560" y2="330" stroke="#E6E0D5" stroke-width="1.5"/>
+
+    <!-- MACD panel -->
+    <text x="80" y="362" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#1C2826" opacity="0.6">MACD</text>
+    <polyline points="90,470 160,400 230,445 300,420 370,450 440,442 520,480"
+              fill="none" stroke="#15807D" stroke-width="2.5" stroke-linejoin="round"/>
+    <!-- lower highs trendline -->
+    <line x1="160" y1="402" x2="440" y2="440" stroke="#E09A33" stroke-width="2" stroke-dasharray="5 4"/>
+    <circle cx="160" cy="400" r="5" fill="#E09A33"/>
+    <circle cx="300" cy="420" r="5" fill="#E09A33"/>
+    <circle cx="440" cy="442" r="5" fill="#E09A33"/>
+    <text x="455" y="466" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#E09A33">lower highs ↓</text>
+
+    <text x="320" y="540" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.9">Price keeps making new highs…</text>
+    <text x="320" y="562" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.9">but momentum is quietly declining.</text>
+    <text x="320" y="592" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#E09A33">The rally is running on fumes.</text>
+    <text x="320" y="614" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1C2826" opacity="0.8">Bearish — watch out.</text>
+  </g>
+
+  <!-- RIGHT: POSITIVE DIVERGENCE -->
+  <g>
+    <rect x="615" y="100" width="530" height="530" rx="14" fill="#FFFFFF" stroke="#15807D" stroke-width="2"/>
+    <text x="880" y="132" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#15807D">POSITIVE DIVERGENCE</text>
+    <text x="880" y="154" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.7">a bottoming pattern — appears in bear markets</text>
+
+    <!-- price panel -->
+    <text x="640" y="184" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#1C2826" opacity="0.6">PRICE</text>
+    <polyline points="650,200 720,265 790,225 860,290 930,250 1000,315 1080,275"
+              fill="none" stroke="#1C2826" stroke-width="2.5" opacity="0.85" stroke-linejoin="round"/>
+    <!-- lower lows trendline -->
+    <line x1="720" y1="267" x2="1000" y2="317" stroke="#E09A33" stroke-width="2" stroke-dasharray="5 4"/>
+    <circle cx="720" cy="265" r="5" fill="#E09A33"/>
+    <circle cx="860" cy="290" r="5" fill="#E09A33"/>
+    <circle cx="1000" cy="315" r="5" fill="#E09A33"/>
+    <text x="1015" y="335" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#E09A33">lower lows ↓</text>
+
+    <line x1="640" y1="360" x2="1120" y2="360" stroke="#E6E0D5" stroke-width="1.5"/>
+
+    <!-- MACD panel -->
+    <text x="640" y="392" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#1C2826" opacity="0.6">MACD</text>
+    <polyline points="650,410 720,480 790,450 860,470 930,440 1000,455 1080,410"
+              fill="none" stroke="#15807D" stroke-width="2.5" stroke-linejoin="round"/>
+    <!-- higher lows trendline -->
+    <line x1="720" y1="482" x2="1000" y2="457" stroke="#15807D" stroke-width="2" stroke-dasharray="5 4"/>
+    <circle cx="720" cy="480" r="5" fill="#15807D"/>
+    <circle cx="860" cy="470" r="5" fill="#15807D"/>
+    <circle cx="1000" cy="455" r="5" fill="#15807D"/>
+    <text x="1015" y="478" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#15807D">higher lows ↑</text>
+
+    <text x="880" y="540" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.9">Price is still falling…</text>
+    <text x="880" y="562" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.9">but momentum is already turning up.</text>
+    <text x="880" y="592" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#15807D">Selling pressure is exhausting.</text>
+    <text x="880" y="614" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1C2826" opacity="0.8">Bullish.</text>
+  </g>
+</svg>

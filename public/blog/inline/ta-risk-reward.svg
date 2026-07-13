@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" role="img" aria-labelledby="title">
+  <title id="title">A five-to-one risk-reward setup. Entry near thirty-one dollars, a stop-loss just below support at twenty-nine dollars risks two dollars per share, while a target near forty dollars offers ten dollars of reward. The trigger is a close above the thirty-two dollar resistance level; until then, no trade.</title>
+  <rect width="1200" height="620" fill="#FBF6EE"/>
+
+  <text x="600" y="46" text-anchor="middle" font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">A setup is a pattern <tspan font-style="italic">plus</tspan> a stop, a target, and a ratio</text>
+  <text x="600" y="74" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">Risking $2 to make $10 is a 5:1 trade. You can be wrong more often than right and still win.</text>
+
+  <!-- Price scale on the left -->
+  <line x1="180" y1="120" x2="180" y2="500" stroke="#1C2826" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Target level $40 -->
+  <line x1="180" y1="140" x2="900" y2="140" stroke="#15807D" stroke-width="2.5" stroke-dasharray="8 5"/>
+  <text x="170" y="145" text-anchor="end" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#15807D">$40</text>
+  <text x="912" y="138" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#15807D">TARGET</text>
+  <text x="912" y="158" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">where the move could run to</text>
+
+  <!-- Trigger $32 -->
+  <line x1="180" y1="320" x2="900" y2="320" stroke="#E09A33" stroke-width="2.5"/>
+  <text x="170" y="325" text-anchor="end" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#E09A33">$32</text>
+  <text x="912" y="318" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#E09A33">TRIGGER — resistance</text>
+  <text x="912" y="338" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">only go long on a close ABOVE this</text>
+
+  <!-- Entry ~$31 -->
+  <line x1="180" y1="360" x2="900" y2="360" stroke="#0D5957" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="170" y="365" text-anchor="end" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#0D5957">$31</text>
+  <text x="912" y="365" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0D5957">ENTRY (~$31–31.25)</text>
+
+  <!-- Support / stop $29 -->
+  <line x1="180" y1="440" x2="900" y2="440" stroke="#E09A33" stroke-width="2.5" stroke-dasharray="8 5"/>
+  <text x="170" y="445" text-anchor="end" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#E09A33">$29</text>
+  <text x="912" y="438" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#E09A33">STOP-LOSS</text>
+  <text x="912" y="458" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">just below support — the exit if wrong</text>
+
+  <!-- Price path: bottoming, approaching the trigger -->
+  <polyline points="200,400 250,430 300,412 350,436 400,405 450,420 500,385 550,395 600,370 650,378 700,362 750,352"
+            fill="none" stroke="#1C2826" stroke-width="2.5" opacity="0.8" stroke-linejoin="round"/>
+  <!-- projected breakout -->
+  <polyline points="750,352 800,316 850,255 900,190 940,150"
+            fill="none" stroke="#15807D" stroke-width="2.5" stroke-dasharray="6 5"/>
+
+  <text x="400" y="470" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.7">bottoming pattern + bullish MACD divergence already in place</text>
+
+  <!-- Reward bracket (entry -> target) -->
+  <line x1="120" y1="140" x2="120" y2="360" stroke="#15807D" stroke-width="3"/>
+  <line x1="112" y1="140" x2="128" y2="140" stroke="#15807D" stroke-width="3"/>
+  <line x1="112" y1="360" x2="128" y2="360" stroke="#15807D" stroke-width="3"/>
+  <text x="100" y="240" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#15807D" transform="rotate(-90 100 240)">REWARD  +$10</text>
+
+  <!-- Risk bracket (entry -> stop) -->
+  <line x1="120" y1="360" x2="120" y2="440" stroke="#E09A33" stroke-width="3"/>
+  <line x1="112" y1="440" x2="128" y2="440" stroke="#E09A33" stroke-width="3"/>
+  <text x="100" y="400" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#E09A33" transform="rotate(-90 100 400)">RISK −$2</text>
+
+  <!-- Verdict box -->
+  <rect x="180" y="510" width="840" height="86" rx="12" fill="#FFFFFF" stroke="#0D5957" stroke-width="1.5"/>
+  <text x="600" y="542" text-anchor="middle" font-family="Fraunces, serif" font-size="24" font-weight="600" fill="#0D5957">$10 of reward for $2 of risk — 5 : 1</text>
+  <text x="600" y="570" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.85">At 5:1, even a setup that fails more often than it works can still be very profitable.</text>
+  <text x="600" y="589" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.65">And until price closes above the trigger, you do nothing at all.</text>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="title">
+  <title id="title">Every candlestick collapses into three categories: bullish (a long lower wick with the body near the top — the hammer), bearish (a long upper wick with the body near the bottom — the shooting star), and neutral (open and close almost equal with wicks both sides — the doji).</title>
+  <rect width="1200" height="560" fill="#FBF6EE"/>
+
+  <text x="600" y="48" text-anchor="middle" font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">Three categories are all you need</text>
+  <text x="600" y="76" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">There are dozens of named patterns. Every one of them is one of these three.</text>
+
+  <!-- BULLISH -->
+  <g>
+    <rect x="80" y="110" width="320" height="380" rx="14" fill="#FFFFFF" stroke="#15807D" stroke-width="2"/>
+    <text x="240" y="146" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#15807D">BULLISH</text>
+
+    <!-- hammer: small upper wick, body at top, long lower wick -->
+    <line x1="240" y1="190" x2="240" y2="205" stroke="#0D5957" stroke-width="3"/>
+    <rect x="215" y="205" width="50" height="55" fill="#15807D" rx="2"/>
+    <line x1="240" y1="260" x2="240" y2="360" stroke="#0D5957" stroke-width="3"/>
+
+    <text x="240" y="396" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.85">Price dipped, buyers absorbed it,</text>
+    <text x="240" y="416" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.85">and it closed strong near the top.</text>
+    <text x="240" y="446" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#0D5957">Buyers won.</text>
+    <text x="240" y="470" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.6">(the classic &#8220;hammer&#8221;)</text>
+  </g>
+
+  <!-- BEARISH -->
+  <g>
+    <rect x="440" y="110" width="320" height="380" rx="14" fill="#FFFFFF" stroke="#E09A33" stroke-width="2"/>
+    <text x="600" y="146" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#E09A33">BEARISH</text>
+
+    <!-- shooting star: long upper wick, body at bottom -->
+    <line x1="600" y1="190" x2="600" y2="290" stroke="#1C2826" stroke-width="3" opacity="0.8"/>
+    <rect x="575" y="290" width="50" height="55" fill="#E09A33" rx="2"/>
+    <line x1="600" y1="345" x2="600" y2="360" stroke="#1C2826" stroke-width="3" opacity="0.8"/>
+
+    <text x="600" y="396" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.85">Price pushed up, sellers rejected it,</text>
+    <text x="600" y="416" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.85">and it closed near the low.</text>
+    <text x="600" y="446" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#E09A33">Sellers won.</text>
+    <text x="600" y="470" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.6">(&#8220;shooting star&#8221; / inverted hammer)</text>
+  </g>
+
+  <!-- NEUTRAL -->
+  <g>
+    <rect x="800" y="110" width="320" height="380" rx="14" fill="#FFFFFF" stroke="#E6E0D5" stroke-width="2"/>
+    <text x="960" y="146" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#1C2826" opacity="0.6">NEUTRAL</text>
+
+    <!-- doji: wicks both sides, tiny body -->
+    <line x1="960" y1="200" x2="960" y2="270" stroke="#1C2826" stroke-width="3" opacity="0.7"/>
+    <rect x="930" y="270" width="60" height="6" fill="#1C2826" opacity="0.75"/>
+    <line x1="960" y1="276" x2="960" y2="350" stroke="#1C2826" stroke-width="3" opacity="0.7"/>
+
+    <text x="960" y="396" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.85">Open and close are nearly equal,</text>
+    <text x="960" y="416" text-anchor="middle" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.85">with wicks on both sides.</text>
+    <text x="960" y="446" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1C2826" opacity="0.75">Nobody won — undecided.</text>
+    <text x="960" y="470" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.6">(the classic &#8220;doji&#8221;)</text>
+  </g>
+
+  <text x="600" y="530" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.8">
+    Learn the <tspan font-weight="600" fill="#0D5957">structure</tspan> first. Then a &#8220;hanging man&#8221; or &#8220;inverted hammer&#8221; is just a name you can look up — and it instantly makes sense.
+  </text>
+</svg>
