@@ -1,4 +1,4 @@
-import { useId } from 'react';
+import { NumericField } from '@/components/ui/NumericField';
 import { useCurrency } from '@/lib/currency-context';
 
 type Props = {
@@ -8,44 +8,27 @@ type Props = {
 
 export function SpendingInput({ value, onChange }: Props) {
   const { meta, money } = useCurrency();
-  const id = useId();
-  const monthly = value > 0 ? value / 12 : 0;
+
   return (
-    <div>
-      <div className="flex flex-wrap items-baseline justify-between gap-x-3">
-        <label htmlFor={id} className="block text-sm font-medium text-teal-dark">
-          Annual spending in retirement
-        </label>
-        <span className="text-xs text-ink/55">
-          ≈ <span className="font-medium text-teal-dark">{money(monthly)}</span>/month
-        </span>
-      </div>
-      <div className="relative mt-1">
-        <span className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-ink/60">
-          $
-        </span>
-        <input
-          id={id}
-          type="number"
-          inputMode="decimal"
-          min={0}
-          step={1000}
-          value={value}
-          onChange={(e) => {
-            const n = Number(e.target.value);
-            onChange(Number.isFinite(n) && n >= 0 ? n : 0);
-          }}
-          className="block w-full rounded-md border border-border bg-surface py-3 pl-7 pr-12 text-lg font-medium text-ink shadow-sm transition-colors focus:border-teal focus-visible:outline-2 focus-visible:outline-teal"
-        />
-        <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm text-ink/60">
-          /yr
-        </span>
-      </div>
-      <p className="mt-1 text-xs text-ink/60">
-        <span className="font-medium text-teal-dark">In today&apos;s {meta.terms.noun}</span> — what your
-        retirement lifestyle would cost if you started living it this year. The headline FIRE
-        number comes out in today&apos;s {meta.terms.noun} too.
-      </p>
-    </div>
+    <NumericField
+      label="Annual spending in retirement"
+      value={value}
+      onChange={onChange}
+      min={0}
+      step={meta.steps.medium}
+      prefix={meta.symbol}
+      suffix="/yr"
+      inputClassName="py-3 text-lg font-medium"
+      help={
+        <>
+          <span className="font-medium text-teal-dark">
+            In today&apos;s {meta.terms.noun}
+          </span>{' '}
+          — what your retirement lifestyle would cost if you started living it this year (about{' '}
+          <span className="font-medium text-teal-dark">{money(value / 12)}</span> a month). The
+          headline FIRE number comes out in today&apos;s {meta.terms.noun} too.
+        </>
+      }
+    />
   );
 }

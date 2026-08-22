@@ -1,11 +1,6 @@
-import {
-  forwardRef,
-  type InputHTMLAttributes,
-  type SelectHTMLAttributes,
-  type ReactNode,
-  useId,
-} from 'react';
+import { forwardRef, type SelectHTMLAttributes, type ReactNode, useId } from 'react';
 import { InfoTooltip } from './InfoTooltip';
+import { NumericField } from './NumericField';
 
 const helpCls = 'mt-1 text-xs text-ink/60';
 const errorCls = 'mt-1 text-xs font-medium text-amber';
@@ -31,58 +26,31 @@ function FieldLabel({
   );
 }
 
-type WithSuffix = { suffix?: ReactNode };
-
-type NumberFieldProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> & {
+/**
+ * Monte Carlo's field. A thin wrapper over the shared NumericField so every
+ * calculator shares one set of typing rules — see NumericField for why raw
+ * `value={number}` binding cannot be used.
+ */
+type NumberFieldProps = {
   label: string;
+  value: number;
+  onChange: (n: number) => void;
   help?: string;
   /** Plain-language explanation surfaced via an info icon next to the label. */
   tip?: string;
   error?: string | null;
-} & WithSuffix;
+  suffix?: ReactNode;
+  min?: number;
+  max?: number;
+  step?: number;
+  id?: string;
+  className?: string;
+  inputMode?: 'decimal' | 'numeric';
+};
 
-export const NumberField = forwardRef<HTMLInputElement, NumberFieldProps>(function NumberField(
-  { label, help, tip, error, suffix, id, className = '', ...rest },
-  ref,
-) {
-  const autoId = useId();
-  const inputId = id ?? autoId;
-  const describedBy = [help ? `${inputId}-help` : null, error ? `${inputId}-err` : null]
-    .filter(Boolean)
-    .join(' ');
-  return (
-    <div className={className}>
-      <FieldLabel htmlFor={inputId} label={label} tip={tip} />
-      <div className="relative">
-        <input
-          id={inputId}
-          ref={ref}
-          type="number"
-          inputMode="decimal"
-          aria-invalid={error ? true : undefined}
-          aria-describedby={describedBy || undefined}
-          className={`${controlBase} ${suffix ? 'pr-12' : ''} ${error ? 'border-amber' : ''}`}
-          {...rest}
-        />
-        {suffix ? (
-          <span className="pointer-events-none absolute inset-y-0 right-3 mt-1 flex items-center text-sm text-ink/60">
-            {suffix}
-          </span>
-        ) : null}
-      </div>
-      {help && !error ? (
-        <p id={`${inputId}-help`} className={helpCls}>
-          {help}
-        </p>
-      ) : null}
-      {error ? (
-        <p id={`${inputId}-err`} className={errorCls} role="alert">
-          {error}
-        </p>
-      ) : null}
-    </div>
-  );
-});
+export function NumberField(props: NumberFieldProps) {
+  return <NumericField {...props} />;
+}
 
 type SelectFieldProps = SelectHTMLAttributes<HTMLSelectElement> & {
   label: string;

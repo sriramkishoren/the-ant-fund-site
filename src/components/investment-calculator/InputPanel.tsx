@@ -1,5 +1,5 @@
 import { SelectField } from '@/components/ui/Field';
-import { NumericInput } from './NumericInput';
+import { NumericField } from '@/components/ui/NumericField';
 import { SolvedField } from './SolvedField';
 import type {
   CompoundingFrequency,
@@ -68,7 +68,7 @@ export function InputPanel({
       />
 
       {solveFor !== 'endAmount' ? (
-        <NumericInput
+        <NumericField
           label="Goal (target end balance)"
           value={targetEndAmount}
           onChange={onTargetChange}
@@ -84,7 +84,7 @@ export function InputPanel({
       {solveFor === 'startingAmount' ? (
         <SolvedField label="Required starting amount" kind="currency" value={solvedValue} />
       ) : (
-        <NumericInput
+        <NumericField
           label="Starting amount"
           value={input.startingAmount}
           onChange={(n) => onChange({ startingAmount: n })}
@@ -102,7 +102,7 @@ export function InputPanel({
           value={solvedValue}
         />
       ) : (
-        <NumericInput
+        <NumericField
           label="Additional contribution"
           value={input.contribution}
           onChange={(n) => onChange({ contribution: n })}
@@ -135,7 +135,7 @@ export function InputPanel({
       {solveFor === 'return' ? (
         <SolvedField label="Required annual return" kind="percent" value={solvedValue} />
       ) : (
-        <NumericInput
+        <NumericField
           label="Expected annual return"
           value={input.annualReturn}
           onChange={(n) => onChange({ annualReturn: n })}
@@ -152,7 +152,7 @@ export function InputPanel({
         {solveFor === 'time' ? (
           <SolvedField label="Time to reach goal" kind="years" value={solvedValue} />
         ) : (
-          <NumericInput
+          <NumericField
             label="Investment length"
             value={input.years}
             onChange={(n) => onChange({ years: n })}

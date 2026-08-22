@@ -1,4 +1,4 @@
-import { NumericInput } from '@/components/investment-calculator/NumericInput';
+import { NumericField } from '@/components/ui/NumericField';
 import { InfoTooltip } from '@/components/ui/InfoTooltip';
 import { RangeSlider } from './RangeSlider';
 import { effectiveStabilityTarget } from '@/features/bucket-strategy/rules';
@@ -36,7 +36,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
       {/* Portfolio & spending */}
       <div className="space-y-4">
         <SectionTitle>Portfolio &amp; spending</SectionTitle>
-        <NumericInput
+        <NumericField
           label="Total portfolio"
           value={params.totalPortfolio}
           onChange={(n) => onChange({ totalPortfolio: n })}
@@ -44,7 +44,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
           min={0}
           step={meta.steps.large}
         />
-        <NumericInput
+        <NumericField
           label="Monthly expenses"
           value={params.monthlyExpenses}
           onChange={(n) => onChange({ monthlyExpenses: n })}
@@ -118,7 +118,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
           <span className="font-medium text-teal-dark">Real</span> (today&rsquo;s{' '}
           {meta.terms.noun}) and <span className="font-medium text-teal-dark">Nominal</span>.
         </div>
-        <NumericInput
+        <NumericField
           label="Expected inflation"
           value={params.inflationPct}
           onChange={(n) => onChange({ inflationPct: n })}
@@ -129,7 +129,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
           help={`Drives how fast your expenses (and any ${meta.terms.stateIncomeShort}) grow each year.`}
         />
         <div className="grid grid-cols-2 gap-4">
-          <NumericInput
+          <NumericField
             label="Equity return"
             value={params.equityReturnPct}
             onChange={(n) => onChange({ equityReturnPct: n })}
@@ -139,7 +139,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
             step={0.1}
             help="Nominal, before inflation."
           />
-          <NumericInput
+          <NumericField
             label="Equity volatility"
             value={params.equityVolPct}
             onChange={(n) => onChange({ equityVolPct: n })}
@@ -150,7 +150,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
             help="Year-to-year swings."
           />
         </div>
-        <NumericInput
+        <NumericField
           label="Fixed-income return"
           value={params.fixedIncomeReturnPct}
           onChange={(n) => onChange({ fixedIncomeReturnPct: n })}
@@ -165,7 +165,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
       {/* Maintenance rules */}
       <div className="space-y-4">
         <SectionTitle>Maintenance rules</SectionTitle>
-        <NumericInput
+        <NumericField
           label="Crash-skip threshold"
           value={params.crashSkipThresholdPct}
           onChange={(n) => onChange({ crashSkipThresholdPct: n })}
@@ -207,7 +207,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
               </span>
             </label>
             <div className="grid grid-cols-2 gap-4">
-              <NumericInput
+              <NumericField
                 label="Cut above WR"
                 value={params.guardrailCutRatePct}
                 onChange={(n) => onChange({ guardrailCutRatePct: n })}
@@ -217,7 +217,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
                 step={0.1}
                 help="Cut spending 10% when the withdrawal rate exceeds this."
               />
-              <NumericInput
+              <NumericField
                 label="Restore below WR"
                 value={params.guardrailRestoreRatePct}
                 onChange={(n) => onChange({ guardrailRestoreRatePct: n })}
@@ -236,7 +236,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
       <div className="space-y-4">
         <SectionTitle>Other income</SectionTitle>
         <div className="grid grid-cols-2 gap-4">
-          <NumericInput
+          <NumericField
             label={meta.terms.stateIncome}
             value={params.socialSecurityMonthly}
             onChange={(n) => onChange({ socialSecurityMonthly: n })}
@@ -245,7 +245,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
             min={0}
             step={meta.steps.small}
           />
-          <NumericInput
+          <NumericField
             label="Starts in year"
             value={params.socialSecurityStartYear}
             onChange={(n) => onChange({ socialSecurityStartYear: n })}
@@ -268,7 +268,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
           </span>
         </p>
         <div className="grid grid-cols-2 gap-4">
-          <NumericInput
+          <NumericField
             label="Part-time income"
             value={params.partTimeMonthly}
             onChange={(n) => onChange({ partTimeMonthly: n })}
@@ -277,7 +277,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
             min={0}
             step={meta.steps.small}
           />
-          <NumericInput
+          <NumericField
             label="for first N years"
             value={params.partTimeYears}
             onChange={(n) => onChange({ partTimeYears: n })}
@@ -293,7 +293,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
       <div className="space-y-4">
         <SectionTitle>Simulation</SectionTitle>
         <div className="grid grid-cols-2 gap-4">
-          <NumericInput
+          <NumericField
             label="Horizon"
             value={params.horizonYears}
             onChange={(n) => onChange({ horizonYears: n })}
@@ -302,7 +302,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
             max={60}
             step={1}
           />
-          <NumericInput
+          <NumericField
             label="Monte Carlo runs"
             value={params.numRuns}
             onChange={(n) => onChange({ numRuns: n })}

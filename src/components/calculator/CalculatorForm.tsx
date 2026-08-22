@@ -27,11 +27,6 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
     setValues((prev) => ({ ...prev, [key]: v }));
   }
 
-  function num(v: string): number {
-    const n = Number(v);
-    return Number.isFinite(n) ? n : 0;
-  }
-
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setShowErrors(true);
@@ -62,7 +57,7 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
               max={100}
               step={1}
               suffix="yrs"
-              onChange={(e) => set('currentAge', num(e.target.value))}
+              onChange={(n) => set('currentAge', n)}
               error={err('currentAge')}
             />
             <NumberField
@@ -72,7 +67,7 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
               max={100}
               step={1}
               suffix="yrs"
-              onChange={(e) => set('retirementAge', num(e.target.value))}
+              onChange={(n) => set('retirementAge', n)}
               error={err('retirementAge')}
             />
             <NumberField
@@ -84,7 +79,7 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
               suffix="yrs"
               className="col-span-2"
               help="How long the plan needs to last."
-              onChange={(e) => set('lifeExpectancy', num(e.target.value))}
+              onChange={(n) => set('lifeExpectancy', n)}
               error={err('lifeExpectancy')}
             />
           </div>
@@ -103,7 +98,7 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
               step={1000}
               suffix={meta.symbol}
               className="col-span-2"
-              onChange={(e) => set('currentValue', num(e.target.value))}
+              onChange={(n) => set('currentValue', n)}
               error={err('currentValue')}
             />
             <NumberField
@@ -112,7 +107,7 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
               min={0}
               step={50}
               suffix={meta.symbol}
-              onChange={(e) => set('monthlyContribution', num(e.target.value))}
+              onChange={(n) => set('monthlyContribution', n)}
               error={err('monthlyContribution')}
             />
             <NumberField
@@ -123,7 +118,7 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
               step={0.5}
               suffix="%"
               help="Raises per year"
-              onChange={(e) => set('contributionIncreasePct', num(e.target.value))}
+              onChange={(n) => set('contributionIncreasePct', n)}
               error={err('contributionIncreasePct')}
             />
           </div>
@@ -143,7 +138,7 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
               step={0.1}
               suffix="%"
               help="Annual mean"
-              onChange={(e) => set('expectedReturnPct', num(e.target.value))}
+              onChange={(n) => set('expectedReturnPct', n)}
               error={err('expectedReturnPct')}
             />
             <NumberField
@@ -155,7 +150,7 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
               suffix="%"
               help="Annual std. dev."
               tip="How much yearly returns swing around the average. A higher number means bigger booms and busts. As a rough benchmark: US stocks have been around 15% over the long run; bonds closer to 5%; a 60/40 mix sits in between."
-              onChange={(e) => set('returnStdevPct', num(e.target.value))}
+              onChange={(n) => set('returnStdevPct', n)}
               error={err('returnStdevPct')}
             />
             <NumberField
@@ -166,7 +161,7 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
               step={0.1}
               suffix="%"
               className="col-span-2"
-              onChange={(e) => set('inflationPct', num(e.target.value))}
+              onChange={(n) => set('inflationPct', n)}
               error={err('inflationPct')}
             />
           </div>
@@ -201,7 +196,7 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
                 suffix="%"
                 className="col-span-2"
                 help="Of portfolio value each year"
-                onChange={(e) => set('withdrawalPct', num(e.target.value))}
+                onChange={(n) => set('withdrawalPct', n)}
                 error={err('withdrawalPct')}
               />
             ) : (
@@ -213,7 +208,7 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
                 suffix={meta.symbol}
                 className="col-span-2"
                 help={`In today's ${meta.code === 'INR' ? 'rupees' : 'dollars'}`}
-                onChange={(e) => set('annualWithdrawal', num(e.target.value))}
+                onChange={(n) => set('annualWithdrawal', n)}
                 error={err('annualWithdrawal')}
               />
             )}
