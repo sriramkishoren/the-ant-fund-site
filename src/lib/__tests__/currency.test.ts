@@ -96,3 +96,93 @@ describe('misc helpers', () => {
     expect(isCurrencyCode(null)).toBe(false);
   });
 });
+
+// ── Grouped input formatting ───────────────────────────────────────────────
+import { formatNumericDraft, parseNumericDraft, groupingStyle } from '../currency';
+
+describe('formatNumericDraft — the examples from the spec', () => {
+  it('groups USD in threes', () => {
+    expect(formatNumericDraft('1000', 'USD')).toBe('1,000');
+    expect(formatNumericDraft('100000', 'USD')).toBe('100,000');
+    expect(formatNumericDraft('1000000', 'USD')).toBe('1,000,000');
+    expect(formatNumericDraft('10000000', 'USD')).toBe('10,000,000');
+  });
+
+  it('groups INR as 3-then-2s (lakh/crore)', () => {
+    expect(formatNumericDraft('1000', 'INR')).toBe('1,000');
+    expect(formatNumericDraft('100000', 'INR')).toBe('1,00,000');
+    expect(formatNumericDraft('1000000', 'INR')).toBe('10,00,000');
+    expect(formatNumericDraft('10000000', 'INR')).toBe('1,00,00,000');
+  });
+
+  it('matches Intl exactly for whole numbers', () => {
+    for (const code of ['USD', 'INR'] as const) {
+      const locale = code === 'INR' ? 'en-IN' : 'en-US';
+      for (const n of [0, 7, 999, 1000, 45231, 1_234_567, 45_000_000, 987_654_321]) {
+        expect(formatNumericDraft(String(n), code)).toBe(
+          new Intl.NumberFormat(locale).format(n),
+        );
+      }
+    }
+  });
+
+  it('leaves short numbers ungrouped', () => {
+    expect(formatNumericDraft('0', 'USD')).toBe('0');
+    expect(formatNumericDraft('35', 'INR')).toBe('35');
+  });
+
+  it('strips leading zeros so 050 never appears', () => {
+    expect(formatNumericDraft('050', 'USD')).toBe('50');
+    expect(formatNumericDraft('000', 'USD')).toBe('0');
+  });
+
+  it('preserves decimals, trailing markers and trailing zeros while typing', () => {
+    expect(formatNumericDraft('1234.5', 'USD')).toBe('1,234.5');
+    expect(formatNumericDraft('1234.', 'USD')).toBe('1,234.');
+    expect(formatNumericDraft('1.50', 'USD')).toBe('1.50');
+    expect(formatNumericDraft('1234567.89', 'INR')).toBe('12,34,567.89');
+  });
+
+  it('keeps negatives', () => {
+    expect(formatNumericDraft('-12345', 'USD')).toBe('-12,345');
+    expect(formatNumericDraft('-', 'USD')).toBe('-');
+  });
+
+  it('handles an empty draft', () => {
+    expect(formatNumericDraft('', 'USD')).toBe('');
+  });
+});
+
+describe('parseNumericDraft', () => {
+  it('round-trips through formatting', () => {
+    for (const code of ['USD', 'INR'] as const) {
+      for (const raw of ['0', '50', '1000', '1234567', '-12345', '1234.56', '1234.']) {
+        expect(parseNumericDraft(formatNumericDraft(raw, code), code)).toBe(raw);
+      }
+    }
+  });
+
+  it('discards group separators and stray characters', () => {
+    expect(parseNumericDraft('1,00,00,000', 'INR')).toBe('10000000');
+    expect(parseNumericDraft('$1,234.50', 'USD')).toBe('1234.50');
+  });
+
+  it('keeps only the first decimal marker', () => {
+    expect(parseNumericDraft('1.2.3', 'USD')).toBe('1.23');
+  });
+
+  it('only honours a leading minus', () => {
+    expect(parseNumericDraft('-12-34', 'USD')).toBe('-1234');
+  });
+
+  it('never yields NaN for junk', () => {
+    expect(parseNumericDraft('abc', 'USD')).toBe('');
+  });
+});
+
+describe('groupingStyle', () => {
+  it('derives separators and group sizes from the locale', () => {
+    expect(groupingStyle('USD')).toMatchObject({ group: ',', decimal: '.', primary: 3, secondary: 3 });
+    expect(groupingStyle('INR')).toMatchObject({ group: ',', decimal: '.', primary: 3, secondary: 2 });
+  });
+});

@@ -198,3 +198,99 @@ export function formatPercent(value: number, code: CurrencyCode = DEFAULT_CURREN
 export function formatNumber(value: number, code: CurrencyCode = DEFAULT_CURRENCY): string {
   return new Intl.NumberFormat(CURRENCIES[code].locale).format(value);
 }
+
+// ── Grouped input formatting ───────────────────────────────────────────────
+// Editable fields show grouped digits (1,000,000 / 10,00,000 / 1.000.000).
+// Everything here is derived from Intl rather than hardcoded, so a locale whose
+// grouping differs — India's 3-then-2s, or German's swapped separators — is
+// handled without special cases, and adding a currency is a data-only change.
+
+export interface GroupingStyle {
+  /** Thousands/lakhs separator, e.g. "," or ".". */
+  group: string;
+  /** Decimal marker, e.g. "." or ",". */
+  decimal: string;
+  /** Size of the right-most digit group (3 essentially everywhere). */
+  primary: number;
+  /** Size of every group left of it (3 in en-US, 2 in en-IN). */
+  secondary: number;
+}
+
+const groupingCache = new Map<CurrencyCode, GroupingStyle>();
+
+export function groupingStyle(code: CurrencyCode): GroupingStyle {
+  const cached = groupingCache.get(code);
+  if (cached) return cached;
+
+  const parts = new Intl.NumberFormat(CURRENCIES[code].locale).formatToParts(10_000_000.5);
+  const sizes = parts.filter((p) => p.type === 'integer').map((p) => p.value.length);
+  const style: GroupingStyle = {
+    group: parts.find((p) => p.type === 'group')?.value ?? ',',
+    decimal: parts.find((p) => p.type === 'decimal')?.value ?? '.',
+    primary: sizes[sizes.length - 1] ?? 3,
+    secondary: sizes.length >= 2 ? sizes[sizes.length - 2] : (sizes[sizes.length - 1] ?? 3),
+  };
+  groupingCache.set(code, style);
+  return style;
+}
+
+function groupDigits(digits: string, s: GroupingStyle): string {
+  if (digits.length <= s.primary) return digits;
+  const head = digits.slice(0, digits.length - s.primary);
+  const tail = digits.slice(digits.length - s.primary);
+  const chunks: string[] = [];
+  let i = head.length;
+  while (i > s.secondary) {
+    chunks.unshift(head.slice(i - s.secondary, i));
+    i -= s.secondary;
+  }
+  if (i > 0) chunks.unshift(head.slice(0, i));
+  chunks.push(tail);
+  return chunks.join(s.group);
+}
+
+/**
+ * Canonical raw string ("-1234.5") → grouped display string ("-1,234.5").
+ * Preserves a trailing decimal marker and trailing zeros so the display doesn't
+ * fight someone mid-way through typing "1.50".
+ */
+export function formatNumericDraft(raw: string, code: CurrencyCode): string {
+  const s = groupingStyle(code);
+  const negative = raw.startsWith('-');
+  const body = negative ? raw.slice(1) : raw;
+
+  const dot = body.indexOf('.');
+  const rawInt = (dot === -1 ? body : body.slice(0, dot)).replace(/\D/g, '');
+  const rawFrac = dot === -1 ? null : body.slice(dot + 1).replace(/\D/g, '');
+
+  // Drop leading zeros ("050" → "50") but keep a lone "0".
+  const intDigits = rawInt.replace(/^0+(?=\d)/, '');
+  const grouped = intDigits === '' ? '' : groupDigits(intDigits, s);
+
+  let out = (negative ? '-' : '') + grouped;
+  if (rawFrac !== null) out += s.decimal + rawFrac;
+  return out;
+}
+
+/**
+ * Display string (grouped, any stray characters) → canonical raw string using
+ * "." for the decimal point. Group separators are discarded; a leading "-" and
+ * at most one decimal marker survive.
+ */
+export function parseNumericDraft(text: string, code: CurrencyCode): string {
+  const s = groupingStyle(code);
+  let out = '';
+  let seenDecimal = false;
+  for (const ch of text) {
+    if (ch === '-' && out === '') {
+      out += '-';
+    } else if (ch >= '0' && ch <= '9') {
+      out += ch;
+    } else if (!seenDecimal && (ch === s.decimal || (ch === '.' && s.group !== '.'))) {
+      out += '.';
+      seenDecimal = true;
+    }
+    // anything else (group separators, spaces, letters) is dropped
+  }
+  return out;
+}

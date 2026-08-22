@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { NumericField } from '@/components/ui/NumericField';
 import { InfoTooltip } from '@/components/ui/InfoTooltip';
 
 type Props = {
@@ -11,19 +12,16 @@ type Props = {
 
 export function CapeIndicator({ cape, asOf, isOverride, defaultCape, onChange }: Props) {
   const [editing, setEditing] = useState(false);
-  const [draft, setDraft] = useState(cape.toFixed(2));
+  const [draftValue, setDraftValue] = useState(cape);
 
   function commit() {
-    const n = Number(draft);
-    if (Number.isFinite(n) && n > 0) {
-      onChange(n);
-    }
+    if (Number.isFinite(draftValue) && draftValue > 0) onChange(draftValue);
     setEditing(false);
   }
 
   function reset() {
     onChange(undefined);
-    setDraft(defaultCape.toFixed(2));
+    setDraftValue(defaultCape);
     setEditing(false);
   }
 
@@ -32,20 +30,22 @@ export function CapeIndicator({ cape, asOf, isOverride, defaultCape, onChange }:
       {editing ? (
         <span className="flex items-center gap-2">
           <span className="text-teal-dark">CAPE override</span>
-          <input
-            type="number"
-            value={draft}
+          <NumericField
+            value={draftValue}
+            onChange={setDraftValue}
             min={1}
             step={0.1}
-            onChange={(e) => setDraft(e.target.value)}
-            onBlur={commit}
+            // Focus follows the click on "override", so the field is ready to type in.
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus
+            aria-label="CAPE override"
+            className="w-24"
+            inputClassName="py-0.5 text-xs"
             onKeyDown={(e) => {
               if (e.key === 'Enter') commit();
               if (e.key === 'Escape') setEditing(false);
             }}
-            className="w-20 rounded border border-border bg-surface px-2 py-0.5 text-ink focus:border-teal focus-visible:outline-none"
-            // eslint-disable-next-line jsx-a11y/no-autofocus
-            autoFocus
+            onBlur={commit}
           />
           <button
             type="button"
@@ -82,7 +82,7 @@ export function CapeIndicator({ cape, asOf, isOverride, defaultCape, onChange }:
           <button
             type="button"
             onClick={() => {
-              setDraft(cape.toFixed(2));
+              setDraftValue(cape);
               setEditing(true);
             }}
             className="text-teal underline-offset-2 hover:underline"
