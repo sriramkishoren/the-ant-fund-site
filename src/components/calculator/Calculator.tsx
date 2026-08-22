@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { DEFAULT_INPUTS } from '@/features/monte-carlo/defaults';
+import { getMonteCarloDefaults } from '@/features/monte-carlo/defaults';
 import { runSimulation } from '@/features/monte-carlo/engine';
 import type { SimInputs, SimResult, WorkerOutbound } from '@/features/monte-carlo/types';
+import { useCurrency } from '@/lib/currency-context';
 import { CalculatorForm } from './CalculatorForm';
 import { SummaryCards } from './SummaryCards';
 import { TrajectoryChart } from './charts/TrajectoryChart';
@@ -15,6 +16,7 @@ type Status =
   | { kind: 'error'; message: string };
 
 export function Calculator() {
+  const { currency } = useCurrency();
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
   const workerRef = useRef<Worker | null>(null);
   const workerSupported = useRef<boolean>(typeof Worker !== 'undefined');
@@ -92,7 +94,7 @@ export function Calculator() {
 
   return (
     <div className="space-y-8">
-      <CalculatorForm initial={DEFAULT_INPUTS} busy={busy} onRun={run} />
+      <CalculatorForm initial={getMonteCarloDefaults(currency)} busy={busy} onRun={run} />
 
       <ResultsRegion status={status} />
     </div>

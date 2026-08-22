@@ -27,7 +27,7 @@ export function HeadlineCard({
   yearsToRetirement,
   inflationRate,
 }: Props) {
-  const { money, percent } = useCurrency();
+  const { meta, money, percent } = useCurrency();
   const display = Number.isFinite(fireNumber) ? money(fireNumber) : '—';
   const mult = Number.isFinite(multiple) ? multiple.toFixed(1) : '—';
 
@@ -56,7 +56,7 @@ export function HeadlineCard({
         {display}
       </p>
       <p className="mt-2 text-xs font-medium uppercase tracking-[0.14em] text-ink/55">
-        in today&apos;s dollars
+        in today&apos;s {meta.terms.noun}
       </p>
       <p className="mt-4 text-sm text-ink/65">
         ≈ × {mult} of pre-tax annual withdrawal
@@ -76,7 +76,7 @@ export function HeadlineCard({
           <p className="text-ink/70">
             If you retire in <span className="font-medium text-teal-dark">{yearsToRetirement} years</span>, the same purchasing power is roughly{' '}
             <span className="font-medium text-teal-dark">{money(inflated)}</span>{' '}
-            in nominal dollars
+            in nominal {meta.terms.noun}
             <span className="text-ink/55"> (≈ {money(inflatedSpending)}/yr of spending at {percent(inflationRate)} inflation).</span>
           </p>
         </div>

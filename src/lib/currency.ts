@@ -20,6 +20,18 @@ export interface CurrencySteps {
   small: number;
 }
 
+/** Locale vocabulary, so UI copy isn't hardcoded to one country's system. */
+export interface CurrencyTerms {
+  /** "dollars" / "rupees" — for phrases like "in today's dollars". */
+  noun: string;
+  /** Label for state/employer retirement income. */
+  stateIncome: string;
+  /** Short form of the above, for inline prose. */
+  stateIncomeShort: string;
+  /** Plain-language hint about which accounts are taxed on withdrawal. */
+  taxHint: string;
+}
+
 export interface CurrencyMeta {
   code: CurrencyCode;
   /** BCP-47 tag driving Intl digit grouping. */
@@ -28,6 +40,7 @@ export interface CurrencyMeta {
   /** Full name, for the toggle's accessible label. */
   label: string;
   steps: CurrencySteps;
+  terms: CurrencyTerms;
 }
 
 export const CURRENCIES: Record<CurrencyCode, CurrencyMeta> = {
@@ -37,6 +50,12 @@ export const CURRENCIES: Record<CurrencyCode, CurrencyMeta> = {
     symbol: '$',
     label: 'US dollars',
     steps: { large: 10_000, medium: 1_000, small: 100 },
+    terms: {
+      noun: 'dollars',
+      stateIncome: 'Social Security / pension',
+      stateIncomeShort: 'Social Security',
+      taxHint: 'Roth → use 0%. Mostly traditional/401(k) → try 15–22%.',
+    },
   },
   INR: {
     code: 'INR',
@@ -44,6 +63,12 @@ export const CURRENCIES: Record<CurrencyCode, CurrencyMeta> = {
     symbol: '₹',
     label: 'Indian rupees',
     steps: { large: 100_000, medium: 10_000, small: 5_000 },
+    terms: {
+      noun: 'rupees',
+      stateIncome: 'EPF / NPS / pension',
+      stateIncomeShort: 'EPF, NPS or pension',
+      taxHint: 'PPF and EPF maturity is normally tax-free → use 0%. NPS and debt funds are taxed → try 10–20%.',
+    },
   },
 };
 

@@ -7,7 +7,7 @@ type Props = {
 };
 
 export function SpendingInput({ value, onChange }: Props) {
-  const { money } = useCurrency();
+  const { meta, money } = useCurrency();
   const id = useId();
   const monthly = value > 0 ? value / 12 : 0;
   return (
@@ -42,9 +42,9 @@ export function SpendingInput({ value, onChange }: Props) {
         </span>
       </div>
       <p className="mt-1 text-xs text-ink/60">
-        <span className="font-medium text-teal-dark">In today&apos;s dollars</span> — what your
+        <span className="font-medium text-teal-dark">In today&apos;s {meta.terms.noun}</span> — what your
         retirement lifestyle would cost if you started living it this year. The headline FIRE
-        number comes out in today&apos;s dollars too.
+        number comes out in today&apos;s {meta.terms.noun} too.
       </p>
     </div>
   );

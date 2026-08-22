@@ -1,4 +1,5 @@
 import { useEffect, useId, useState } from 'react';
+import { useCurrency } from '@/lib/currency-context';
 
 type Props = {
   value: number; // fraction, e.g. 0.15 = 15%
@@ -6,6 +7,7 @@ type Props = {
 };
 
 export function TaxRateInput({ value, onChange }: Props) {
+  const { meta } = useCurrency();
   const id = useId();
 
   // Local string draft so the user can freely type, clear, and partially
@@ -66,8 +68,8 @@ export function TaxRateInput({ value, onChange }: Props) {
       </div>
       <p className="mt-1 text-xs text-ink/60">
         If you entered your <span className="font-medium text-teal-dark">after-tax</span> spending,
-        we&apos;ll gross it up. Roth → use 0%. Mostly traditional/401(k) → try 15–22%. Set to 0 if
-        you already entered a pre-tax figure.
+        we&apos;ll gross it up. {meta.terms.taxHint} Set to 0 if you already entered a pre-tax
+        figure.
       </p>
     </div>
   );

@@ -42,7 +42,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
           onChange={(n) => onChange({ totalPortfolio: n })}
           prefix={meta.symbol}
           min={0}
-          step={10_000}
+          step={meta.steps.large}
         />
         <NumericInput
           label="Monthly expenses"
@@ -51,7 +51,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
           prefix={meta.symbol}
           suffix="/mo"
           min={0}
-          step={100}
+          step={meta.steps.small}
           help={`${money(annualExpenses)} per year`}
         />
       </div>
@@ -111,10 +111,12 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
         <div className="rounded-lg border border-border bg-cream/50 px-3 py-2 text-xs leading-relaxed text-ink/70">
           Returns below are <span className="font-medium text-teal-dark">nominal</span> (before
           inflation). Your <span className="font-medium text-teal-dark">expenses grow with
-          inflation every year</span>, so what matters is the gap between them. With the defaults, a
-          10% equity return and 6% inflation is a ~4% <em>real</em> return. The results chart lets
-          you switch between <span className="font-medium text-teal-dark">Real</span> (today&rsquo;s
-          dollars) and <span className="font-medium text-teal-dark">Nominal</span>.
+          inflation every year</span>, so what matters is the gap between them — right now a{' '}
+          {params.equityReturnPct}% equity return against {params.inflationPct}% inflation is a
+          ~{(params.equityReturnPct - params.inflationPct).toFixed(1)}% <em>real</em> return. The
+          results chart lets you switch between{' '}
+          <span className="font-medium text-teal-dark">Real</span> (today&rsquo;s{' '}
+          {meta.terms.noun}) and <span className="font-medium text-teal-dark">Nominal</span>.
         </div>
         <NumericInput
           label="Expected inflation"
@@ -124,7 +126,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
           min={0}
           max={15}
           step={0.1}
-          help="Drives how fast your expenses (and any Social Security) grow each year."
+          help={`Drives how fast your expenses (and any ${meta.terms.stateIncomeShort}) grow each year.`}
         />
         <div className="grid grid-cols-2 gap-4">
           <NumericInput
@@ -235,13 +237,13 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
         <SectionTitle>Other income</SectionTitle>
         <div className="grid grid-cols-2 gap-4">
           <NumericInput
-            label="Social Security / pension"
+            label={meta.terms.stateIncome}
             value={params.socialSecurityMonthly}
             onChange={(n) => onChange({ socialSecurityMonthly: n })}
             prefix={meta.symbol}
             suffix="/mo"
             min={0}
-            step={100}
+            step={meta.steps.small}
           />
           <NumericInput
             label="Starts in year"
@@ -254,14 +256,14 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
           />
         </div>
         <p className="flex items-start gap-1.5 text-xs text-ink/60">
-          <InfoTooltip label="The Social Security bridge">
+          <InfoTooltip label={`The ${meta.terms.stateIncomeShort} bridge`}>
             If benefits start years after you retire, you can &ldquo;bridge&rdquo; the gap by
             oversizing the stability bucket to cover those early years — then it shrinks once the
             guaranteed income kicks in. Benefits here are COLA-indexed (they grow with inflation)
             regardless of any spending freezes.
           </InfoTooltip>
           <span>
-            Social Security or pension income reduces your net withdrawals from its start year
+            {meta.terms.stateIncome} income reduces your net withdrawals from its start year
             onward, and rises with inflation.
           </span>
         </p>
@@ -273,7 +275,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
             prefix={meta.symbol}
             suffix="/mo"
             min={0}
-            step={100}
+            step={meta.steps.small}
           />
           <NumericInput
             label="for first N years"

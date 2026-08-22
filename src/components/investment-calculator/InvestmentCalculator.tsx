@@ -8,8 +8,8 @@ import { ScenarioComparison, type Scenario } from './ScenarioComparison';
 import { EducationalFooter } from './EducationalFooter';
 import { resolvePlan } from '@/features/investment-calculator/engine';
 import {
-  DEFAULT_INVESTMENT_INPUT,
-  DEFAULT_TARGET_END_AMOUNT,
+  getInvestmentDefaults,
+  getTargetEndAmount,
 } from '@/features/investment-calculator/defaults';
 import type {
   ContributionFrequency,
@@ -17,6 +17,8 @@ import type {
   SolveFor,
 } from '@/features/investment-calculator/types';
 import { useCurrency } from '@/lib/currency-context';
+import { useCurrencyDefaults } from '@/lib/useCurrencyDefaults';
+import { LocaleDefaultsPrompt } from '@/components/ui/LocaleDefaultsPrompt';
 
 const SCENARIO_COLORS = ['#15807D', '#E09A33', '#0D5957'];
 const FREQ_ABBREV: Record<ContributionFrequency, string> = {
@@ -26,10 +28,12 @@ const FREQ_ABBREV: Record<ContributionFrequency, string> = {
 };
 
 export function InvestmentCalculator() {
-  const { money, percent } = useCurrency();
-  const [input, setInput] = useState<InvestmentInput>(DEFAULT_INVESTMENT_INPUT);
+  const { currency, money, percent } = useCurrency();
+  const [input, setInput] = useState<InvestmentInput>(() => getInvestmentDefaults(currency));
   const [solveFor, setSolveFor] = useState<SolveFor>('endAmount');
-  const [targetEndAmount, setTargetEndAmount] = useState<number>(DEFAULT_TARGET_END_AMOUNT);
+  const [targetEndAmount, setTargetEndAmount] = useState<number>(() =>
+    getTargetEndAmount(currency),
+  );
   const [scenarios, setScenarios] = useState<Scenario[]>([]);
 
   const { value: solvedValue, resolvedInput, result } = useMemo(
@@ -38,6 +42,14 @@ export function InvestmentCalculator() {
   );
 
   const patch = (p: Partial<InvestmentInput>) => setInput((prev) => ({ ...prev, ...p }));
+
+  // Switching currency reloads locale-sized defaults, unless the user has
+  // edited the inputs — then their numbers are kept and we offer a one-click
+  // swap instead. The goal is a rupee-native plan, never an FX conversion.
+  const localeDefaults = useCurrencyDefaults(getInvestmentDefaults, input, (next) => {
+    setInput(next);
+    setTargetEndAmount(getTargetEndAmount(currency));
+  });
 
   const canPin = scenarios.length < 3 && result !== null;
 
@@ -60,7 +72,8 @@ export function InvestmentCalculator() {
   return (
     <div className="space-y-8">
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(320px,380px)_1fr]">
-        <div className="lg:sticky lg:top-6 lg:self-start">
+        <div className="space-y-4 lg:sticky lg:top-6 lg:self-start">
+          <LocaleDefaultsPrompt state={localeDefaults} />
           <InputPanel
             input={input}
             onChange={patch}

@@ -23,7 +23,7 @@ interface Row {
 }
 
 export function DotComStressChart({ path }: Props) {
-  const { money, moneyCompact } = useCurrency();
+  const { meta, money, moneyCompact } = useCurrency();
   const data = useMemo<Row[]>(
     () =>
       path.map((y) => ({
@@ -47,8 +47,17 @@ export function DotComStressChart({ path }: Props) {
         </h3>
         <p className="text-xs text-ink/60">
           The historical worst case: dot-com crash then 2008, back to back. Real (today&rsquo;s
-          dollars). Markers show where a crash-skip or a spending cut fired.
+          {meta.terms.noun}). Markers show where a crash-skip or a spending cut fired.
         </p>
+        {meta.code === 'INR' ? (
+          <p className="mt-2 rounded-md border border-border bg-cream/50 px-3 py-2 text-xs leading-relaxed text-ink/70">
+            <span className="font-medium text-teal-dark">Note:</span> this scenario replays{' '}
+            <span className="font-medium text-teal-dark">US</span> market history (S&amp;P 500 total
+            return and US CPI, 2000–2025) applied to your rupee plan. We don&rsquo;t bundle an Indian
+            series yet. It&rsquo;s here because the lesson — a terrible <em>sequence</em> of returns
+            early in retirement — is universal, not because Indian markets moved this way.
+          </p>
+        ) : null}
       </div>
 
       <div className="h-64 w-full sm:h-80">

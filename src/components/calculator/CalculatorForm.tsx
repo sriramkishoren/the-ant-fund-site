@@ -1,4 +1,8 @@
 import { useMemo, useState, type FormEvent } from 'react';
+import { getMonteCarloDefaults } from '@/features/monte-carlo/defaults';
+import { useCurrencyDefaults } from '@/lib/useCurrencyDefaults';
+import { useCurrency } from '@/lib/currency-context';
+import { LocaleDefaultsPrompt } from '@/components/ui/LocaleDefaultsPrompt';
 import { Button } from '@/components/ui/Button';
 import { NumberField, SelectField } from '@/components/ui/Field';
 import type { SimInputs, WithdrawalStrategy } from '@/features/monte-carlo/types';
@@ -11,7 +15,9 @@ type Props = {
 };
 
 export function CalculatorForm({ initial, busy, onRun }: Props) {
+  const { meta } = useCurrency();
   const [values, setValues] = useState<SimInputs>(initial);
+  const localeDefaults = useCurrencyDefaults(getMonteCarloDefaults, values, setValues);
   const [showErrors, setShowErrors] = useState(false);
 
   const errors = useMemo(() => validate(values), [values]);
@@ -37,6 +43,11 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
 
   return (
     <form onSubmit={handleSubmit} noValidate>
+      {localeDefaults.stale ? (
+        <div className="mb-6">
+          <LocaleDefaultsPrompt state={localeDefaults} />
+        </div>
+      ) : null}
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {/* About you */}
         <fieldset className="rounded-xl border border-border bg-surface p-5 shadow-sm">
@@ -90,7 +101,7 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
               value={values.currentValue}
               min={0}
               step={1000}
-              suffix="$"
+              suffix={meta.symbol}
               className="col-span-2"
               onChange={(e) => set('currentValue', num(e.target.value))}
               error={err('currentValue')}
@@ -100,7 +111,7 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
               value={values.monthlyContribution}
               min={0}
               step={50}
-              suffix="$"
+              suffix={meta.symbol}
               onChange={(e) => set('monthlyContribution', num(e.target.value))}
               error={err('monthlyContribution')}
             />
@@ -199,9 +210,9 @@ export function CalculatorForm({ initial, busy, onRun }: Props) {
                 value={values.annualWithdrawal}
                 min={0}
                 step={1000}
-                suffix="$"
+                suffix={meta.symbol}
                 className="col-span-2"
-                help="In today's dollars"
+                help={`In today's ${meta.code === 'INR' ? 'rupees' : 'dollars'}`}
                 onChange={(e) => set('annualWithdrawal', num(e.target.value))}
                 error={err('annualWithdrawal')}
               />

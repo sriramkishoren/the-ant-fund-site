@@ -1,11 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { DEFAULT_BUCKET_PARAMS } from '@/features/bucket-strategy/defaults';
+import { getBucketDefaults } from '@/features/bucket-strategy/defaults';
 import { simulateBucketStrategy } from '@/features/bucket-strategy/engine';
 import type {
   BucketParams,
   SimulationResult,
   WorkerOutbound,
 } from '@/features/bucket-strategy/types';
+import { useCurrency } from '@/lib/currency-context';
+import { useCurrencyDefaults } from '@/lib/useCurrencyDefaults';
+import { LocaleDefaultsPrompt } from '@/components/ui/LocaleDefaultsPrompt';
 import { InputPanel } from './InputPanel';
 import { AllocationCards } from './AllocationCards';
 import { FanChart } from './FanChart';
@@ -14,7 +17,6 @@ import { WalkthroughTable } from './WalkthroughTable';
 import { RulesPanel } from './RulesPanel';
 import { EducationalIntro } from './EducationalIntro';
 import { Disclaimer } from './Disclaimer';
-import { useCurrency } from '@/lib/currency-context';
 
 interface Results {
   primary: SimulationResult;
@@ -29,7 +31,8 @@ type Status =
   | { kind: 'error'; message: string };
 
 export function BucketPlanner() {
-  const [params, setParams] = useState<BucketParams>(DEFAULT_BUCKET_PARAMS);
+  const { currency } = useCurrency();
+  const [params, setParams] = useState<BucketParams>(() => getBucketDefaults(currency));
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
 
   const workerRef = useRef<Worker | null>(null);
@@ -116,6 +119,8 @@ export function BucketPlanner() {
     setParams((prev) => ({ ...prev, ...p }));
   };
 
+  const localeDefaults = useCurrencyDefaults(getBucketDefaults, params, setParams);
+
   const busy = status.kind === 'running';
 
   return (
@@ -123,7 +128,8 @@ export function BucketPlanner() {
       <EducationalIntro />
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(340px,400px)_1fr]">
-        <div className="lg:sticky lg:top-6 lg:self-start">
+        <div className="space-y-4 lg:sticky lg:top-6 lg:self-start">
+          <LocaleDefaultsPrompt state={localeDefaults} />
           <InputPanel params={params} onChange={patch} onRun={run} busy={busy} />
         </div>
 

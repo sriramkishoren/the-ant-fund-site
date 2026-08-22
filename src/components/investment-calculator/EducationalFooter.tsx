@@ -15,7 +15,7 @@ export function EducationalFooter() {
           That is why the <span className="font-medium text-teal-dark">Growth</span> slice of the
           chart starts thin and then bends upward. Early on, almost all of your balance is money you
           contributed. Given enough time, the interest can quietly become the largest piece —
-          without you adding a single extra dollar.
+          without you adding anything more.
         </p>
         <p>
           <span className="font-medium text-teal-dark">Compounding frequency</span> is how often

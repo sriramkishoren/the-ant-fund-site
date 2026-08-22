@@ -26,7 +26,7 @@ interface Row {
 }
 
 export function FanChart({ primary, comparison }: Props) {
-  const { money, moneyCompact } = useCurrency();
+  const { meta, money, moneyCompact } = useCurrency();
   const [mode, setMode] = useState<'real' | 'nominal'>('real');
   const [showComparison, setShowComparison] = useState(false);
 
@@ -51,7 +51,7 @@ export function FanChart({ primary, comparison }: Props) {
           </h3>
           <p className="text-xs text-ink/60">
             Percentile bands across {primary.meta.runs.toLocaleString()} runs ·{' '}
-            {mode === 'real' ? "today's dollars" : 'nominal dollars'}
+            {mode === 'real' ? `today's ${meta.terms.noun}` : `nominal ${meta.terms.noun}`}
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">

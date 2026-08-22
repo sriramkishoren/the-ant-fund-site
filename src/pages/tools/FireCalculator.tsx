@@ -20,11 +20,34 @@ import {
   encodeBeginnerState,
 } from '@/features/fire-calculator/url-state';
 import { withBase } from '@/lib/basePath';
+import type { CurrencyCode } from '@/lib/currency';
+import { useCurrency } from '@/lib/currency-context';
+import { useCurrencyDefaults } from '@/lib/useCurrencyDefaults';
+import { LocaleDefaultsPrompt } from '@/components/ui/LocaleDefaultsPrompt';
 
 // Beginner-tier defaults. Match docs/fire-calculator/SPEC.md §3.
-const DEFAULT_SPENDING = 50_000;
 const DEFAULT_YEARS_TO_RETIREMENT = 0;
-const DEFAULT_INFLATION = 0.03; // 3% — standard FIRE-community assumption
+
+// Spending and inflation are locale-specific: $60k/yr at 3% inflation is a
+// realistic US retirement; the Indian equivalent is ₹24 lakh at 6%.
+interface LocaleSeed {
+  spending: number;
+  inflationRate: number;
+}
+const LOCALE_SEED: Record<CurrencyCode, LocaleSeed> = {
+  USD: { spending: 60_000, inflationRate: 0.03 },
+  INR: { spending: 2_400_000, inflationRate: 0.06 },
+};
+function seedFor(currency: CurrencyCode): LocaleSeed {
+  return LOCALE_SEED[currency];
+}
+
+/**
+ * CAPE is the Shiller PE of the S&P 500 — a US-market metric with no bundled
+ * Indian equivalent. Rather than imply it describes Indian equities, rupee mode
+ * hides it and falls back to this flat rate.
+ */
+const INR_FALLBACK_SWR = 0.04;
 const DEFAULT_TAX_RATE = 0; // off by default — user opts in if they need gross-up
 const FALLBACK_CAPE = 38; // used until the bundled dataset loads
 
@@ -85,16 +108,18 @@ function BeginnerTier() {
     [],
   );
 
+  const { currency } = useCurrency();
+  const isInr = currency === 'INR';
   const [dataset, setDataset] = useState<ShillerDataset | null>(null);
   const [datasetError, setDatasetError] = useState<string | null>(null);
   const [spending, setSpending] = useState<number>(
-    initialUrlState.spending ?? DEFAULT_SPENDING,
+    initialUrlState.spending ?? seedFor(currency).spending,
   );
   const [yearsToRetirement, setYearsToRetirement] = useState<number>(
     initialUrlState.yearsToRetirement ?? DEFAULT_YEARS_TO_RETIREMENT,
   );
   const [inflationRate, setInflationRate] = useState<number>(
-    initialUrlState.inflationRate ?? DEFAULT_INFLATION,
+    initialUrlState.inflationRate ?? seedFor(currency).inflationRate,
   );
   const [taxRate, setTaxRate] = useState<number>(
     initialUrlState.taxRate ?? DEFAULT_TAX_RATE,
@@ -107,7 +132,9 @@ function BeginnerTier() {
 
   const effectiveCape = capeOverride ?? dataset?.rows[dataset.rows.length - 1].cape ?? FALLBACK_CAPE;
   const capeAsOf = dataset?.asOf ?? '';
-  const capeAwareRate = defaultSwrFromCape(effectiveCape);
+  // In rupee mode the S&P-derived CAPE rate would be misleading, so the
+  // valuation-aware default is replaced by a flat rate.
+  const capeAwareRate = isInr ? INR_FALLBACK_SWR : defaultSwrFromCape(effectiveCape);
 
   // SWR — start from URL value, else from the valuation-aware default once
   // CAPE is known. Re-sync the "default" once when the dataset arrives,
@@ -158,6 +185,17 @@ function BeginnerTier() {
     return () => window.cancelAnimationFrame(id);
   }, [spending, swr, yearsToRetirement, inflationRate, taxRate, capeOverride]);
 
+  // Switching currency reseeds spending and inflation, unless the user has
+  // edited them — then their figures stay and we offer a one-click swap.
+  const localeDefaults = useCurrencyDefaults<LocaleSeed>(
+    seedFor,
+    { spending, inflationRate },
+    (next) => {
+      setSpending(next.spending);
+      setInflationRate(next.inflationRate);
+    },
+  );
+
   // ─── Headline math ────────────────────────────────────────────────────
   // Gross up the user's spending to the pre-tax withdrawal needed to net it.
   // taxRate=0 → no gross-up, withdrawal === spending.
@@ -176,6 +214,8 @@ function BeginnerTier() {
 
   return (
     <div className="space-y-8">
+      <LocaleDefaultsPrompt state={localeDefaults} />
+
       <HeadlineCard
         fireNumber={fireNumber}
         multiple={multiple}
@@ -195,7 +235,15 @@ function BeginnerTier() {
           <InflationInput value={inflationRate} onChange={setInflationRate} />
         </div>
         <SwrSlider value={swr} onChange={setSwr} capeAwareRate={capeAwareRate} />
-        {dataset ? (
+        {isInr ? (
+          <div className="rounded-md border border-border bg-cream/50 px-3 py-2 text-xs leading-relaxed text-ink/70">
+            The valuation-aware default is a flat{' '}
+            <span className="font-medium text-teal-dark">4.0%</span> here. Our CAPE-linked rate is
+            derived from the <span className="font-medium text-teal-dark">S&amp;P 500</span>, and we
+            don&rsquo;t bundle an Indian equivalent — showing it against a rupee plan would imply a
+            precision we can&rsquo;t back. Switch to $ to see the CAPE-linked rate.
+          </div>
+        ) : dataset ? (
           <CapeIndicator
             cape={effectiveCape}
             asOf={capeAsOf}

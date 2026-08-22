@@ -160,7 +160,7 @@ export function WalkthroughTable({ walkthrough, params }: Props) {
               <span className="font-medium text-amber">↓ growth</span> = moved excess safe money back
               to stocks
             </span>
-            <span>Hover any cell for the exact dollar amount.</span>
+            <span>Hover any cell for the exact amount.</span>
           </div>
         </div>
       ) : null}

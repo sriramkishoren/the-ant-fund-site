@@ -8,7 +8,7 @@ type Props = {
 
 /** Live plain-language rendering of the user's current rule set. */
 export function RulesPanel({ params }: Props) {
-  const { money } = useCurrency();
+  const { meta, money } = useCurrency();
   const annual = params.monthlyExpenses * 12;
   const target = effectiveStabilityTarget({
     stabilityYears: params.stabilityYears,
@@ -63,7 +63,7 @@ export function RulesPanel({ params }: Props) {
     rules.push(
       <>
         <strong className="text-teal-dark">{money(params.socialSecurityMonthly)}/mo</strong> of
-        Social Security or pension income starts in year {params.socialSecurityStartYear} and grows
+        {meta.terms.stateIncome} income starts in year {params.socialSecurityStartYear} and grows
         with inflation, reducing net withdrawals from then on.
       </>,
     );
