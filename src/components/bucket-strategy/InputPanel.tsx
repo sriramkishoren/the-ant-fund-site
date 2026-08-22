@@ -2,8 +2,8 @@ import { NumericInput } from '@/components/investment-calculator/NumericInput';
 import { InfoTooltip } from '@/components/ui/InfoTooltip';
 import { RangeSlider } from './RangeSlider';
 import { effectiveStabilityTarget } from '@/features/bucket-strategy/rules';
-import { formatMoney } from '@/features/bucket-strategy/money';
 import type { BucketParams } from '@/features/bucket-strategy/types';
+import { useCurrency } from '@/lib/currency-context';
 
 type Props = {
   params: BucketParams;
@@ -19,6 +19,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 }
 
 export function InputPanel({ params, onChange, onRun, busy }: Props) {
+  const { meta, money } = useCurrency();
   const annualExpenses = params.monthlyExpenses * 12;
   const target = effectiveStabilityTarget({
     stabilityYears: params.stabilityYears,
@@ -39,7 +40,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
           label="Total portfolio"
           value={params.totalPortfolio}
           onChange={(n) => onChange({ totalPortfolio: n })}
-          prefix="$"
+          prefix={meta.symbol}
           min={0}
           step={10_000}
         />
@@ -47,11 +48,11 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
           label="Monthly expenses"
           value={params.monthlyExpenses}
           onChange={(n) => onChange({ monthlyExpenses: n })}
-          prefix="$"
+          prefix={meta.symbol}
           suffix="/mo"
           min={0}
           step={100}
-          help={`${formatMoney(annualExpenses)} per year`}
+          help={`${money(annualExpenses)} per year`}
         />
       </div>
 
@@ -87,12 +88,12 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
             </p>
             <InfoTooltip label="How the target is computed">
               The smaller of the two rules: {params.stabilityYears} years of expenses (
-              {formatMoney(yearsRule)}) vs. {params.stabilityCapPct}% of the portfolio (
-              {formatMoney(capRule)}).
+              {money(yearsRule)}) vs. {params.stabilityCapPct}% of the portfolio (
+              {money(capRule)}).
             </InfoTooltip>
           </div>
           <p className="mt-1 font-heading text-2xl font-semibold text-teal-dark">
-            {formatMoney(target)}
+            {money(target)}
           </p>
           <p className="mt-1 text-xs text-ink/60">
             = min({params.stabilityYears}× expenses, {params.stabilityCapPct}% of portfolio) —{' '}
@@ -237,7 +238,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
             label="Social Security / pension"
             value={params.socialSecurityMonthly}
             onChange={(n) => onChange({ socialSecurityMonthly: n })}
-            prefix="$"
+            prefix={meta.symbol}
             suffix="/mo"
             min={0}
             step={100}
@@ -269,7 +270,7 @@ export function InputPanel({ params, onChange, onRun, busy }: Props) {
             label="Part-time income"
             value={params.partTimeMonthly}
             onChange={(n) => onChange({ partTimeMonthly: n })}
-            prefix="$"
+            prefix={meta.symbol}
             suffix="/mo"
             min={0}
             step={100}

@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import { formatPercent } from '@/lib/format';
+import { useCurrency } from '@/lib/currency-context';
 
 type Preset = { label: string; rate: number; tone: 'teal' | 'amber' | 'gold' };
 
@@ -17,6 +17,7 @@ const STATIC_PRESETS: Preset[] = [
 
 export function SwrSlider({ value, onChange, capeAwareRate }: Props) {
   const id = useId();
+  const { percent } = useCurrency();
   return (
     <div>
       <div className="flex items-center justify-between">
@@ -24,7 +25,7 @@ export function SwrSlider({ value, onChange, capeAwareRate }: Props) {
           Safe withdrawal rate
         </label>
         <span className="font-heading text-lg font-semibold text-teal-dark">
-          {formatPercent(value)}
+          {percent(value)}
         </span>
       </div>
       <input
@@ -39,7 +40,7 @@ export function SwrSlider({ value, onChange, capeAwareRate }: Props) {
       />
       <div className="mt-3 flex flex-wrap gap-2">
         <PresetChip
-          label={`Valuation-aware (${formatPercent(capeAwareRate)})`}
+          label={`Valuation-aware (${percent(capeAwareRate)})`}
           tone="gold"
           active={Math.abs(value - capeAwareRate) < 1e-4}
           onClick={() => onChange(capeAwareRate)}

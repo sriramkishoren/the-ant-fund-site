@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import type { InvestmentResult } from '@/features/investment-calculator/types';
-import { formatCurrency } from '@/lib/format';
+import { useCurrency } from '@/lib/currency-context';
 
 type Props = {
   result: InvestmentResult;
 };
 
 export function YearTable({ result }: Props) {
+  const { money } = useCurrency();
   const [open, setOpen] = useState(false);
 
   return (
@@ -66,14 +67,14 @@ export function YearTable({ result }: Props) {
                 <tr key={y.year} className="border-t border-border/60 even:bg-cream/40">
                   <td className="px-4 py-2 text-ink/80">{y.year}</td>
                   <td className="px-4 py-2 text-right text-ink/80">
-                    {formatCurrency(y.startBalance)}
+                    {money(y.startBalance)}
                   </td>
                   <td className="px-4 py-2 text-right text-teal-dark">
-                    {formatCurrency(y.contributions)}
+                    {money(y.contributions)}
                   </td>
-                  <td className="px-4 py-2 text-right text-amber">{formatCurrency(y.interest)}</td>
+                  <td className="px-4 py-2 text-right text-amber">{money(y.interest)}</td>
                   <td className="px-4 py-2 text-right font-medium text-teal-dark">
-                    {formatCurrency(y.endBalance)}
+                    {money(y.endBalance)}
                   </td>
                 </tr>
               ))}

@@ -11,8 +11,7 @@ import {
   YAxis,
 } from 'recharts';
 import type { SimResult } from '@/features/monte-carlo/types';
-import { formatCompactUSD } from '@/features/monte-carlo/stats';
-import { formatCurrency } from '@/lib/format';
+import { useCurrency } from '@/lib/currency-context';
 
 type Props = {
   result: SimResult;
@@ -34,6 +33,7 @@ interface ChartRow {
 }
 
 export function TrajectoryChart({ result, retirementAge, showSamplePaths = true }: Props) {
+  const { money, moneyCompact } = useCurrency();
   const data = useMemo<ChartRow[]>(() => {
     return result.yearlyPercentiles.map((p) => ({
       age: p.age,
@@ -96,7 +96,7 @@ export function TrajectoryChart({ result, retirementAge, showSamplePaths = true 
               }}
             />
             <YAxis
-              tickFormatter={formatCompactUSD}
+              tickFormatter={moneyCompact}
               tick={{ fontSize: 12, fill: '#1C2826' }}
               width={64}
             />
@@ -109,9 +109,9 @@ export function TrajectoryChart({ result, retirementAge, showSamplePaths = true 
               }}
               formatter={(value: number | [number, number], name: string) => {
                 if (Array.isArray(value)) {
-                  return [`${formatCurrency(value[0])} – ${formatCurrency(value[1])}`, name];
+                  return [`${money(value[0])} – ${money(value[1])}`, name];
                 }
-                return [formatCurrency(value), name];
+                return [money(value), name];
               }}
               labelFormatter={(age) => `Age ${age}`}
             />

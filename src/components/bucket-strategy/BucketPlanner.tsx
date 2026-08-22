@@ -6,7 +6,6 @@ import type {
   SimulationResult,
   WorkerOutbound,
 } from '@/features/bucket-strategy/types';
-import { formatMoney, formatMoneyCompact } from '@/features/bucket-strategy/money';
 import { InputPanel } from './InputPanel';
 import { AllocationCards } from './AllocationCards';
 import { FanChart } from './FanChart';
@@ -15,6 +14,7 @@ import { WalkthroughTable } from './WalkthroughTable';
 import { RulesPanel } from './RulesPanel';
 import { EducationalIntro } from './EducationalIntro';
 import { Disclaimer } from './Disclaimer';
+import { useCurrency } from '@/lib/currency-context';
 
 interface Results {
   primary: SimulationResult;
@@ -187,6 +187,7 @@ function ResultsRegion({ status }: { status: Status }) {
 }
 
 function FlexibilitySummary({ result }: { result: SimulationResult }) {
+  const { money, moneyCompact } = useCurrency();
   const spendingRetention =
     result.baselineFinalRealSpending > 0
       ? (result.medianFinalRealSpending / result.baselineFinalRealSpending) * 100
@@ -210,13 +211,13 @@ function FlexibilitySummary({ result }: { result: SimulationResult }) {
         </p>
         <p
           className="mt-2 font-heading text-2xl font-semibold text-teal-dark"
-          title={formatMoney(result.medianFinalRealSpending)}
+          title={money(result.medianFinalRealSpending)}
         >
-          {formatMoneyCompact(result.medianFinalRealSpending)}
+          {moneyCompact(result.medianFinalRealSpending)}
         </p>
         <p className="mt-1 text-xs text-ink/60">
           {spendingRetention.toFixed(0)}% of the fully-indexed{' '}
-          {formatMoneyCompact(result.baselineFinalRealSpending)} baseline
+          {moneyCompact(result.baselineFinalRealSpending)} baseline
         </p>
       </div>
     </div>

@@ -10,7 +10,7 @@ import {
   YAxis,
 } from 'recharts';
 import type { SimulationResult } from '@/features/bucket-strategy/types';
-import { formatMoney, formatMoneyCompact } from '@/features/bucket-strategy/money';
+import { useCurrency } from '@/lib/currency-context';
 
 type Props = {
   primary: SimulationResult;
@@ -26,6 +26,7 @@ interface Row {
 }
 
 export function FanChart({ primary, comparison }: Props) {
+  const { money, moneyCompact } = useCurrency();
   const [mode, setMode] = useState<'real' | 'nominal'>('real');
   const [showComparison, setShowComparison] = useState(false);
 
@@ -89,7 +90,7 @@ export function FanChart({ primary, comparison }: Props) {
               }}
             />
             <YAxis
-              tickFormatter={(v: number) => formatMoneyCompact(v)}
+              tickFormatter={(v: number) => moneyCompact(v)}
               tick={{ fontSize: 12, fill: '#1C2826' }}
               width={56}
             />
@@ -102,9 +103,9 @@ export function FanChart({ primary, comparison }: Props) {
               }}
               formatter={(value: number | [number, number], name: string) => {
                 if (Array.isArray(value)) {
-                  return [`${formatMoney(value[0])} – ${formatMoney(value[1])}`, name];
+                  return [`${money(value[0])} – ${money(value[1])}`, name];
                 }
-                return [formatMoney(value), name];
+                return [money(value), name];
               }}
               labelFormatter={(year) => `Year ${year}`}
             />

@@ -1,5 +1,5 @@
 import { useId } from 'react';
-import { formatCurrency } from '@/lib/format';
+import { useCurrency } from '@/lib/currency-context';
 
 type Props = {
   value: number;
@@ -7,6 +7,7 @@ type Props = {
 };
 
 export function SpendingInput({ value, onChange }: Props) {
+  const { money } = useCurrency();
   const id = useId();
   const monthly = value > 0 ? value / 12 : 0;
   return (
@@ -16,7 +17,7 @@ export function SpendingInput({ value, onChange }: Props) {
           Annual spending in retirement
         </label>
         <span className="text-xs text-ink/55">
-          ≈ <span className="font-medium text-teal-dark">{formatCurrency(monthly)}</span>/month
+          ≈ <span className="font-medium text-teal-dark">{money(monthly)}</span>/month
         </span>
       </div>
       <div className="relative mt-1">

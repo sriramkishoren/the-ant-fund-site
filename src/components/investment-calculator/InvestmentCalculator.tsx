@@ -16,7 +16,7 @@ import type {
   InvestmentInput,
   SolveFor,
 } from '@/features/investment-calculator/types';
-import { formatCurrency, formatPercent } from '@/lib/format';
+import { useCurrency } from '@/lib/currency-context';
 
 const SCENARIO_COLORS = ['#15807D', '#E09A33', '#0D5957'];
 const FREQ_ABBREV: Record<ContributionFrequency, string> = {
@@ -26,6 +26,7 @@ const FREQ_ABBREV: Record<ContributionFrequency, string> = {
 };
 
 export function InvestmentCalculator() {
+  const { money, percent } = useCurrency();
   const [input, setInput] = useState<InvestmentInput>(DEFAULT_INVESTMENT_INPUT);
   const [solveFor, setSolveFor] = useState<SolveFor>('endAmount');
   const [targetEndAmount, setTargetEndAmount] = useState<number>(DEFAULT_TARGET_END_AMOUNT);
@@ -43,9 +44,9 @@ export function InvestmentCalculator() {
   function pinCurrent() {
     if (!result) return;
     const color = SCENARIO_COLORS[scenarios.length % SCENARIO_COLORS.length];
-    const label = `${formatCurrency(resolvedInput.contribution)}/${
+    const label = `${money(resolvedInput.contribution)}/${
       FREQ_ABBREV[resolvedInput.contributionFrequency]
-    } · ${formatPercent(resolvedInput.annualReturn)} · ${Math.round(resolvedInput.years)}yr`;
+    } · ${percent(resolvedInput.annualReturn)} · ${Math.round(resolvedInput.years)}yr`;
     setScenarios((prev) => [
       ...prev,
       { id: `${Date.now()}-${prev.length}`, label, color, input: resolvedInput, result },
@@ -83,7 +84,7 @@ export function InvestmentCalculator() {
               <p className="font-heading text-lg text-teal-dark">This goal isn&rsquo;t reachable</p>
               <p className="mt-2 text-sm text-ink/70">
                 With the current inputs there&rsquo;s no value that hits{' '}
-                {formatCurrency(targetEndAmount)}. Try a longer horizon, a higher return, or a
+                {money(targetEndAmount)}. Try a longer horizon, a higher return, or a
                 larger contribution — or lower the goal.
               </p>
             </div>

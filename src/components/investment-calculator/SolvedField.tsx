@@ -1,5 +1,5 @@
-import { formatCurrency, formatYears } from '@/features/investment-calculator/format';
-import { formatPercent } from '@/lib/format';
+import { formatYears } from '@/features/investment-calculator/format';
+import { useCurrency } from '@/lib/currency-context';
 
 type Kind = 'currency' | 'percent' | 'years';
 
@@ -9,23 +9,25 @@ type Props = {
   kind: Kind;
 };
 
-function render(value: number, kind: Kind): string {
-  switch (kind) {
-    case 'currency':
-      return formatCurrency(value);
-    case 'percent':
-      return formatPercent(value);
-    case 'years':
-      return formatYears(value);
-  }
-}
-
 /**
  * The read-only slot that replaces an editable input when that field is the one
  * being solved for. Visually distinct (teal wash) so it reads as an answer, not
  * a control.
  */
 export function SolvedField({ label, value, kind }: Props) {
+  const { money, percent } = useCurrency();
+
+  function render(v: number): string {
+    switch (kind) {
+      case 'currency':
+        return money(v);
+      case 'percent':
+        return percent(v);
+      case 'years':
+        return formatYears(v);
+    }
+  }
+
   return (
     <div>
       <span className="block text-sm font-medium text-teal-dark">{label}</span>
@@ -34,7 +36,7 @@ export function SolvedField({ label, value, kind }: Props) {
           =
         </span>
         <span className="font-heading text-lg font-semibold text-teal-dark">
-          {value === null ? 'Not reachable' : render(value, kind)}
+          {value === null ? 'Not reachable' : render(value)}
         </span>
       </div>
     </div>

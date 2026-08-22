@@ -9,8 +9,7 @@ import {
   YAxis,
 } from 'recharts';
 import type { InvestmentInput, InvestmentResult } from '@/features/investment-calculator/types';
-import { compactUSD } from '@/features/investment-calculator/format';
-import { formatCurrency, formatPercent } from '@/lib/format';
+import { useCurrency } from '@/lib/currency-context';
 
 export interface Scenario {
   id: string;
@@ -33,6 +32,7 @@ function balanceAtYear(s: Scenario, year: number): number | undefined {
 }
 
 export function ScenarioComparison({ scenarios, onPinCurrent, onRemove, canPin }: Props) {
+  const { money, moneyCompact, percent } = useCurrency();
   const chartData = useMemo(() => {
     const maxYear = scenarios.reduce((m, s) => Math.max(m, s.result.years.length), 0);
     const rows: Array<Record<string, number>> = [];
@@ -88,7 +88,7 @@ export function ScenarioComparison({ scenarios, onPinCurrent, onRemove, canPin }
                   }}
                 />
                 <YAxis
-                  tickFormatter={compactUSD}
+                  tickFormatter={moneyCompact}
                   tick={{ fontSize: 12, fill: '#1C2826' }}
                   width={56}
                 />
@@ -101,7 +101,7 @@ export function ScenarioComparison({ scenarios, onPinCurrent, onRemove, canPin }
                   }}
                   formatter={(value: number, name: string) => {
                     const s = scenarios.find((x) => x.id === name);
-                    return [formatCurrency(value), s?.label ?? name];
+                    return [money(value), s?.label ?? name];
                   }}
                   labelFormatter={(year) => `Year ${year}`}
                 />
@@ -157,16 +157,16 @@ export function ScenarioComparison({ scenarios, onPinCurrent, onRemove, canPin }
                       </span>
                     </td>
                     <td className="px-3 py-2 text-right text-ink/80">
-                      {formatPercent(s.input.annualReturn)}
+                      {percent(s.input.annualReturn)}
                     </td>
                     <td className="px-3 py-2 text-right text-ink/80">
                       {Math.round(s.input.years)}
                     </td>
                     <td className="px-3 py-2 text-right font-medium text-teal-dark">
-                      {formatCurrency(s.result.endBalance)}
+                      {money(s.result.endBalance)}
                     </td>
                     <td className="px-3 py-2 text-right text-amber">
-                      {formatCurrency(s.result.totalInterest)}
+                      {money(s.result.totalInterest)}
                     </td>
                     <td className="px-3 py-2 text-right">
                       <button

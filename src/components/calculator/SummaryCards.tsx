@@ -1,31 +1,32 @@
 import type { SimResult } from '@/features/monte-carlo/types';
-import { formatCurrency, formatPercent } from '@/lib/format';
+import { useCurrency } from '@/lib/currency-context';
 
 type Props = { result: SimResult };
 
 export function SummaryCards({ result }: Props) {
+  const { money, percent } = useCurrency();
   const items = [
     {
       label: 'Success rate',
-      value: formatPercent(result.successRate),
+      value: percent(result.successRate),
       sub: `${result.meta.runs.toLocaleString()} runs`,
       accent: 'text-teal-dark',
     },
     {
       label: 'Median terminal value',
-      value: formatCurrency(result.medianTerminal),
+      value: money(result.medianTerminal),
       sub: 'at life expectancy',
       accent: 'text-teal-dark',
     },
     {
       label: '10th percentile',
-      value: formatCurrency(result.p10Terminal),
+      value: money(result.p10Terminal),
       sub: 'bad-case outcome',
       accent: 'text-teal-dark',
     },
     {
       label: '90th percentile',
-      value: formatCurrency(result.p90Terminal),
+      value: money(result.p90Terminal),
       sub: 'good-case outcome',
       accent: 'text-teal-dark',
     },

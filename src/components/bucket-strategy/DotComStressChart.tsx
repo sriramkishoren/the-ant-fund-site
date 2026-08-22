@@ -9,7 +9,7 @@ import {
   YAxis,
 } from 'recharts';
 import type { HistoricalYear } from '@/features/bucket-strategy/types';
-import { formatMoney, formatMoneyCompact } from '@/features/bucket-strategy/money';
+import { useCurrency } from '@/lib/currency-context';
 
 type Props = {
   path: HistoricalYear[];
@@ -23,6 +23,7 @@ interface Row {
 }
 
 export function DotComStressChart({ path }: Props) {
+  const { money, moneyCompact } = useCurrency();
   const data = useMemo<Row[]>(
     () =>
       path.map((y) => ({
@@ -56,7 +57,7 @@ export function DotComStressChart({ path }: Props) {
             <CartesianGrid stroke="#E6E0D5" strokeDasharray="3 3" />
             <XAxis dataKey="year" tick={{ fontSize: 12, fill: '#1C2826' }} />
             <YAxis
-              tickFormatter={(v: number) => formatMoneyCompact(v)}
+              tickFormatter={(v: number) => moneyCompact(v)}
               tick={{ fontSize: 12, fill: '#1C2826' }}
               width={56}
             />
@@ -67,7 +68,7 @@ export function DotComStressChart({ path }: Props) {
                 borderRadius: 8,
                 fontSize: 12,
               }}
-              formatter={(value: number) => [formatMoney(value), 'Portfolio (real)']}
+              formatter={(value: number) => [money(value), 'Portfolio (real)']}
               labelFormatter={(year) => `${year}`}
             />
             <Line
@@ -99,8 +100,8 @@ export function DotComStressChart({ path }: Props) {
         <span className="ml-auto text-ink/70">
           {survived ? (
             <>
-              Survived: {formatMoney(startValue)} →{' '}
-              <span className="font-medium text-teal-dark">{formatMoney(endValue)}</span> real
+              Survived: {money(startValue)} →{' '}
+              <span className="font-medium text-teal-dark">{money(endValue)}</span> real
             </>
           ) : (
             <span className="font-medium text-red-600">Depleted before the horizon</span>

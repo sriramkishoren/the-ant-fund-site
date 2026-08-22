@@ -10,7 +10,7 @@ import {
   YAxis,
 } from 'recharts';
 import type { SimResult } from '@/features/monte-carlo/types';
-import { formatCompactUSD } from '@/features/monte-carlo/stats';
+import { useCurrency } from '@/lib/currency-context';
 
 type Props = { result: SimResult };
 
@@ -23,18 +23,19 @@ interface BinRow {
 }
 
 export function OutcomeHistogram({ result }: Props) {
+  const { moneyCompact } = useCurrency();
   const data = useMemo<BinRow[]>(() => {
     return result.terminalHistogram.map((b) => {
       const mid = (b.binStart + b.binEnd) / 2;
       return {
-        label: formatCompactUSD(mid),
+        label: moneyCompact(mid),
         midpoint: mid,
         success: b.successCount,
         failure: b.failureCount,
         total: b.successCount + b.failureCount,
       };
     });
-  }, [result]);
+  }, [result, moneyCompact]);
 
   return (
     <div className="rounded-xl border border-border bg-surface p-4 shadow-sm">

@@ -1,5 +1,5 @@
 import type { SimulationResult } from '@/features/bucket-strategy/types';
-import { formatMoney, formatMoneyCompact } from '@/features/bucket-strategy/money';
+import { useCurrency } from '@/lib/currency-context';
 
 type Props = {
   result: SimulationResult;
@@ -7,6 +7,7 @@ type Props = {
 };
 
 export function AllocationCards({ result, totalPortfolio }: Props) {
+  const { money, moneyCompact } = useCurrency();
   const stabilityPct = totalPortfolio > 0 ? (result.initialStability / totalPortfolio) * 100 : 0;
   const growthPct = totalPortfolio > 0 ? (result.initialGrowth / totalPortfolio) * 100 : 0;
   const successTone =
@@ -16,15 +17,15 @@ export function AllocationCards({ result, totalPortfolio }: Props) {
     <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
       <Card
         label="Stability bucket"
-        value={formatMoneyCompact(result.initialStability)}
-        exact={formatMoney(result.initialStability)}
+        value={moneyCompact(result.initialStability)}
+        exact={money(result.initialStability)}
         sub={`${stabilityPct.toFixed(0)}% of portfolio`}
         dot="bg-teal"
       />
       <Card
         label="Growth bucket"
-        value={formatMoneyCompact(result.initialGrowth)}
-        exact={formatMoney(result.initialGrowth)}
+        value={moneyCompact(result.initialGrowth)}
+        exact={money(result.initialGrowth)}
         sub={`${growthPct.toFixed(0)}% of portfolio`}
         dot="bg-amber"
       />

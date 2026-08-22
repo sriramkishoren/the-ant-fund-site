@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import type { SimResult, YearlyDetailRow } from '@/features/monte-carlo/types';
-import { formatCurrency } from '@/lib/format';
+import { useCurrency } from '@/lib/currency-context';
 
 type PathKey = 'median' | 'p10' | 'p90';
 const PAGE_SIZE = 12;
@@ -14,6 +14,7 @@ const labels: Record<PathKey, string> = {
 };
 
 export function YearByYearTable({ result }: Props) {
+  const { money } = useCurrency();
   const [path, setPath] = useState<PathKey>('median');
   const [page, setPage] = useState(0);
 
@@ -85,7 +86,7 @@ export function YearByYearTable({ result }: Props) {
                   </span>
                 </td>
                 <td className="px-3 py-2 text-right tabular-nums text-ink">
-                  {formatCurrency(r.startValue)}
+                  {money(r.startValue)}
                 </td>
                 <td
                   className={`px-3 py-2 text-right tabular-nums ${
@@ -93,7 +94,7 @@ export function YearByYearTable({ result }: Props) {
                   }`}
                 >
                   {r.cashflow >= 0 ? '+' : '−'}
-                  {formatCurrency(Math.abs(r.cashflow))}
+                  {money(Math.abs(r.cashflow))}
                 </td>
                 <td
                   className={`px-3 py-2 text-right tabular-nums ${
@@ -101,10 +102,10 @@ export function YearByYearTable({ result }: Props) {
                   }`}
                 >
                   {r.growth >= 0 ? '+' : '−'}
-                  {formatCurrency(Math.abs(r.growth))}
+                  {money(Math.abs(r.growth))}
                 </td>
                 <td className="px-3 py-2 text-right tabular-nums font-medium text-teal-dark">
-                  {formatCurrency(r.endValue)}
+                  {money(r.endValue)}
                 </td>
               </tr>
             ))}

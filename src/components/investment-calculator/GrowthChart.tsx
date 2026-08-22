@@ -9,8 +9,7 @@ import {
   YAxis,
 } from 'recharts';
 import type { InvestmentInput, InvestmentResult } from '@/features/investment-calculator/types';
-import { compactUSD } from '@/features/investment-calculator/format';
-import { formatCurrency } from '@/lib/format';
+import { useCurrency } from '@/lib/currency-context';
 
 type Props = {
   input: InvestmentInput;
@@ -25,6 +24,7 @@ interface Row {
 }
 
 export function GrowthChart({ input, result }: Props) {
+  const { money, moneyCompact } = useCurrency();
   const data = useMemo<Row[]>(() => {
     const rows: Row[] = [
       {
@@ -80,7 +80,7 @@ export function GrowthChart({ input, result }: Props) {
               }}
             />
             <YAxis
-              tickFormatter={compactUSD}
+              tickFormatter={moneyCompact}
               tick={{ fontSize: 12, fill: '#1C2826' }}
               width={56}
             />
@@ -91,7 +91,7 @@ export function GrowthChart({ input, result }: Props) {
                 borderRadius: 8,
                 fontSize: 12,
               }}
-              formatter={(value: number, name: string) => [formatCurrency(value), name]}
+              formatter={(value: number, name: string) => [money(value), name]}
               labelFormatter={(year) => `Year ${year}`}
             />
             <Area

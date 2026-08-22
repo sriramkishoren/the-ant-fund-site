@@ -1,11 +1,12 @@
 import type { InvestmentResult } from '@/features/investment-calculator/types';
-import { formatCurrency } from '@/lib/format';
+import { useCurrency } from '@/lib/currency-context';
 
 type Props = {
   result: InvestmentResult;
 };
 
 export function ResultCards({ result }: Props) {
+  const { money } = useCurrency();
   const invested = result.startingAmount + result.totalContributions;
   const growthShare = result.endBalance > 0 ? result.totalInterest / result.endBalance : 0;
 
@@ -14,11 +15,11 @@ export function ResultCards({ result }: Props) {
       <div className="rounded-2xl border border-teal/30 bg-gradient-to-br from-teal/10 to-gold/10 p-6 shadow-sm sm:col-span-3">
         <p className="text-xs font-medium uppercase tracking-[0.16em] text-teal">End balance</p>
         <p className="mt-1 font-heading text-4xl font-semibold text-teal-dark sm:text-5xl">
-          {formatCurrency(result.endBalance)}
+          {money(result.endBalance)}
         </p>
         <p className="mt-2 text-sm text-ink/70">
-          {formatCurrency(invested)} invested grows into{' '}
-          {formatCurrency(result.endBalance)} —{' '}
+          {money(invested)} invested grows into{' '}
+          {money(result.endBalance)} —{' '}
           <span className="font-medium text-teal-dark">
             {(growthShare * 100).toFixed(0)}% of it is growth
           </span>
@@ -42,6 +43,7 @@ function Stat({
   value: number;
   tone: 'ink' | 'teal' | 'amber';
 }) {
+  const { money } = useCurrency();
   const dot =
     tone === 'teal' ? 'bg-teal' : tone === 'amber' ? 'bg-amber' : 'bg-teal-dark';
   return (
@@ -51,7 +53,7 @@ function Stat({
         <p className="text-xs font-medium uppercase tracking-wide text-ink/60">{label}</p>
       </div>
       <p className="mt-2 font-heading text-2xl font-semibold text-teal-dark">
-        {formatCurrency(value)}
+        {money(value)}
       </p>
     </div>
   );

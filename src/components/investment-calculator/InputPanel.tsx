@@ -8,6 +8,7 @@ import type {
   InvestmentInput,
   SolveFor,
 } from '@/features/investment-calculator/types';
+import { useCurrency } from '@/lib/currency-context';
 
 const SOLVE_OPTIONS: { value: SolveFor; label: string }[] = [
   { value: 'endAmount', label: 'End balance' },
@@ -55,6 +56,7 @@ export function InputPanel({
   onTargetChange,
   solvedValue,
 }: Props) {
+  const { meta } = useCurrency();
   return (
     <div className="space-y-5 rounded-2xl border border-border bg-surface p-6 shadow-sm">
       <SelectField
@@ -70,7 +72,7 @@ export function InputPanel({
           label="Goal (target end balance)"
           value={targetEndAmount}
           onChange={onTargetChange}
-          prefix="$"
+          prefix={meta.symbol}
           min={0}
           step={1000}
         />
@@ -86,7 +88,7 @@ export function InputPanel({
           label="Starting amount"
           value={input.startingAmount}
           onChange={(n) => onChange({ startingAmount: n })}
-          prefix="$"
+          prefix={meta.symbol}
           min={0}
           step={1000}
         />
@@ -104,7 +106,7 @@ export function InputPanel({
           label="Additional contribution"
           value={input.contribution}
           onChange={(n) => onChange({ contribution: n })}
-          prefix="$"
+          prefix={meta.symbol}
           min={0}
           step={50}
         />

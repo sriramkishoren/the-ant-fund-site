@@ -1,4 +1,4 @@
-import { formatCurrency, formatPercent } from '@/lib/format';
+import { useCurrency } from '@/lib/currency-context';
 
 type Props = {
   fireNumber: number;
@@ -27,7 +27,8 @@ export function HeadlineCard({
   yearsToRetirement,
   inflationRate,
 }: Props) {
-  const display = Number.isFinite(fireNumber) ? formatCurrency(fireNumber) : '—';
+  const { money, percent } = useCurrency();
+  const display = Number.isFinite(fireNumber) ? money(fireNumber) : '—';
   const mult = Number.isFinite(multiple) ? multiple.toFixed(1) : '—';
 
   const showProjection = yearsToRetirement > 0 && Number.isFinite(fireNumber);
@@ -63,9 +64,9 @@ export function HeadlineCard({
 
       {taxApplied ? (
         <p className="mx-auto mt-3 max-w-xl text-xs text-ink/65">
-          After-tax spending {formatCurrency(annualSpending)}/yr ÷ (1 −{' '}
-          {formatPercent(taxRate)} tax) ={' '}
-          <span className="font-medium text-teal-dark">{formatCurrency(grossWithdrawal)}</span>/yr
+          After-tax spending {money(annualSpending)}/yr ÷ (1 −{' '}
+          {percent(taxRate)} tax) ={' '}
+          <span className="font-medium text-teal-dark">{money(grossWithdrawal)}</span>/yr
           pre-tax withdrawal
         </p>
       ) : null}
@@ -74,15 +75,15 @@ export function HeadlineCard({
         <div className="mx-auto mt-7 max-w-xl rounded-lg border border-border bg-cream/50 px-4 py-3 text-sm">
           <p className="text-ink/70">
             If you retire in <span className="font-medium text-teal-dark">{yearsToRetirement} years</span>, the same purchasing power is roughly{' '}
-            <span className="font-medium text-teal-dark">{formatCurrency(inflated)}</span>{' '}
+            <span className="font-medium text-teal-dark">{money(inflated)}</span>{' '}
             in nominal dollars
-            <span className="text-ink/55"> (≈ {formatCurrency(inflatedSpending)}/yr of spending at {formatPercent(inflationRate)} inflation).</span>
+            <span className="text-ink/55"> (≈ {money(inflatedSpending)}/yr of spending at {percent(inflationRate)} inflation).</span>
           </p>
         </div>
       ) : null}
 
       <p className="mx-auto mt-6 max-w-xl text-sm text-ink/75">
-        {formatCurrency(grossWithdrawal)}/yr ÷ {formatPercent(swr)} = the portfolio that supports your withdrawal forever at this safe withdrawal rate.
+        {money(grossWithdrawal)}/yr ÷ {percent(swr)} = the portfolio that supports your withdrawal forever at this safe withdrawal rate.
       </p>
     </section>
   );

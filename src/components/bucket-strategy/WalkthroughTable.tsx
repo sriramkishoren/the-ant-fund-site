@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { BucketParams, WalkthroughYear } from '@/features/bucket-strategy/types';
-import { formatMoney, formatMoneyCompact } from '@/features/bucket-strategy/money';
+import { useCurrency } from '@/lib/currency-context';
 
 type Props = {
   walkthrough: WalkthroughYear[];
@@ -14,6 +14,7 @@ type Props = {
  * transfer that keeps the stability bucket topped up.
  */
 export function WalkthroughTable({ walkthrough, params }: Props) {
+  const { money, moneyCompact } = useCurrency();
   const [open, setOpen] = useState(true);
 
   return (
@@ -114,35 +115,35 @@ export function WalkthroughTable({ walkthrough, params }: Props) {
                         </span>
                       ) : null}
                     </td>
-                    <td className="px-3 py-2 text-ink/80" title={formatMoney(y.startStability)}>
-                      {formatMoneyCompact(y.startStability)}
+                    <td className="px-3 py-2 text-ink/80" title={money(y.startStability)}>
+                      {moneyCompact(y.startStability)}
                     </td>
-                    <td className="px-3 py-2 text-ink/80" title={formatMoney(y.startGrowth)}>
-                      {formatMoneyCompact(y.startGrowth)}
+                    <td className="px-3 py-2 text-ink/80" title={money(y.startGrowth)}>
+                      {moneyCompact(y.startGrowth)}
                     </td>
-                    <td className="px-3 py-2 text-ink/80" title={formatMoney(y.spending)}>
-                      {formatMoneyCompact(y.spending)}
+                    <td className="px-3 py-2 text-ink/80" title={money(y.spending)}>
+                      {moneyCompact(y.spending)}
                     </td>
-                    <td className="px-3 py-2 text-ink/80" title={formatMoney(y.netWithdrawal)}>
-                      −{formatMoneyCompact(y.netWithdrawal)}
+                    <td className="px-3 py-2 text-ink/80" title={money(y.netWithdrawal)}>
+                      −{moneyCompact(y.netWithdrawal)}
                     </td>
-                    <td className="px-3 py-2 text-teal-dark" title={formatMoney(y.marketGain)}>
-                      +{formatMoneyCompact(y.marketGain)}
+                    <td className="px-3 py-2 text-teal-dark" title={money(y.marketGain)}>
+                      +{moneyCompact(y.marketGain)}
                     </td>
                     <td className="px-3 py-2">
                       <TransferCell transfer={y.transfer} />
                     </td>
-                    <td className="px-3 py-2 text-ink/80" title={formatMoney(y.endStability)}>
-                      {formatMoneyCompact(y.endStability)}
+                    <td className="px-3 py-2 text-ink/80" title={money(y.endStability)}>
+                      {moneyCompact(y.endStability)}
                     </td>
-                    <td className="px-3 py-2 text-ink/80" title={formatMoney(y.endGrowth)}>
-                      {formatMoneyCompact(y.endGrowth)}
+                    <td className="px-3 py-2 text-ink/80" title={money(y.endGrowth)}>
+                      {moneyCompact(y.endGrowth)}
                     </td>
                     <td
                       className="px-3 py-2 font-medium text-teal-dark"
-                      title={formatMoney(y.endTotal)}
+                      title={money(y.endTotal)}
                     >
-                      {formatMoneyCompact(y.endTotal)}
+                      {moneyCompact(y.endTotal)}
                     </td>
                   </tr>
                 ))}
@@ -168,17 +169,18 @@ export function WalkthroughTable({ walkthrough, params }: Props) {
 }
 
 function TransferCell({ transfer }: { transfer: number }) {
+  const { moneyCompact } = useCurrency();
   if (Math.abs(transfer) < 1) return <span className="text-ink/40">—</span>;
   if (transfer > 0) {
     return (
       <span className="text-teal" title="Sold growth to refill the stability bucket">
-        ↑ {formatMoneyCompact(transfer)}
+        ↑ {moneyCompact(transfer)}
       </span>
     );
   }
   return (
     <span className="text-amber" title="Moved excess stability back to the growth bucket">
-      ↓ {formatMoneyCompact(-transfer)}
+      ↓ {moneyCompact(-transfer)}
     </span>
   );
 }

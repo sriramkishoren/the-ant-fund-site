@@ -1,5 +1,6 @@
 import { NavLink, Link } from 'react-router-dom';
 import { Container } from './Container';
+import { CurrencyToggle } from './CurrencyToggle';
 import { withBase } from '@/lib/basePath';
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -37,6 +38,7 @@ export function Header() {
           <NavLink to="/blog" className={navLinkClass}>
             Blog
           </NavLink>
+          <CurrencyToggle className="ml-1" />
         </nav>
       </Container>
     </header>

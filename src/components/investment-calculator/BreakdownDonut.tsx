@@ -1,6 +1,6 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 import type { InvestmentResult } from '@/features/investment-calculator/types';
-import { formatCurrency } from '@/lib/format';
+import { useCurrency } from '@/lib/currency-context';
 
 type Props = {
   result: InvestmentResult;
@@ -13,6 +13,7 @@ const SLICES = [
 ] as const;
 
 export function BreakdownDonut({ result }: Props) {
+  const { money } = useCurrency();
   const data = SLICES.map((s) => ({
     name: s.label,
     value: Math.max(0, result[s.key]),
@@ -51,7 +52,7 @@ export function BreakdownDonut({ result }: Props) {
                   borderRadius: 8,
                   fontSize: 12,
                 }}
-                formatter={(value: number, name: string) => [formatCurrency(value), name]}
+                formatter={(value: number, name: string) => [money(value), name]}
               />
             </PieChart>
           </ResponsiveContainer>
@@ -68,7 +69,7 @@ export function BreakdownDonut({ result }: Props) {
                 <span className="text-ink/80">{d.name}</span>
               </span>
               <span className="text-right">
-                <span className="font-medium text-teal-dark">{formatCurrency(d.value)}</span>
+                <span className="font-medium text-teal-dark">{money(d.value)}</span>
                 <span className="ml-2 text-xs text-ink/55">
                   {total > 0 ? `${Math.round((d.value / total) * 100)}%` : '0%'}
                 </span>

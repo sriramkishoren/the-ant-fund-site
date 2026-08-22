@@ -1,6 +1,6 @@
 import { effectiveStabilityTarget } from '@/features/bucket-strategy/rules';
-import { formatMoney } from '@/features/bucket-strategy/money';
 import type { BucketParams } from '@/features/bucket-strategy/types';
+import { useCurrency } from '@/lib/currency-context';
 
 type Props = {
   params: BucketParams;
@@ -8,6 +8,7 @@ type Props = {
 
 /** Live plain-language rendering of the user's current rule set. */
 export function RulesPanel({ params }: Props) {
+  const { money } = useCurrency();
   const annual = params.monthlyExpenses * 12;
   const target = effectiveStabilityTarget({
     stabilityYears: params.stabilityYears,
@@ -22,7 +23,7 @@ export function RulesPanel({ params }: Props) {
       <strong className="text-teal-dark">
         min({params.stabilityYears} years of spending, {params.stabilityCapPct}% of the portfolio)
       </strong>{' '}
-      — currently {formatMoney(target)} — selling growth to top it up, or moving any excess back to
+      — currently {money(target)} — selling growth to top it up, or moving any excess back to
       growth.
     </>,
     <>
@@ -61,7 +62,7 @@ export function RulesPanel({ params }: Props) {
   if (params.socialSecurityMonthly > 0) {
     rules.push(
       <>
-        <strong className="text-teal-dark">{formatMoney(params.socialSecurityMonthly)}/mo</strong> of
+        <strong className="text-teal-dark">{money(params.socialSecurityMonthly)}/mo</strong> of
         Social Security or pension income starts in year {params.socialSecurityStartYear} and grows
         with inflation, reducing net withdrawals from then on.
       </>,
@@ -71,7 +72,7 @@ export function RulesPanel({ params }: Props) {
   if (params.partTimeMonthly > 0 && params.partTimeYears > 0) {
     rules.push(
       <>
-        <strong className="text-teal-dark">{formatMoney(params.partTimeMonthly)}/mo</strong> of
+        <strong className="text-teal-dark">{money(params.partTimeMonthly)}/mo</strong> of
         part-time income for the first {params.partTimeYears} years.
       </>,
     );
