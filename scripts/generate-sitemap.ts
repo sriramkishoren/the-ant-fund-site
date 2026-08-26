@@ -5,6 +5,7 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadAllPosts } from './load-posts';
 import { loadLiveToolSlugs } from './load-tools';
+import { loadAllChapters, loadCourseSlugs } from './load-learn';
 
 const SITE_ORIGIN = 'https://theantfund.com';
 
@@ -12,10 +13,14 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const publicDir = resolve(__dirname, '..', 'public');
 
 const liveToolSlugs = loadLiveToolSlugs();
+const courseSlugs = loadCourseSlugs();
+const chapters = loadAllChapters();
 const staticPaths = [
   '/',
   '/tools',
   ...liveToolSlugs.map((slug) => `/tools/${slug}`),
+  '/learn',
+  ...courseSlugs.map((slug) => `/learn/${slug}`),
   '/blog',
 ];
 const posts = loadAllPosts();
@@ -37,11 +42,14 @@ const staticUrls = staticPaths.map((p) => urlBlock(p, now)).join('\n');
 const postUrls = posts
   .map((p) => urlBlock(`/blog/${p.slug}`, p.date))
   .join('\n');
+const chapterUrls = chapters
+  .map((c) => urlBlock(`/learn/${c.courseSlug}/${c.slug}`, c.date || now))
+  .join('\n');
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${staticUrls}
-${postUrls}
+${chapterUrls ? `${chapterUrls}\n` : ''}${postUrls}
 </urlset>
 `;
 

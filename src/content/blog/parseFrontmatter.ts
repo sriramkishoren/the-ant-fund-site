@@ -1,6 +1,12 @@
 // Minimal YAML-ish frontmatter parser. Intentionally tiny — we control the
 // authoring format so we only support: `key: value`, `key: "value"`,
-// `key: [a, b, c]`, and `key: 12`. No nesting, no anchors, no multi-line scalars.
+// `key: [a, b, c]`, `key: 12`, and block lists:
+//
+//   agenda:
+//     - First item, commas and all
+//     - Second item
+//
+// No nesting, no anchors, no multi-line scalars.
 // Throws on malformed input so a typo fails the build instead of silently
 // producing an empty field.
 
@@ -34,19 +40,49 @@ function parseScalar(raw: string): string | number {
   return trimmed;
 }
 
+function stripQuotes(s: string): string {
+  const t = s.trim();
+  if ((t.startsWith('"') && t.endsWith('"')) || (t.startsWith("'") && t.endsWith("'"))) {
+    return unescape(t.slice(1, -1));
+  }
+  return t;
+}
+
+/**
+ * Split on commas that sit outside quotes, so an item may contain a comma:
+ * `["Strikes, deltas and DTE", "Rolling"]` is two items, not three.
+ */
+function splitTopLevel(inner: string): string[] {
+  const out: string[] = [];
+  let current = '';
+  let quote: string | null = null;
+  for (let i = 0; i < inner.length; i++) {
+    const ch = inner[i];
+    if (quote) {
+      if (ch === '\\' && i + 1 < inner.length) {
+        current += ch + inner[++i];
+        continue;
+      }
+      if (ch === quote) quote = null;
+      current += ch;
+    } else if (ch === '"' || ch === "'") {
+      quote = ch;
+      current += ch;
+    } else if (ch === ',') {
+      out.push(current);
+      current = '';
+    } else {
+      current += ch;
+    }
+  }
+  out.push(current);
+  return out;
+}
+
 function parseArray(raw: string): string[] {
   const inner = raw.trim().slice(1, -1).trim();
   if (!inner) return [];
-  return inner.split(',').map((item) => {
-    const s = item.trim();
-    if (
-      (s.startsWith('"') && s.endsWith('"')) ||
-      (s.startsWith("'") && s.endsWith("'"))
-    ) {
-      return unescape(s.slice(1, -1));
-    }
-    return s;
-  });
+  return splitTopLevel(inner).map(stripQuotes);
 }
 
 export function parseFrontmatter(source: string): ParsedFrontmatter {
@@ -57,9 +93,24 @@ export function parseFrontmatter(source: string): ParsedFrontmatter {
   const [, yaml, body] = match;
   const data: Record<string, string | number | string[]> = {};
 
-  for (const rawLine of yaml.split(/\r?\n/)) {
+  const lines = yaml.split(/\r?\n/);
+  for (let i = 0; i < lines.length; i++) {
+    const rawLine = lines[i];
     const line = rawLine.replace(/\s+#.*$/, '');
     if (!line.trim()) continue;
+
+    // Block list: `key:` on its own line, then indented `- item` lines. Items
+    // are taken verbatim (commas included) up to an optional trailing comment.
+    const blockKey = /^([A-Za-z0-9_-]+):\s*$/.exec(line);
+    if (blockKey && /^\s*-\s+/.test(lines[i + 1] ?? '')) {
+      const items: string[] = [];
+      while (i + 1 < lines.length && /^\s*-\s+/.test(lines[i + 1])) {
+        items.push(stripQuotes(lines[++i].replace(/^\s*-\s+/, '').replace(/\s+#.*$/, '')));
+      }
+      data[blockKey[1]] = items;
+      continue;
+    }
+
     const colon = line.indexOf(':');
     if (colon === -1) {
       throw new Error(`Malformed frontmatter line (no colon): ${rawLine}`);

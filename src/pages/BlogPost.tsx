@@ -1,9 +1,4 @@
-import type { ComponentProps } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import ReactMarkdown, { type Components } from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import rehypeSlug from 'rehype-slug';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { useParams } from 'react-router-dom';
 
 import { Seo } from '@/components/Seo';
 import { Container } from '@/components/layout/Container';
@@ -23,54 +18,13 @@ import { withBase } from '@/lib/basePath';
 import { parsePostDate } from '@/lib/date';
 import { SITE_NAME, SITE_ORIGIN, absoluteUrl } from '@/lib/seo';
 import NotFound from './NotFound';
+import { ArticleBody } from '@/components/ArticleBody';
 
 const dateFmt = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 });
-
-// Custom renderers for the Markdown body:
-// - Internal links (relative or starting with "/") become React Router <Link>s
-//   so navigation stays SPA-internal — no full page reload on click.
-// - External links keep the bare <a> and get a safe target/rel.
-// - Images run their src through withBase() so they resolve correctly under
-//   any deploy base path (root, /theantfund/, etc.).
-function isExternal(href: string): boolean {
-  return /^([a-z]+:)?\/\//i.test(href) || href.startsWith('mailto:');
-}
-
-// react-markdown injects a `node` prop into custom components; strip it so it
-// doesn't leak into the rendered HTML as `node="[object Object]"`.
-type WithNode<T> = T & { node?: unknown };
-
-const markdownComponents: Components = {
-  a({ href, children, node: _node, ...rest }: WithNode<ComponentProps<'a'>>) {
-    if (!href) return <a {...rest}>{children}</a>;
-    if (isExternal(href) || href.startsWith('#')) {
-      return (
-        <a
-          href={href}
-          target={isExternal(href) ? '_blank' : undefined}
-          rel={isExternal(href) ? 'noopener noreferrer' : undefined}
-          {...rest}
-        >
-          {children}
-        </a>
-      );
-    }
-    return (
-      <Link to={href} {...rest}>
-        {children}
-      </Link>
-    );
-  },
-  img({ src, alt, node: _node, ...rest }: WithNode<ComponentProps<'img'>>) {
-    if (typeof src !== 'string' || !src) return null;
-    const resolved = isExternal(src) ? src : withBase(src.replace(/^\//, ''));
-    return <img src={resolved} alt={alt ?? ''} loading="lazy" {...rest} />;
-  },
-};
 
 export default function BlogPost() {
   const { slug = '' } = useParams<{ slug: string }>();
@@ -160,24 +114,7 @@ export default function BlogPost() {
           </aside>
 
           <div>
-            <div className="prose prose-lg max-w-none prose-headings:font-heading prose-headings:text-teal-dark prose-a:text-teal prose-strong:text-ink prose-code:text-teal-dark prose-code:before:content-none prose-code:after:content-none prose-pre:bg-surface prose-pre:text-teal-dark prose-pre:border prose-pre:border-border prose-pre:shadow-sm">
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[
-                  rehypeSlug,
-                  [
-                    rehypeAutolinkHeadings,
-                    {
-                      behavior: 'wrap',
-                      properties: { className: 'no-underline' },
-                    },
-                  ],
-                ]}
-                components={markdownComponents}
-              >
-                {post.content}
-              </ReactMarkdown>
-            </div>
+            <ArticleBody content={post.content} />
 
             <aside
               role="note"

@@ -2,6 +2,8 @@ import type { RouteRecord } from 'vite-react-ssg';
 import { Layout } from '@/components/layout/Layout';
 import { getAllSlugs } from '@/content/blog';
 import { getLiveToolSlugs } from '@/features/tools/registry';
+import { getCourseSlugs } from '@/content/learn/courses';
+import { getAllChapterPaths } from '@/content/learn';
 
 export const routes: RouteRecord[] = [
   {
@@ -25,6 +27,24 @@ export const routes: RouteRecord[] = [
         // Same pattern as blog/:slug — return the FULL path including the
         // parent prefix so each live tool pre-renders to its own .html file.
         getStaticPaths: () => getLiveToolSlugs().map((slug) => `tools/${slug}`),
+      },
+      {
+        path: 'learn',
+        lazy: () => import('@/pages/Learn').then((m) => ({ Component: m.default })),
+        entry: 'src/pages/Learn.tsx',
+      },
+      {
+        path: 'learn/:course',
+        lazy: () => import('@/pages/CoursePage').then((m) => ({ Component: m.default })),
+        entry: 'src/pages/CoursePage.tsx',
+        getStaticPaths: () => getCourseSlugs().map((slug) => `learn/${slug}`),
+      },
+      {
+        path: 'learn/:course/:chapter',
+        lazy: () => import('@/pages/ChapterPage').then((m) => ({ Component: m.default })),
+        entry: 'src/pages/ChapterPage.tsx',
+        getStaticPaths: () =>
+          getAllChapterPaths().map(({ course, chapter }) => `learn/${course}/${chapter}`),
       },
       {
         path: 'blog',
