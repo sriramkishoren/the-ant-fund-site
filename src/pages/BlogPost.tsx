@@ -108,12 +108,12 @@ export default function BlogPost() {
           </Container>
         ) : null}
 
-        <Container className="grid gap-10 pb-16 lg:grid-cols-[16rem_minmax(0,1fr)]">
+        <Container className="grid grid-cols-1 gap-10 pb-16 lg:grid-cols-[16rem_minmax(0,1fr)]">
           <aside className="lg:sticky lg:top-24 lg:self-start">
             <TableOfContents entries={toc} />
           </aside>
 
-          <div>
+          <div className="min-w-0">
             <ArticleBody content={post.content} />
 
             <aside

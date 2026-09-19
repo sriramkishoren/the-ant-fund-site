@@ -44,6 +44,15 @@ const markdownComponents: Components = {
       </Link>
     );
   },
+  // Wide tables scroll within their own box rather than stretching the page
+  // on a phone.
+  table({ node: _node, ...rest }: WithNode<ComponentProps<'table'>>) {
+    return (
+      <div className="overflow-x-auto">
+        <table {...rest} />
+      </div>
+    );
+  },
   img({ src, alt, node: _node, ...rest }: WithNode<ComponentProps<'img'>>) {
     if (typeof src !== 'string' || !src) return null;
     const resolved = isExternal(src) ? src : withBase(src.replace(/^\//, ''));
@@ -51,8 +60,27 @@ const markdownComponents: Components = {
   },
 };
 
-const proseClass =
-  'prose prose-lg max-w-none prose-headings:font-heading prose-headings:text-teal-dark prose-a:text-teal prose-strong:text-ink prose-code:text-teal-dark prose-code:before:content-none prose-code:after:content-none prose-pre:bg-surface prose-pre:text-teal-dark prose-pre:border prose-pre:border-border prose-pre:shadow-sm';
+// Blockquotes are used as callouts throughout the site ("Important:", "A note
+// on what this is", TL;DR), so they are styled as callouts: upright text, no
+// automatic curly quotes, a teal rule and a light wash. Typography's default
+// would render a risk warning as an italic quotation, as if someone had said it,
+// and doubles the quote marks on the few genuine quotes that carry their own.
+const calloutClass = [
+  'prose-blockquote:not-italic',
+  'prose-blockquote:font-normal',
+  'prose-blockquote:text-ink/90',
+  'prose-blockquote:border-l-teal',
+  'prose-blockquote:bg-teal/5',
+  'prose-blockquote:rounded-r-lg',
+  'prose-blockquote:py-3',
+  'prose-blockquote:pr-4',
+  '[&_blockquote_p]:before:content-none',
+  '[&_blockquote_p]:after:content-none',
+  '[&_blockquote>:first-child]:mt-0',
+  '[&_blockquote>:last-child]:mb-0',
+].join(' ');
+
+const proseClass = `prose prose-lg max-w-none prose-headings:font-heading prose-headings:text-teal-dark prose-a:text-teal prose-strong:text-ink prose-code:text-teal-dark prose-code:before:content-none prose-code:after:content-none prose-pre:bg-surface prose-pre:text-teal-dark prose-pre:border prose-pre:border-border prose-pre:shadow-sm ${calloutClass}`;
 
 export function ArticleBody({ content }: { content: string }) {
   return (

@@ -28,7 +28,7 @@ export function Header() {
             the ant fund
           </span>
         </Link>
-        <nav className="flex items-center gap-6">
+        <nav className="flex items-center gap-2 sm:gap-6">
           <NavLink to="/" end className={navLinkClass}>
             Home
           </NavLink>
@@ -41,7 +41,7 @@ export function Header() {
           <NavLink to="/blog" className={navLinkClass}>
             Blog
           </NavLink>
-          <CurrencyToggle className="ml-1" />
+          <CurrencyToggle className="sm:ml-1" />
         </nav>
       </Container>
     </header>

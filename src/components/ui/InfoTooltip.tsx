@@ -11,6 +11,10 @@ type Props = {
 
 /**
  * Small (?) icon button that reveals a tooltip on hover and keyboard focus.
+ *
+ * The popover is display:none while closed rather than visibility:hidden — an
+ * invisible element still counts toward page width, so a closed tooltip near
+ * the edge of a phone screen made the whole page scroll sideways.
  * The same pattern used by Field.tsx — extracted so it can be dropped in
  * anywhere a one-line explanation is helpful.
  */
@@ -29,7 +33,7 @@ export function InfoTooltip({ children, label, className = '' }: Props) {
       <span
         role="tooltip"
         id={id}
-        className="pointer-events-none invisible absolute left-1/2 top-full z-20 mt-2 w-72 -translate-x-1/2 rounded-md border border-border bg-surface px-3 py-2 text-xs leading-snug text-ink shadow-md opacity-0 transition-opacity duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+        className="pointer-events-none absolute left-1/2 top-full z-20 mt-2 hidden w-72 max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-md border border-border bg-surface px-3 py-2 text-xs leading-snug text-ink shadow-md group-hover:block group-focus-within:block"
       >
         {children}
       </span>
