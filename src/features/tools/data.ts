@@ -53,6 +53,15 @@ export const TOOL_METAS: ToolMeta[] = [
     status: 'live',
   },
   {
+    slug: 'options-calculator',
+    name: 'Options Calculator',
+    shortName: 'Options',
+    description:
+      'Breakeven, maximum profit and loss, and return for four single-leg strategies — buying calls and puts, selling cash-secured puts and covered calls — with a payoff chart and an at-expiration scenario table.',
+    category: 'Options',
+    status: 'live',
+  },
+  {
     slug: 'investment-calculator',
     name: 'Investment Calculator',
     shortName: 'Investment growth',
