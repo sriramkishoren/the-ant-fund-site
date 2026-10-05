@@ -56,7 +56,9 @@ export function PayoffChart({ result, input }: Props) {
 
       <div className="h-64 w-full sm:h-80">
         <ResponsiveContainer>
-          <ComposedChart data={data} margin={{ top: 8, right: 12, bottom: 4, left: 8 }}>
+          {/* top margin leaves room for the 'Breakeven' label, which renders
+                above the plot area and was otherwise clipped by the card edge */}
+          <ComposedChart data={data} margin={{ top: 24, right: 12, bottom: 4, left: 8 }}>
             <defs>
               <linearGradient id="oc-profit" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#15807D" stopOpacity={0.45} />

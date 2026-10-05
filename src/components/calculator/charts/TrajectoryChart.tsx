@@ -82,7 +82,8 @@ export function TrajectoryChart({ result, retirementAge, showSamplePaths = true 
       </div>
       <div className="h-72 w-full sm:h-96">
         <ResponsiveContainer>
-          <ComposedChart data={rowsWithSamples} margin={{ top: 8, right: 16, bottom: 8, left: 8 }}>
+          {/* top margin leaves room for the 'Retirement' label above the plot area */}
+          <ComposedChart data={rowsWithSamples} margin={{ top: 24, right: 16, bottom: 8, left: 8 }}>
             <CartesianGrid stroke="#E6E0D5" strokeDasharray="3 3" />
             <XAxis
               dataKey="age"
