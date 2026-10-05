@@ -53,6 +53,15 @@ export const TOOL_METAS: ToolMeta[] = [
     status: 'live',
   },
   {
+    slug: 'strategy-builder',
+    name: 'Options Strategy Builder',
+    shortName: 'Strategy builder',
+    description:
+      'Build multi-leg option strategies — spreads, condors, straddles, calendars — and see profit and loss at every price and every date between now and expiry, with Greeks, breakevens, probability of profit and a payoff chart.',
+    category: 'Options',
+    status: 'live',
+  },
+  {
     slug: 'options-calculator',
     name: 'Options Calculator',
     shortName: 'Options',

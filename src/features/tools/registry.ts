@@ -23,6 +23,7 @@ const LIVE_PAGES: Record<string, LazyExoticComponent<ComponentType>> = {
   'investment-calculator': lazy(() => import('@/pages/tools/InvestmentCalculator')),
   'bucket-strategy-planner': lazy(() => import('@/pages/tools/BucketStrategyPlanner')),
   'options-calculator': lazy(() => import('@/pages/tools/OptionsCalculator')),
+  'strategy-builder': lazy(() => import('@/pages/tools/StrategyBuilder')),
 };
 
 export interface ToolDef extends ToolMeta {
