@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" role="img" aria-labelledby="cc-payoff-title">
+  <title id="cc-payoff-title">Profit and loss at expiry for a covered call compared with simply holding the shares. Both lines fall one-for-one as the stock drops, but the covered call sits higher everywhere by the premium collected. Above the strike the covered call line goes completely flat — profit stops rising — while the stock-only line keeps climbing. The gap between them above the strike is the upside given away.</title>
+  <rect width="1200" height="640" fill="#FBF6EE"/>
+
+  <text x="600" y="44" text-anchor="middle" font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">Covered call vs. just holding the shares</text>
+  <text x="600" y="72" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">Shares bought at $100 · call sold at the $110 strike for $4 a share</text>
+
+  <!-- upside given away -->
+  <polygon points="779,271 1080,146 1080,271" fill="#E09A33" opacity="0.18"/>
+  <text x="952" y="243" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#A96A1C">Upside you gave away</text>
+
+  <!-- zero line -->
+  <line x1="140" y1="380" x2="1080" y2="380" stroke="#1C2826" stroke-width="1.5" opacity="0.35"/>
+  <text x="128" y="385" text-anchor="end" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.6">$0</text>
+
+  <!-- axes labels -->
+  <text x="610" y="600" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1C2826" opacity="0.75">Stock price at expiry</text>
+  <text x="46" y="330" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1C2826" opacity="0.75" transform="rotate(-90 46 330)">Profit / loss</text>
+
+  <!-- strike marker -->
+  <line x1="704" y1="130" x2="704" y2="552" stroke="#E09A33" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="712" y="148" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#A96A1C">STRIKE $110</text>
+  <text x="712" y="166" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.65">profit stops here</text>
+
+  <!-- cost basis marker -->
+  <line x1="516" y1="300" x2="516" y2="552" stroke="#1C2826" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.4"/>
+  <text x="526" y="564" font-family="Inter, sans-serif" font-size="12" fill="#1C2826" opacity="0.7">cost basis $100</text>
+
+  <!-- breakeven marker -->
+  <circle cx="441" cy="380" r="6" fill="#15807D"/>
+  <text x="433" y="564" text-anchor="end" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#15807D">breakeven $96</text>
+  <line x1="441" y1="392" x2="441" y2="552" stroke="#15807D" stroke-width="1.5" stroke-dasharray="4 5" opacity="0.5"/>
+
+  <!-- stock-only line -->
+  <line x1="140" y1="536" x2="1080" y2="146" stroke="#1C2826" stroke-width="2.5" stroke-dasharray="8 6" opacity="0.5"/>
+  <text x="1072" y="132" text-anchor="end" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1C2826" opacity="0.65">Shares alone</text>
+
+  <!-- covered call line -->
+  <polyline points="140,505 704,271 1080,271" fill="none" stroke="#15807D" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="1072" y="296" text-anchor="end" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#15807D">Covered call</text>
+
+  <!-- max profit callout -->
+  <circle cx="704" cy="271" r="6.5" fill="#15807D"/>
+  <rect x="470" y="212" width="212" height="44" rx="9" fill="#FFFFFF" stroke="#E6E0D5"/>
+  <text x="576" y="230" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" font-weight="700" fill="#0D5957">Maximum profit $14/share</text>
+  <text x="576" y="247" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#1C2826" opacity="0.7">$10 of stock gain + $4 premium</text>
+
+  <!-- premium gap annotation on the left -->
+  <text x="186" y="532" font-family="Inter, sans-serif" font-size="11.5" font-weight="600" fill="#15807D">the whole line lifts by the $4 premium</text>
+
+</svg>

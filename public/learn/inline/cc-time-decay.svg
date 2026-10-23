@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" role="img" aria-labelledby="cc-decay-title">
+  <title id="cc-decay-title">How an option's time value decays as expiry approaches, drawn from 90 days on the left down to zero on the right. The curve falls slowly at first and then plunges in the final weeks. A teal band marks the 30 to 45 day window as the standard choice, where decay has accelerated but there is still time to repair a position. An amber band marks the final seven days, where decay is fastest but gamma risk makes a breach unrepairable.</title>
+  <rect width="1200" height="580" fill="#FBF6EE"/>
+
+  <text x="600" y="44" text-anchor="middle" font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">Why 30&#8211;45 days</text>
+  <text x="600" y="72" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">Time value is the income. It does not drain evenly &#8212; it accelerates toward the end.</text>
+
+  <!-- sweet spot band -->
+  <rect x="600" y="110" width="153" height="390" fill="#15807D" opacity="0.13"/>
+  <rect x="600" y="110" width="153" height="390" fill="none" stroke="#15807D" stroke-width="2" stroke-dasharray="6 4"/>
+
+  <!-- danger band -->
+  <rect x="988" y="110" width="72" height="390" fill="#E09A33" opacity="0.2"/>
+
+  <!-- baseline -->
+  <line x1="140" y1="500" x2="1075" y2="500" stroke="#1C2826" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- decay curve -->
+  <polyline points="140,140 293,171 447,206 600,245 753,292 845,326 917,358 988,400 1020,430 1043,462 1060,500"
+            fill="none" stroke="#0D5957" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- axis ticks -->
+  <g font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.7" text-anchor="middle">
+    <text x="140" y="524">90 days</text>
+    <text x="447" y="524">60</text>
+    <text x="600" y="524">45</text>
+    <text x="753" y="524">30</text>
+    <text x="917" y="524">14</text>
+    <text x="1024" y="524">7</text>
+    <text x="1062" y="524">0</text>
+  </g>
+  <text x="600" y="556" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1C2826" opacity="0.75">Days to expiry &#8594;</text>
+  <text x="52" y="310" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#1C2826" opacity="0.75" transform="rotate(-90 52 310)">Time value remaining</text>
+
+  <!-- sweet spot label -->
+  <rect x="566" y="126" width="222" height="58" rx="10" fill="#FFFFFF" stroke="#15807D" stroke-width="2"/>
+  <text x="677" y="150" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#0D5957">30&#8211;45 days</text>
+  <text x="677" y="171" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.8">decay is quick, repair still possible</text>
+
+  <!-- danger label -->
+  <rect x="846" y="196" width="226" height="80" rx="10" fill="#FFFFFF" stroke="#E09A33" stroke-width="2"/>
+  <text x="959" y="220" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#A96A1C">7 days or less</text>
+  <text x="959" y="241" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.8">Fastest decay &#8212; and the trap.</text>
+  <text x="959" y="261" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.8">Gamma explodes, no time to roll.</text>
+
+  <!-- long end label -->
+  <rect x="152" y="196" width="238" height="80" rx="10" fill="#FFFFFF" stroke="#E6E0D5" stroke-width="1.5"/>
+  <text x="271" y="220" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#0D5957">60 days or more</text>
+  <text x="271" y="241" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.8">Twice the premium of 30 days,</text>
+  <text x="271" y="261" text-anchor="middle" font-family="Inter, sans-serif" font-size="12.5" fill="#1C2826" opacity="0.8">but the shares are locked 3&#215; as long.</text>
+
+  <!-- per-day note -->
+  <text x="152" y="470" text-anchor="start" font-family="Inter, sans-serif" font-size="13" font-style="italic" fill="#0D5957">Per day held, the 30-day contract pays more than the 90-day one.</text>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-labelledby="cc-delta-title">
+  <title id="cc-delta-title">Delta as the control knob for a covered call. A scale running from 0.05 delta on the left to 0.40 and above on the right. Low delta means a distant strike, a small premium and roughly a 5 to 12 percent chance of assignment; high delta means a close strike, a large premium and a 40 percent or greater chance of assignment. Two bands are highlighted: 0.05 to 0.12 for the mechanical far-out-of-the-money approach whose goal is never to be assigned, and 0.20 to 0.30 for the chart-driven income approach.</title>
+  <rect width="1200" height="560" fill="#FBF6EE"/>
+
+  <text x="600" y="44" text-anchor="middle" font-family="Fraunces, serif" font-size="26" font-weight="600" fill="#0D5957">Delta is the knob — you pick your own odds</text>
+  <text x="600" y="72" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="#1C2826" opacity="0.7">A call&#8217;s delta is roughly the probability it finishes in the money, which is roughly your chance of assignment</text>
+
+  <!-- the four bands -->
+  <g>
+    <rect x="70" y="120" width="252" height="130" rx="12" fill="#15807D" opacity="0.14"/>
+    <rect x="70" y="120" width="252" height="130" rx="12" fill="none" stroke="#15807D" stroke-width="2.5"/>
+    <text x="196" y="152" text-anchor="middle" font-family="Inter, sans-serif" font-size="19" font-weight="700" fill="#0D5957">0.05 &#8211; 0.12</text>
+    <text x="196" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#15807D">~5&#8211;12% assigned</text>
+    <text x="196" y="206" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.8">Small premium</text>
+    <text x="196" y="228" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.8">Far-out strike</text>
+  </g>
+
+  <g>
+    <rect x="338" y="120" width="252" height="130" rx="12" fill="#FFFFFF" stroke="#E6E0D5" stroke-width="1.5"/>
+    <text x="464" y="152" text-anchor="middle" font-family="Inter, sans-serif" font-size="19" font-weight="700" fill="#0D5957">0.15 &#8211; 0.25</text>
+    <text x="464" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#1C2826" opacity="0.75">~15&#8211;25% assigned</text>
+    <text x="464" y="206" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.8">Modest premium</text>
+    <text x="464" y="228" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.8">Conservative</text>
+  </g>
+
+  <g>
+    <rect x="606" y="120" width="252" height="130" rx="12" fill="#E09A33" opacity="0.18"/>
+    <rect x="606" y="120" width="252" height="130" rx="12" fill="none" stroke="#E09A33" stroke-width="2.5"/>
+    <text x="732" y="152" text-anchor="middle" font-family="Inter, sans-serif" font-size="19" font-weight="700" fill="#0D5957">0.25 &#8211; 0.35</text>
+    <text x="732" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#A96A1C">~25&#8211;35% assigned</text>
+    <text x="732" y="206" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.8">Good premium</text>
+    <text x="732" y="228" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.8">The income standard</text>
+  </g>
+
+  <g>
+    <rect x="874" y="120" width="252" height="130" rx="12" fill="#FFFFFF" stroke="#E6E0D5" stroke-width="1.5"/>
+    <text x="1000" y="152" text-anchor="middle" font-family="Inter, sans-serif" font-size="19" font-weight="700" fill="#0D5957">0.40 and up</text>
+    <text x="1000" y="180" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#1C2826" opacity="0.75">40%+ assigned</text>
+    <text x="1000" y="206" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.8">Large premium</text>
+    <text x="1000" y="228" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" fill="#1C2826" opacity="0.8">You want to sell</text>
+  </g>
+
+  <!-- gradient arrow -->
+  <defs>
+    <linearGradient id="ccgrad" gradientUnits="userSpaceOnUse" x1="70" y1="0" x2="1105" y2="0">
+      <stop offset="0%" stop-color="#15807D"/>
+      <stop offset="100%" stop-color="#E09A33"/>
+    </linearGradient>
+    <marker id="ccarrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 L9 5 L0 10 Z" fill="#E09A33"/>
+    </marker>
+  </defs>
+  <line x1="70" y1="288" x2="1105" y2="288" stroke="url(#ccgrad)" stroke-width="5" marker-end="url(#ccarrow)" stroke-linecap="round"/>
+  <text x="76" y="316" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#15807D">Strike further away &#183; less income &#183; rarely assigned</text>
+  <text x="1104" y="316" text-anchor="end" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#A96A1C">Strike closer &#183; more income &#183; often assigned</text>
+
+  <!-- the two approaches -->
+  <g>
+    <rect x="70" y="358" width="500" height="136" rx="14" fill="#FFFFFF" stroke="#15807D" stroke-width="2"/>
+    <text x="96" y="392" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#15807D" letter-spacing="1.4">APPROACH B &#183; MECHANICAL FAR-OTM</text>
+    <text x="96" y="422" font-family="Fraunces, serif" font-size="19" font-weight="600" fill="#0D5957">Goal: never be assigned</text>
+    <text x="96" y="450" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.8">0.05&#8211;0.12 delta &#183; ~10 minutes a month &#183; close at 80%</text>
+    <text x="96" y="474" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.8">For long-held, low-basis shares you cannot afford to sell</text>
+  </g>
+
+  <g>
+    <rect x="626" y="358" width="500" height="136" rx="14" fill="#FFFFFF" stroke="#E09A33" stroke-width="2"/>
+    <text x="652" y="392" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#A96A1C" letter-spacing="1.4">APPROACH A &#183; CHART-DRIVEN</text>
+    <text x="652" y="422" font-family="Fraunces, serif" font-size="19" font-weight="600" fill="#0D5957">Goal: maximise income</text>
+    <text x="652" y="450" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.8">0.20&#8211;0.30 delta &#183; 30&#8211;60 minutes a week &#183; close at 50%</text>
+    <text x="652" y="474" font-family="Inter, sans-serif" font-size="13.5" fill="#1C2826" opacity="0.8">For mid-size positions you are willing to have called away</text>
+  </g>
+
+  <text x="600" y="530" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-style="italic" fill="#1C2826" opacity="0.65">Both work. Mixing them at random is what produces bad results.</text>
+</svg>
